@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wio Cellular: AtClient&lt; MODULE &gt; クラステンプレート</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Wio Cellular
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classAtClient-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">AtClient&lt; MODULE &gt; クラステンプレート</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>ATコマンドクライアント  
+ <a href="classAtClient.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;AtClient.hpp&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a48a8c13d12a7505171c4cb5d02a7b1b2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a48a8c13d12a7505171c4cb5d02a7b1b2">UrcHandlerType</a> = bool(const std::string &amp;)</td></tr>
+<tr class="separator:a48a8c13d12a7505171c4cb5d02a7b1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab15afac3f3378a388768a2af60856d7f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> = std::function&lt; <a class="el" href="classAtClient.html#a48a8c13d12a7505171c4cb5d02a7b1b2">UrcHandlerType</a> &gt;</td></tr>
+<tr class="separator:ab15afac3f3378a388768a2af60856d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e1bb1bb0b68e15f6b110ece758d4fc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a51e1bb1bb0b68e15f6b110ece758d4fc">PredicateType</a> = bool(const std::string &amp;)</td></tr>
+<tr class="separator:a51e1bb1bb0b68e15f6b110ece758d4fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a921a815308b39d48e466349558ca8158"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a921a815308b39d48e466349558ca8158">PredFunctionType</a> = std::function&lt; <a class="el" href="classAtClient.html#a51e1bb1bb0b68e15f6b110ece758d4fc">PredicateType</a> &gt;</td></tr>
+<tr class="separator:a921a815308b39d48e466349558ca8158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae6a62dda74e5c73151c3cb47f5cb1df8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#ae6a62dda74e5c73151c3cb47f5cb1df8">AtClient</a> (void)</td></tr>
+<tr class="memdesc:ae6a62dda74e5c73151c3cb47f5cb1df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classAtClient.html#ae6a62dda74e5c73151c3cb47f5cb1df8">[詳解]</a><br /></td></tr>
+<tr class="separator:ae6a62dda74e5c73151c3cb47f5cb1df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d493ff634726b7c609ca9520f4d7522"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a2d493ff634726b7c609ca9520f4d7522">registerUrcHandler</a> (const <a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> &amp;handler)</td></tr>
+<tr class="memdesc:a2d493ff634726b7c609ca9520f4d7522"><td class="mdescLeft">&#160;</td><td class="mdescRight">URC処理ハンドラを登録  <a href="classAtClient.html#a2d493ff634726b7c609ca9520f4d7522">[詳解]</a><br /></td></tr>
+<tr class="separator:a2d493ff634726b7c609ca9520f4d7522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354e9bd5e56d63fd91ac2f439e50ba2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a354e9bd5e56d63fd91ac2f439e50ba2e">unregisterUrcHandler</a> (const std::list&lt; <a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> &gt;::iterator &amp;it)</td></tr>
+<tr class="memdesc:a354e9bd5e56d63fd91ac2f439e50ba2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">URC処理ハンドラを解除  <a href="classAtClient.html#a354e9bd5e56d63fd91ac2f439e50ba2e">[詳解]</a><br /></td></tr>
+<tr class="separator:a354e9bd5e56d63fd91ac2f439e50ba2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f6d0c9f80b808ccef0d2062f9cef0a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a5f6d0c9f80b808ccef0d2062f9cef0a7">doWork</a> (int timeout)</td></tr>
+<tr class="memdesc:a5f6d0c9f80b808ccef0d2062f9cef0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">URC処理を実行  <a href="classAtClient.html#a5f6d0c9f80b808ccef0d2062f9cef0a7">[詳解]</a><br /></td></tr>
+<tr class="separator:a5f6d0c9f80b808ccef0d2062f9cef0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a7679c9e1805b2dfd125556ca99f13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a11a7679c9e1805b2dfd125556ca99f13">writeAndWaitCommand</a> (const std::string &amp;command, int timeout)</td></tr>
+<tr class="memdesc:a11a7679c9e1805b2dfd125556ca99f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド書き込みと待機  <a href="classAtClient.html#a11a7679c9e1805b2dfd125556ca99f13">[詳解]</a><br /></td></tr>
+<tr class="separator:a11a7679c9e1805b2dfd125556ca99f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5605c113681cd594e3f93c058bb732c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#aa5605c113681cd594e3f93c058bb732c">readResponse</a> (int timeout, const <a class="el" href="classAtClient.html#a921a815308b39d48e466349558ca8158">PredFunctionType</a> &amp;pred=nullptr)</td></tr>
+<tr class="memdesc:aa5605c113681cd594e3f93c058bb732c"><td class="mdescLeft">&#160;</td><td class="mdescRight">レスポンス読み込み  <a href="classAtClient.html#aa5605c113681cd594e3f93c058bb732c">[詳解]</a><br /></td></tr>
+<tr class="separator:aa5605c113681cd594e3f93c058bb732c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc62e3cf5c159dfa90db0caf1e2d2b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a4dc62e3cf5c159dfa90db0caf1e2d2b5">writeBinary</a> (const void *data, size_t dataSize)</td></tr>
+<tr class="memdesc:a4dc62e3cf5c159dfa90db0caf1e2d2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイナリ書き込み  <a href="classAtClient.html#a4dc62e3cf5c159dfa90db0caf1e2d2b5">[詳解]</a><br /></td></tr>
+<tr class="separator:a4dc62e3cf5c159dfa90db0caf1e2d2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eff3442b401081751f160da516318c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a4eff3442b401081751f160da516318c8">readBinary</a> (void *data, size_t dataSize, int timeout)</td></tr>
+<tr class="memdesc:a4eff3442b401081751f160da516318c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイナリ読み込み  <a href="classAtClient.html#a4eff3442b401081751f160da516318c8">[詳解]</a><br /></td></tr>
+<tr class="separator:a4eff3442b401081751f160da516318c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e6f3a0baed8623402ba84bff9d9d0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtClient.html#a72e6f3a0baed8623402ba84bff9d9d0e">readBinaryDiscard</a> (size_t dataSize, int timeout)</td></tr>
+<tr class="memdesc:a72e6f3a0baed8623402ba84bff9d9d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイナリ読み込み（読み捨て）  <a href="classAtClient.html#a72e6f3a0baed8623402ba84bff9d9d0e">[詳解]</a><br /></td></tr>
+<tr class="separator:a72e6f3a0baed8623402ba84bff9d9d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><h3>template&lt;typename MODULE&gt;<br />
+class AtClient&lt; MODULE &gt;</h3>
+
+<p>ATコマンドクライアント </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">MODULE</td><td>モジュールのクラス</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>ATコマンドのクライアントのクラスです。 </p>
+</div><h2 class="groupheader">型定義メンバ詳解</h2>
+<a id="a921a815308b39d48e466349558ca8158"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a921a815308b39d48e466349558ca8158">&#9670;&nbsp;</a></span>PredFunctionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::<a class="el" href="classAtClient.html#a921a815308b39d48e466349558ca8158">PredFunctionType</a> =  std::function&lt;<a class="el" href="classAtClient.html#a51e1bb1bb0b68e15f6b110ece758d4fc">PredicateType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51e1bb1bb0b68e15f6b110ece758d4fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e1bb1bb0b68e15f6b110ece758d4fc">&#9670;&nbsp;</a></span>PredicateType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::<a class="el" href="classAtClient.html#a51e1bb1bb0b68e15f6b110ece758d4fc">PredicateType</a> =  bool(const std::string &amp;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab15afac3f3378a388768a2af60856d7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab15afac3f3378a388768a2af60856d7f">&#9670;&nbsp;</a></span>UrcHandlerFunctionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::<a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> =  std::function&lt;<a class="el" href="classAtClient.html#a48a8c13d12a7505171c4cb5d02a7b1b2">UrcHandlerType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48a8c13d12a7505171c4cb5d02a7b1b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48a8c13d12a7505171c4cb5d02a7b1b2">&#9670;&nbsp;</a></span>UrcHandlerType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::<a class="el" href="classAtClient.html#a48a8c13d12a7505171c4cb5d02a7b1b2">UrcHandlerType</a> =  bool(const std::string &amp;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="ae6a62dda74e5c73151c3cb47f5cb1df8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6a62dda74e5c73151c3cb47f5cb1df8">&#9670;&nbsp;</a></span>AtClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::<a class="el" href="classAtClient.html">AtClient</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<p>コンストラクタ。 </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a5f6d0c9f80b808ccef0d2062f9cef0a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f6d0c9f80b808ccef0d2062f9cef0a7">&#9670;&nbsp;</a></span>doWork()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::doWork </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>URC処理を実行 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>レスポンスを確認して、URC(unsolicited result code)の処理を実行します。 永久にURC待ちしたいときはtimeoutに-1を指定します。 URCを受信したときは、タイムアウト時間を待つことなく関数から返ります。 </p>
+
+</div>
+</div>
+<a id="a4eff3442b401081751f160da516318c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eff3442b401081751f160da516318c8">&#9670;&nbsp;</a></span>readBinary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::readBinary </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dataSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バイナリ読み込み </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>受信データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>成功 </td></tr>
+    <tr><td class="paramname">false</td><td>タイムアウト</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>受信したバイナリデータを読み込みます。 永久に待機したいときはtimeoutに-1を指定します。 </p>
+
+</div>
+</div>
+<a id="a72e6f3a0baed8623402ba84bff9d9d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e6f3a0baed8623402ba84bff9d9d0e">&#9670;&nbsp;</a></span>readBinaryDiscard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::readBinaryDiscard </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dataSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バイナリ読み込み（読み捨て） </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>成功 </td></tr>
+    <tr><td class="paramname">false</td><td>タイムアウト</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>受信したバイナリデータを読み捨てます。 永久に待機したいときはtimeoutに-1を指定します。 </p>
+
+</div>
+</div>
+<a id="aa5605c113681cd594e3f93c058bb732c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5605c113681cd594e3f93c058bb732c">&#9670;&nbsp;</a></span>readResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::readResponse </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classAtClient.html#a921a815308b39d48e466349558ca8158">PredFunctionType</a> &amp;&#160;</td>
+          <td class="paramname"><em>pred</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>レスポンス読み込み </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pred</td><td>S4無しレスポンスのマッチング判定 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">size()==0</td><td>受信データ無し </td></tr>
+    <tr><td class="paramname">size()&gt;0</td><td>受信データ</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>受信したレスポンスを読み込みます。 レスポンスが無いときはサイズがゼロの文字列を返します。 永久に待機したいときはtimeoutに-1を指定します。 </p>
+
+</div>
+</div>
+<a id="a2d493ff634726b7c609ca9520f4d7522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d493ff634726b7c609ca9520f4d7522">&#9670;&nbsp;</a></span>registerUrcHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;<a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a>&gt;::iterator <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::registerUrcHandler </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> &amp;&#160;</td>
+          <td class="paramname"><em>handler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>URC処理ハンドラを登録 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">handler</td><td>URC処理ハンドラ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>URC処理ハンドラのイテレータ</dd></dl>
+<p>URC(unsolicited result code)を処理するハンドラを登録します。 戻り値のイテレータを使って、後でハンドラを解除することができます。 </p>
+
+</div>
+</div>
+<a id="a354e9bd5e56d63fd91ac2f439e50ba2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a354e9bd5e56d63fd91ac2f439e50ba2e">&#9670;&nbsp;</a></span>unregisterUrcHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::unregisterUrcHandler </td>
+          <td>(</td>
+          <td class="paramtype">const std::list&lt; <a class="el" href="classAtClient.html#ab15afac3f3378a388768a2af60856d7f">UrcHandlerFunctionType</a> &gt;::iterator &amp;&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>URC処理ハンドラを解除 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">it</td><td>URC処理ハンドラのイテレータ</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>URC(unsolicited result code)を処理するハンドラを解除します。 </p>
+
+</div>
+</div>
+<a id="a11a7679c9e1805b2dfd125556ca99f13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a7679c9e1805b2dfd125556ca99f13">&#9670;&nbsp;</a></span>writeAndWaitCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::writeAndWaitCommand </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コマンド書き込みと待機 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>送信コマンド </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>コマンドを書き込んでコマンドエコーを待機します。 待機する間、URC(unsolicited result code)のレスポンスがあれば対応する処理を実行します。 永久に待機したいときはtimeoutに-1を指定します。 </p>
+
+</div>
+</div>
+<a id="a4dc62e3cf5c159dfa90db0caf1e2d2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc62e3cf5c159dfa90db0caf1e2d2b5">&#9670;&nbsp;</a></span>writeBinary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classAtClient.html">AtClient</a>&lt; MODULE &gt;::writeBinary </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>dataSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バイナリ書き込み </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>送信データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>送信データのサイズ</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>バイナリデータを書き込みます。 </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="AtClient_8hpp.html">AtClient.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

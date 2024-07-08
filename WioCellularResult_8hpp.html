@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wio Cellular: WioCellularResult.hpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Wio Cellular
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">列挙型</a>  </div>
+  <div class="headertitle">
+<div class="title">WioCellularResult.hpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="WioCellularResult_8hpp__dep__incl.png" border="0" usemap="#aWioCellularResult_8hppdep" alt=""/></div>
+<map name="aWioCellularResult_8hppdep" id="aWioCellularResult_8hppdep">
+<area shape="rect" title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect" href="Bg770a_8hpp.html" title=" " alt="" coords="39,80,138,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:ab15d5953bed9055c90c0f06f30e1daf4"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a> { <br />
+&#160;&#160;<a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4aa60852f204ed8028c1c58808b746d115">Ok</a> = 0
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4a787fe4a43afef478d23de4b257230b54">WaitCommandTimeout</a> = 1
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4a1479a2ae15dd68d3d4504176e2a82651">ReadResponseTimeout</a> = 2
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4a112f1b12eced65253c21821479b4d0d4">CommandRejected</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4ad34bcc4677e45e4d79b33963a71e24bf">RdyTimeout</a> = 4
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4afd94f7f80e1b9cdb71f28ca9b565af94">OpenTimeout</a> = 5
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4ac51a07a6d1b3c8609dc095cc4d540e23">OpenError</a> = 6
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4aa4866b9c40370f853b1434ff872be87c">ReceiveTimeout</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4aa9eb62f4e3ae03ec1b8ae9ddef671dbe">NotActivate</a> = 8
+, <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4aa73df58f6426f63ced856eebd82f704d">ArgumentOutOfRange</a> = 9
+<br />
+ }</td></tr>
+<tr class="separator:ab15d5953bed9055c90c0f06f30e1daf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">列挙型詳解</h2>
+<a id="ab15d5953bed9055c90c0f06f30e1daf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab15d5953bed9055c90c0f06f30e1daf4">&#9670;&nbsp;</a></span>WioCellularResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>実行結果 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4aa60852f204ed8028c1c58808b746d115"></a>Ok&#160;</td><td class="fielddoc"><p>成功 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4a787fe4a43afef478d23de4b257230b54"></a>WaitCommandTimeout&#160;</td><td class="fielddoc"><p>コマンドエコーの待機でタイムアウト </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4a1479a2ae15dd68d3d4504176e2a82651"></a>ReadResponseTimeout&#160;</td><td class="fielddoc"><p>レスポンス読み込みでタイムアウト </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4a112f1b12eced65253c21821479b4d0d4"></a>CommandRejected&#160;</td><td class="fielddoc"><p>モジュールがコマンドを拒否 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4ad34bcc4677e45e4d79b33963a71e24bf"></a>RdyTimeout&#160;</td><td class="fielddoc"><p>RDYの待機でタイムアウト </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4afd94f7f80e1b9cdb71f28ca9b565af94"></a>OpenTimeout&#160;</td><td class="fielddoc"><p>オープン完了待ちでタイムアウト </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4ac51a07a6d1b3c8609dc095cc4d540e23"></a>OpenError&#160;</td><td class="fielddoc"><p>オープンでエラー </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4aa4866b9c40370f853b1434ff872be87c"></a>ReceiveTimeout&#160;</td><td class="fielddoc"><p>受信でタイムアウト </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4aa9eb62f4e3ae03ec1b8ae9ddef671dbe"></a>NotActivate&#160;</td><td class="fielddoc"><p>起動しない </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab15d5953bed9055c90c0f06f30e1daf4aa73df58f6426f63ced856eebd82f704d"></a>ArgumentOutOfRange&#160;</td><td class="fielddoc"><p>引数が範囲外 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
