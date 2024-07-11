@@ -149,7 +149,7 @@ public:
         }
         if (isActive())
         {
-            printf("-------------------------- INTERFACE IS ACTIVE!!!\n");
+            printf("---> Interface is not deactivated when begin()\n");
             vddExtHandler();
         }
 

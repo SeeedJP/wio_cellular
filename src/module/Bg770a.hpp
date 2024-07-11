@@ -257,7 +257,6 @@ public:
         getInterface().powerOn();
         if (!getInterface().isActive())
         {
-            printf("-------------------------- INTERFACE IS NOT ACTIVE!!!\n");
 #if defined(BOARD_VERSION_ES2)
             delay(2 + 2);
             digitalWrite(PIN_VSYS_3V3_ENABLE, LOW);
@@ -267,10 +266,12 @@ public:
             getInterface().powerOn();
             if (!getInterface().isActive())
             {
+                printf("---> Interface is not active when powerOn()\n");
                 result = WioCellularResult::NotActivate;
             }
 #elif defined(BOARD_VERSION_1_0)
             // TODO Unimplemented
+            printf("---> Interface is not active when powerOn()\n");
             result = WioCellularResult::NotActivate;
 #else
 #error "Unknown board version"
@@ -1101,7 +1102,7 @@ public:
                 if (response.compare(0, 15, "+QIURC: \"recv\",") == 0)
                 {
                     const auto connectId = std::stoi(response.substr(15));
-                    printf("-------------------------- SOCKET RECEIVED!!! %d\n", connectId);
+                    printf("---> Socket received (connectId=%d)\n", connectId);
                     auto nofity = UrcSocketReceiveNofity_.find(connectId);
                     if (nofity != UrcSocketReceiveNofity_.end())
                     {
