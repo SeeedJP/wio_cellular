@@ -26,6 +26,9 @@ class Bg770aInterface
 private:
     suli3::arduino::DigitalInputPin<BG770AINTERFACE_VDD_EXT> VddExt_;
     suli3::arduino::DigitalOutputPin<BG770AINTERFACE_PWRKEY> Pwrkey_;
+#ifdef BG770AINTERFACE_RESET_N
+    suli3::arduino::DigitalOutputPin<BG770AINTERFACE_RESET_N> ResetN_;
+#endif // BG770AINTERFACE_RESET_N
 
     SemaphoreHandle_t MainUartReceived_;  // FreeRTOS
     SemaphoreHandle_t MainUartReceived2_; // FreeRTOS
@@ -129,28 +132,28 @@ public:
 #else
 #error "Unknown board version"
 #endif
+#ifdef BG770AINTERFACE_RESET_N
+        ResetN_.begin(OUTPUT_S0D1, 1);
+#endif // BG770AINTERFACE_RESET_N
         MainDtr_.begin(OUTPUT, 0);
 
-        // Becomes active at startup for a certain period of time. Therefore, it waits until it becomes inactive.
-        const auto start = millis();
-        while (isActive())
+        if (isActive())
         {
-            if (millis() - start >= 250 + 2)
+            // Becomes active at startup for a certain period of time. Therefore, it waits until it becomes inactive.
+            const auto start = millis();
+            while (isActive())
             {
-                break;
+                if (millis() - start >= 250 + 2)
+                {
+                    break;
+                }
+                delay(10);
             }
-            delay(10);
-        }
-        // When not deactivated, power off.
-        if (isActive())
-        {
-            powerOff();
-            delay(1500 + 2);
-        }
-        if (isActive())
-        {
-            printf("---> Interface is not deactivated when begin()\n");
-            vddExtHandler();
+            if (isActive())
+            {
+                printf("---> Interface is active when begin()\n");
+                vddExtHandler();
+            }
         }
 
         attachInterrupt(BG770AINTERFACE_VDD_EXT, BG770AINTERFACE_VDD_EXT_IRQHANDLER, CHANGE);
@@ -196,6 +199,21 @@ public:
 #else
 #error "Unknown board version"
 #endif
+    }
+
+    /**
+     * @~Japanese
+     * @brief リセット
+     *
+     * リセットします。
+     */
+    void reset(void)
+    {
+#ifdef BG770AINTERFACE_RESET_N
+        ResetN_.write(0);
+        delay(100 + 2);
+        ResetN_.write(1);
+#endif // BG770AINTERFACE_RESET_N
     }
 
     /**

@@ -254,8 +254,32 @@ public:
             }
             return false; });
 
-        getInterface().powerOn();
         if (!getInterface().isActive())
+        {
+            getInterface().powerOn();
+            if (!getInterface().isActive())
+            {
+#if defined(BOARD_VERSION_ES2)
+                delay(2 + 2);
+                digitalWrite(PIN_VSYS_3V3_ENABLE, LOW);
+                delay(100 + 2);
+                digitalWrite(PIN_VSYS_3V3_ENABLE, HIGH);
+                delay(2 + 2);
+                getInterface().powerOn();
+                if (!getInterface().isActive())
+                {
+                    printf("---> Interface is not active when powerOn()\n");
+                    result = WioCellularResult::NotActivate;
+                }
+#elif defined(BOARD_VERSION_1_0)
+                printf("---> Interface is not active when powerOn()\n");
+                result = WioCellularResult::NotActivate;
+#else
+#error "Unknown board version"
+#endif
+            }
+        }
+        else
         {
 #if defined(BOARD_VERSION_ES2)
             delay(2 + 2);
@@ -270,9 +294,7 @@ public:
                 result = WioCellularResult::NotActivate;
             }
 #elif defined(BOARD_VERSION_1_0)
-            // TODO Unimplemented
-            printf("---> Interface is not active when powerOn()\n");
-            result = WioCellularResult::NotActivate;
+            getInterface().reset();
 #else
 #error "Unknown board version"
 #endif
