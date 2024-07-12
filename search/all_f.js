@@ -12,5 +12,6 @@ var searchData=
   ['receivesocket_95',['receiveSocket',['../classBg770a.html#adc05cb74d4877fb0fa5d74a782bcb35f',1,'Bg770a::receiveSocket(int connectId, void *data, size_t dataSize, size_t *readDataSize, int timeout)'],['../classBg770a.html#a1e65ec54fdbdb1f26a0d0b9746ab5d59',1,'Bg770a::receiveSocket(int connectId, void *data, size_t dataSize, size_t *readDataSize)']]],
   ['receivetimeout_96',['ReceiveTimeout',['../WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4aa4866b9c40370f853b1434ff872be87c',1,'WioCellularResult.hpp']]],
   ['registerurchandler_97',['registerUrcHandler',['../classAtClient.html#a2d493ff634726b7c609ca9520f4d7522',1,'AtClient']]],
-  ['remoteport_98',['remotePort',['../structBg770a_1_1SocketStatus.html#a835079b47135b82fb9a7164ebdf267f4',1,'Bg770a::SocketStatus']]]
+  ['remoteport_98',['remotePort',['../structBg770a_1_1SocketStatus.html#a835079b47135b82fb9a7164ebdf267f4',1,'Bg770a::SocketStatus']]],
+  ['reset_99',['reset',['../classBg770aInterface.html#a46c82e20cdf709443e269ce63ca76459',1,'Bg770aInterface']]]
 ];
