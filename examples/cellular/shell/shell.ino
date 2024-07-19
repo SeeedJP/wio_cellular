@@ -13,7 +13,7 @@
 #include <nrfx_power.h>
 #include <ntshell.h>     // Natural Tiny Shell
 #include <util/ntopt.h>  // Natural Tiny Shell
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 static const char APN[] = "soracom.io";
 

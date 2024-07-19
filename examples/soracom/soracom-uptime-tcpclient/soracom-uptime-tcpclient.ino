@@ -10,7 +10,7 @@
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 #include <ArduinoJson.h>
 
 static const char APN[] = "soracom.io";

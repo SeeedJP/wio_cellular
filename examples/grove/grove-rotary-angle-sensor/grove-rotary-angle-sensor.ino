@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 #define ROTARY_ANGLE_PIN (A4)  // Grove - Analog (P1)
 #define INTERVAL (500)

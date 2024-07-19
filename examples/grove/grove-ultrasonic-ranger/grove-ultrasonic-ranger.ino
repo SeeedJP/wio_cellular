@@ -9,7 +9,7 @@
 //   Grove Ultrasonic Ranger 1.0.1 - https://github.com/Seeed-Studio/Seeed_Arduino_UltrasonicRanger
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 #include <Ultrasonic.h>  // Grove Ultrasonic Ranger
 
 #define ULTRASONIC_PIN (D30)  // Grove - Digital (P1)

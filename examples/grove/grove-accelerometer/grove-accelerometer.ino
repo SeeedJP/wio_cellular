@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 #include <Wire.h>
 
 #define INTERVAL (100)

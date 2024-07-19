@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 void setup(void) {
   Serial.begin(115200);

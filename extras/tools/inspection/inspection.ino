@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 static constexpr int POWER_ON_TIMEOUT = 20000;  // [ms]
 

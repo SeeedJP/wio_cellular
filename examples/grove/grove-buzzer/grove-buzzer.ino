@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 #define BUZZER_PIN (D30)  // Grove - Digital (P1)
 #define BUZZER_ON_TIME (100)

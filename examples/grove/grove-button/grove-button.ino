@@ -5,7 +5,7 @@
  */
 
 #include <Adafruit_TinyUSB.h>
-#include <WioCellular.hpp>
+#include <WioCellular.h>
 
 #define BUTTON_PIN (D30)  // Grove - Digital (P1)
 #define INTERVAL (100)
