@@ -1,0 +1,50 @@
+name: Compile Examples and Tools Action
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        board_version:
+          - 1_0
+          - es2
+        debug_output:
+          - none
+          - rtt
+          - serial1
+          - serial
+
+    steps:
+      - name: Install Tools
+        run: |
+          pip3 install adafruit-nrfutil
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile Sketches
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: SeeedJP:nrf52:wio_bg770a:board_version=${{matrix.board_version}},debug_output=${{matrix.debug_output}}
+          platforms: |
+            - name: SeeedJP:nrf52
+              source-url: https://www.seeed.co.jp/package_SeeedJP_index.json
+          libraries: |
+            - source-path: .
+            - name: ArduinoJson
+              version: 7.0.4
+            - name: Adafruit SPIFlash
+              version: 4.3.4
+            - name: SdFat - Adafruit Fork
+              version: 2.2.3
+            - name: Adafruit SleepyDog Library
+              version: 1.6.5
+            - source-url: https://github.com/matsujirushi/ntshell.git
+            - name: Grove Ultrasonic Ranger
+              version: 1.0.1
+          sketch-paths: |
+            - examples
+            - extras/tools
