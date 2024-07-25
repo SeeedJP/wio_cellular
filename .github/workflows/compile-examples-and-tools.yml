@@ -3,7 +3,7 @@ name: Compile Examples and Tools Action
 on: workflow_dispatch
 
 jobs:
-  deploy:
+  compile:
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,15 +18,15 @@ jobs:
           - serial
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Install Tools
         run: |
           pip3 install adafruit-nrfutil
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Compile Sketches
-        uses: arduino/compile-sketches@v1
+      - name: Compile sketches
+        uses: arduino/compile-sketches@v1.1.1
         with:
           fqbn: SeeedJP:nrf52:wio_bg770a:board_version=${{matrix.board_version}},debug_output=${{matrix.debug_output}}
           platforms: |

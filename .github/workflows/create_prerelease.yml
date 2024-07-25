@@ -1,0 +1,71 @@
+name: Create Draft Release Action
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+env:
+  BOARD_VERSION: 1_0
+  DEBUG_OUTPUT: none
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create draft release
+        run: |
+          gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --draft
+
+  upload_uf2:
+    needs: [create_release]
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - sketch_path: examples/cellular/transparent
+            sketch_name: transparent
+          - sketch_path: examples/cellular/shell
+            sketch_name: shell
+          - sketch_path: extras/tools/inspection
+            sketch_name: inspection
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          pip3 install adafruit-nrfutil
+          wget https://github.com/microsoft/uf2/raw/master/utils/uf2conv.py
+          wget https://github.com/microsoft/uf2/raw/master/utils/uf2families.json
+
+      - name: Compile sketches
+        uses: arduino/compile-sketches@v1.1.1
+        with:
+          fqbn: SeeedJP:nrf52:wio_bg770a:board_version=${{ env.BOARD_VERSION }},debug_output=${{ env.DEBUG_OUTPUT }}
+          platforms: |
+            - name: SeeedJP:nrf52
+              source-url: https://www.seeed.co.jp/package_SeeedJP_index.json
+          libraries: |
+            - source-path: .
+            - source-url: https://github.com/matsujirushi/ntshell.git
+          sketch-paths: |
+            - ${{ matrix.sketch_path }}
+          cli-compile-flags: |
+            - --export-binaries
+      
+      - name: Convert HEX to UF2
+        run: |
+          mkdir build
+          python3 uf2conv.py ${{ matrix.sketch_path }}/build/SeeedJP.nrf52.wio_bg770a/${{ matrix.sketch_name }}.ino.hex --family 0xADA52840 --convert --output build/${{ matrix.sketch_name }}.uf2
+
+      - name: Upload UF2
+        run: |
+          gh release upload ${{ github.ref_name }} build/${{ matrix.sketch_name }}.uf2
