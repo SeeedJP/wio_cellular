@@ -87,26 +87,6 @@ void setup(void) {
     Serial.print(" Latest revision:  ");
     Serial.println(CELLULAR_REVISION);
   }
-
-  Serial.print("Check SIM ... ");
-  {
-    std::string simState;
-    const auto result = WioCellular.getSimState(&simState);
-    if (result != WioCellularResult::Ok) {
-      ++ErrorCount;
-      Serial.print("ERROR ");
-      Serial.println(WioCellularResultToString(result));
-    } else {
-      if (simState.compare("READY") != 0) {
-        ++ErrorCount;
-        Serial.println("ERROR SIM is not ready");
-      } else {
-        Serial.println("OK");
-      }
-    }
-    Serial.print(" SIM state: ");
-    Serial.println(simState.c_str());
-  }
 }
 
 void loop(void) {
