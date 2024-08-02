@@ -207,7 +207,7 @@ static bool send(const void* data, size_t size) {
     }
   }
 
-  uint8_t recvData[10];
+  static uint8_t recvData[1500];
   size_t recvSize;
   if (result) {
     Serial.println("Receiving");

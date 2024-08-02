@@ -136,7 +136,7 @@ static bool send(const void* data, size_t size) {
     }
   }
 
-  uint8_t recvData[10];
+  static uint8_t recvData[1500];
   int recvSize;
   if (result) {
     recvSize = TcpClient.read(recvData, sizeof(recvData));
