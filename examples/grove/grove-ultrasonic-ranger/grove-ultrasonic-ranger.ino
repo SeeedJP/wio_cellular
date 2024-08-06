@@ -6,7 +6,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   Grove Ultrasonic Ranger 1.0.1 - https://github.com/Seeed-Studio/Seeed_Arduino_UltrasonicRanger
+//   http://librarymanager#Grove%20Ultrasonic%20Ranger 1.0.1
 
 #include <Adafruit_TinyUSB.h>
 #include <WioCellular.h>

@@ -6,8 +6,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   Adafruit SPIFlash 4.3.4 - https://github.com/adafruit/Adafruit_SPIFlash
-//   SdFat - Adafruit Fork 2.2.3 - https://github.com/adafruit/SdFat
+//   http://librarymanager#Adafruit%20SPIFlash 4.3.4
+//   http://librarymanager#SdFat%20-%20Adafruit%20Fork 2.2.3
 
 #include <Adafruit_TinyUSB.h>
 #include <Adafruit_SPIFlash.h>

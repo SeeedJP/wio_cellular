@@ -6,7 +6,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   Natural Tiny Shell 0.3.1 - https://github.com/matsujirushi/ntshell
+//   https://github.com/matsujirushi/ntshell 0.3.1
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>

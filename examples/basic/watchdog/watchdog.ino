@@ -6,7 +6,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   Adafruit SleepyDog Library 1.6.5 - https://github.com/adafruit/Adafruit_SleepyDog
+//   http://librarymanager#Adafruit%20SleepyDog%20Library 1.6.5
 
 #include <Adafruit_TinyUSB.h>
 #include <Adafruit_SleepyDog.h>

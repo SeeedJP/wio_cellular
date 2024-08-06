@@ -6,7 +6,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   ArduinoJson 7.0.4 - https://github.com/bblanchon/ArduinoJson
+//   http://librarymanager#ArduinoJson 7.0.4
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>
