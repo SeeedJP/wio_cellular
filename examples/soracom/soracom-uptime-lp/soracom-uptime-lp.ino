@@ -10,7 +10,6 @@
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>
-#include <malloc.h>
 #include <WioCellular.h>
 #include <ArduinoJson.h>
 
@@ -18,8 +17,6 @@ static const char APN[] = "soracom.io";
 static const char HOST[] = "uni.soracom.io";
 static constexpr int PORT = 23080;
 
-static constexpr int HARTBEAT_PERIOD = 1000 * 10;     // [ms]
-static constexpr int DIAG_PERIOD = 1000 * 60 * 60;    // [ms]
 static constexpr int START_DELAY = 1000 * 10;         // [ms]
 static constexpr int MEASURE_PERIOD = 1000 * 60 * 5;  // [ms]
 static constexpr int PSM_PERIOD = 60 * 6;             // [s]
@@ -36,9 +33,6 @@ static constexpr int PDP_CONTEXT_ID = 1;
 static constexpr int SOCKET_ID = 0;
 
 static SemaphoreHandle_t CellularWorkSem;
-static SemaphoreHandle_t ButtonSem;
-static SemaphoreHandle_t HartbeatSem;
-static SemaphoreHandle_t DiagSem;
 static SemaphoreHandle_t CellularStartSem;
 static SemaphoreHandle_t MeasureSem;
 static QueueSetHandle_t QueueSet;
@@ -60,17 +54,11 @@ void setup(void) {
   digitalWrite(LED_BUILTIN, HIGH);
 
   assert(CellularWorkSem = WioCellular.getInterface().getReceivedNotificationSemaphone());
-  assert(ButtonSem = xSemaphoreCreateBinary());
-  assert(HartbeatSem = xSemaphoreCreateBinary());
-  assert(DiagSem = xSemaphoreCreateBinary());
   assert(CellularStartSem = xSemaphoreCreateBinary());
   assert(MeasureSem = xSemaphoreCreateBinary());
 
-  assert(QueueSet = xQueueCreateSet(6));
+  assert(QueueSet = xQueueCreateSet(3));
   assert(xQueueAddToSet(CellularWorkSem, QueueSet) == pdPASS);
-  assert(xQueueAddToSet(ButtonSem, QueueSet) == pdPASS);
-  assert(xQueueAddToSet(HartbeatSem, QueueSet) == pdPASS);
-  assert(xQueueAddToSet(DiagSem, QueueSet) == pdPASS);
   assert(xQueueAddToSet(CellularStartSem, QueueSet) == pdPASS);
   assert(xQueueAddToSet(MeasureSem, QueueSet) == pdPASS);
 
@@ -79,13 +67,6 @@ void setup(void) {
 
   setupCellular();
 
-  attachInterrupt(
-    PIN_BUTTON1, [](void) {
-      assert(xSemaphoreGive(ButtonSem) == pdTRUE);
-    },
-    FALLING);
-  assert(xTimerStart(xTimerCreate("Hartbeat", pdMS_TO_TICKS(HARTBEAT_PERIOD), pdTRUE, HartbeatSem, semaphoreGiveTimerHandler), 0) == pdPASS);
-  assert(xTimerStart(xTimerCreate("Diag", pdMS_TO_TICKS(DIAG_PERIOD), pdTRUE, DiagSem, semaphoreGiveTimerHandler), 0) == pdPASS);
   assert(xTimerStart(xTimerCreate("CellularStart", pdMS_TO_TICKS(START_DELAY), pdFALSE, CellularStartSem, semaphoreGiveTimerHandler), 0) == pdPASS);
 
   digitalWrite(LED_BUILTIN, LOW);
@@ -101,33 +82,6 @@ void loop(void) {
     assert(xSemaphoreTake(activatedMember, 0) == pdTRUE);
 
     WioCellular.doWork(0);
-  } else if (activatedMember == ButtonSem) {
-    assert(xSemaphoreTake(activatedMember, 0) == pdTRUE);
-
-    Serial.println("USER button pressed");
-  } else if (activatedMember == HartbeatSem) {
-    assert(xSemaphoreTake(activatedMember, 0) == pdTRUE);
-
-    delay(50);
-  } else if (activatedMember == DiagSem) {
-    assert(xSemaphoreTake(activatedMember, 0) == pdTRUE);
-
-    Serial.println("==========");
-
-    // Stack
-    const auto taskNumber = uxTaskGetNumberOfTasks();
-    TaskStatus_t* taskStatuses = reinterpret_cast<TaskStatus_t*>(pvPortMalloc(sizeof(TaskStatus_t) * taskNumber));
-    assert(uxTaskGetSystemState(taskStatuses, taskNumber, nullptr) == taskNumber);
-    for (size_t i = 0; i < taskNumber; ++i) {
-      Serial.printf("stack_hwm %-7s %u\n", taskStatuses[i].pcTaskName, static_cast<unsigned>(taskStatuses[i].usStackHighWaterMark));
-    }
-    vPortFree(taskStatuses);
-
-    // Heap
-    struct mallinfo info = mallinfo();
-    Serial.printf("heap_used %u\n", info.uordblks);
-
-    Serial.println("==========");
   } else if (activatedMember == CellularStartSem) {
     assert(xSemaphoreTake(activatedMember, 0) == pdTRUE);
 
