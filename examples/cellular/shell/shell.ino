@@ -285,7 +285,7 @@ static int CommandSocketSendReceive(int argc, char **argv) {
 
   WioCellular.sendSocket(SOCKET_ID, argv[1]);
 
-  char data[100];
+  static char data[1500];
   size_t dataSize;
   if (WioCellular.receiveSocket(SOCKET_ID, data, sizeof(data), &dataSize, 5000) != WioCellularResult::Ok) {
     Serial.printf("RECEIVE ERROR\n");
