@@ -33,6 +33,8 @@ jobs:
             sketch_name: transparent
           - sketch_path: examples/cellular/shell
             sketch_name: shell
+          - sketch_path: examples/soracom/soracom-connectivity-diagnostics
+            sketch_name: soracom-connectivity-diagnostics
           - sketch_path: extras/tools/inspection
             sketch_name: inspection
 
