@@ -45,6 +45,8 @@ jobs:
             - source-url: https://github.com/matsujirushi/ntshell.git
             - name: Grove Ultrasonic Ranger
               version: 1.0.1
+            - name: AceButton
+              version: 1.10.1
           sketch-paths: |
             - examples
             - extras/tools

@@ -4,13 +4,22 @@
  * MIT License
  */
 
+////////////////////////////////////////////////////////////////////////////////
+// Libraries:
+//   http://librarymanager#AceButton 1.10.1
+
 #include <Adafruit_TinyUSB.h>
 #include <WioCellular.h>
+#include <AceButton.h>
+
+using namespace ace_button;
 
 static constexpr int POWER_ON_TIMEOUT = 20000;  // [ms]
 
 static const char* CELLULAR_REVISION = "BG770AGLAAR02A05_JP_01.200.01.200";
 
+static AceButton UserButton(PIN_BUTTON1);
+static bool UserButtonPressed = false;
 static int ErrorCount = 0;
 
 void setup(void) {
@@ -25,18 +34,21 @@ void setup(void) {
   Serial.println();
 
   Serial.println("Initialize");
+  auto config = UserButton.getButtonConfig();
+  config->setEventHandler(userButtonHandler);
+  config->setDebounceDelay(50);
   WioCellular.begin();
 
-  delay(1000);
   Serial.println("Wait for USER button");
-
+  UserButtonPressed = false;
   while (true) {
     if (millis() % 400 < 200)
       ledOn(LED_BUILTIN);
     else
       ledOff(LED_BUILTIN);
 
-    if (digitalRead(PIN_BUTTON1) == LOW) break;
+    UserButton.check();
+    if (UserButtonPressed) break;
 
     delay(2);
   }
@@ -46,12 +58,26 @@ void setup(void) {
   Serial.print("Enable Grove ... ");
   WioCellular.enableGrovePower();
   Serial.println("OK");
-  delay(5000);
+
+  Serial.println("Wait for USER button");
+  UserButtonPressed = false;
+  while (true) {
+    UserButton.check();
+    if (UserButtonPressed) break;
+    delay(2);
+  }
 
   Serial.print("Disable Grove ... ");
   WioCellular.disableGrovePower();
   Serial.println("OK");
-  delay(5000);
+
+  Serial.println("Wait for USER button");
+  UserButtonPressed = false;
+  while (true) {
+    UserButton.check();
+    if (UserButtonPressed) break;
+    delay(2);
+  }
 
   Serial.print("Power ON cellular ... ");
   {
@@ -98,4 +124,12 @@ void loop(void) {
   ledOff(LED_BUILTIN);
   Serial.flush();
   suspendLoop();
+}
+
+static void userButtonHandler(AceButton* button, uint8_t eventType, uint8_t buttonState) {
+  switch (eventType) {
+    case AceButton::kEventPressed:
+      UserButtonPressed = true;
+      break;
+  }
 }

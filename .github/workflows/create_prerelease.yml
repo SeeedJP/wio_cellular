@@ -58,6 +58,8 @@ jobs:
           libraries: |
             - source-path: .
             - source-url: https://github.com/matsujirushi/ntshell.git
+            - name: AceButton
+              version: 1.10.1
           sketch-paths: |
             - ${{ matrix.sketch_path }}
           cli-compile-flags: |
