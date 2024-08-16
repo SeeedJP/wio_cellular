@@ -1,5 +1,5 @@
 /*
- * soracom-uptime-tcpclient.ino
+ * soracom-uptime-httpclient.ino
  * Copyright (C) Seeed K.K.
  * MIT License
  */
@@ -7,15 +7,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
 //   http://librarymanager#ArduinoJson 7.0.4
+//   ArduinoHttpClient 0.6.0
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>
+#include <map>
+#include <vector>
 #include <WioCellular.h>
 #include <ArduinoJson.h>
+#include <ArduinoHttpClient.h>
 
 static const char APN[] = "soracom.io";
-static const char HOST[] = "uni.soracom.io";
-static constexpr int PORT = 23080;
+static const char HOST[] = "metadata.soracom.io";
+static const char PATH[] = "/v1/subscriber/tags";
+static constexpr int PORT = 80;
 
 static constexpr int INTERVAL = 1000 * 60 * 15;  // [ms]
 static constexpr int POWER_ON_TIMEOUT = 20000;   // [ms]
@@ -26,11 +31,65 @@ static constexpr int RECEIVE_TIMEOUT = 10000;    // [ms]
     if ((result) != WioCellularResult::Ok) abort(); \
   } while (0)
 
+struct HttpResponse {
+  int statusCode;
+  std::map<std::string, std::string> headers;
+  std::string body;
+};
+
 static constexpr int PDP_CONTEXT_ID = 1;
 static constexpr int SOCKET_ID = 0;
 
 static JsonDocument JsonDoc;
 static WioCellularTcpClient<WioCellularModule> TcpClient{ WioCellular, PDP_CONTEXT_ID, SOCKET_ID };
+
+HttpResponse httpRequest(Client& client, const char* host, int port, const char* path, const char* method, const char* contentType, const char* requestBody) {
+  HttpResponse httpResponse;
+  Serial.print("### Requesting to ["); Serial.print(host); Serial.println("]");
+
+  HttpClient httpClient(client, host, port);
+  int err = httpClient.startRequest(path, method, contentType, strlen(requestBody), (const byte*)requestBody);
+  if (err != 0) {
+    httpClient.stop();
+    httpResponse.statusCode = err;
+    return httpResponse;
+  }
+
+  int statusCode = httpClient.responseStatusCode();
+  if (!statusCode) {
+    httpClient.stop();
+    httpResponse.statusCode = statusCode;
+    return httpResponse;
+  }
+
+  Serial.print("Status code returned "); Serial.println(statusCode);
+  httpResponse.statusCode = statusCode;
+
+  while (httpClient.headerAvailable()) {
+    String headerName  = httpClient.readHeaderName();
+    String headerValue = httpClient.readHeaderValue();
+    httpResponse.headers[headerName.c_str()] = headerValue.c_str();
+  }
+
+  int length = httpClient.contentLength();
+  if (length >= 0) {
+    Serial.print("Content length: ");
+    Serial.println(length);
+  }
+  if (httpClient.isResponseChunked()) {
+    Serial.println("The response is chunked");
+  }
+
+  String responseBody = httpClient.responseBody();
+  httpResponse.body = responseBody.c_str();
+
+  httpClient.stop();
+
+  Serial.println("### End HTTP request");
+  Serial.println();
+
+  return httpResponse;
+}
 
 void setup(void) {
   Serial.begin(115200);
@@ -58,11 +117,25 @@ void loop(void) {
   digitalWrite(LED_BUILTIN, HIGH);
 
   JsonDoc.clear();
-  if (measure(JsonDoc)) {
+  if (generateRequestBody(JsonDoc)) {
     std::string jsonStr;
     serializeJson(JsonDoc, jsonStr);
+    Serial.println(jsonStr.c_str());
 
-    send(reinterpret_cast<const uint8_t*>(jsonStr.data()), jsonStr.size());
+    HttpResponse response = httpRequest(TcpClient, HOST, PORT, PATH, "PUT", "application/json", jsonStr.c_str());
+
+    Serial.println("Header(s):");
+    for (auto header : response.headers) {
+      Serial.print("  "); Serial.print(header.first.c_str()); Serial.print(" : "); Serial.print(header.second.c_str()); Serial.println();
+    }
+    Serial.print("Body: "); Serial.println(response.body.c_str());
+
+    if (response.statusCode == 200) {
+      JsonDoc.clear();
+      deserializeJson(JsonDoc, response.body.c_str());
+      // Output the IMSI field as an example of how to use the response
+      Serial.print("Response imsi> "); Serial.print(JsonDoc["imsi"].as<String>()); Serial.println();
+    }
   }
 
   digitalWrite(LED_BUILTIN, LOW);
@@ -87,80 +160,20 @@ static void setupCellular(void) {
   Serial.println("### Completed");
 }
 
-static bool measure(JsonDocument& doc) {
+/**
+ * Generate request body for update SIM tag
+ * See: https://users.soracom.io/ja-jp/docs/air/use-metadata/#%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E4%BE%8B-iot-sim-%E3%81%AE%E3%82%BF%E3%82%B0%E3%82%92%E8%BF%BD%E5%8A%A0--%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B
+ */
+static bool generateRequestBody(JsonDocument& doc) {
   Serial.println("### Measuring");
 
-  doc["uptime"] = millis() / 1000;
+  JsonArray rootArray = doc.to<JsonArray>();
+
+  JsonObject uptimeTag = rootArray.add<JsonObject>();
+  uptimeTag["tagName"] = "UPTIME";
+  uptimeTag["tagValue"] = std::to_string(millis() / 1000);
 
   Serial.println("### Completed");
 
   return true;
-}
-
-static bool send(const void* data, size_t size) {
-  bool result = true;
-
-  Serial.println("### Sending");
-
-  if (result) {
-    Serial.print("Connecting ");
-    Serial.print(HOST);
-    Serial.print(":");
-    Serial.println(PORT);
-    if (!TcpClient.connect(HOST, PORT)) {
-      Serial.println("ERROR: Failed to open socket");
-      result = false;
-    }
-  }
-
-  if (result) {
-    Serial.print("Sending ");
-    printData(Serial, data, size);
-    Serial.println();
-    if (TcpClient.write(reinterpret_cast<const uint8_t*>(data), size) != size) {
-      Serial.println("ERROR: Failed to send socket");
-      result = false;
-    }
-  }
-
-  if (result) {
-    Serial.println("Receiving");
-    int availableSize;
-    const auto start = millis();
-    while ((availableSize = TcpClient.available()) == 0 && millis() - start < RECEIVE_TIMEOUT) {
-      delay(2);
-    }
-    if (availableSize <= 0) {
-      Serial.println("ERROR: Failed to available socket");
-      result = false;
-    }
-  }
-
-  static uint8_t recvData[1500];
-  int recvSize;
-  if (result) {
-    recvSize = TcpClient.read(recvData, sizeof(recvData));
-    if (recvSize <= 0) {
-      Serial.println("ERROR: Failed to receive socket");
-      result = false;
-    } else {
-      printData(Serial, recvData, recvSize);
-      Serial.println();
-    }
-  }
-
-  TcpClient.stop();
-
-  if (result)
-    Serial.println("### Completed");
-
-  return result;
-}
-
-template<typename T>
-void printData(T& stream, const void* data, size_t size) {
-  auto p = static_cast<const char*>(data);
-
-  for (; size > 0; --size, ++p)
-    stream.write(0x20 <= *p && *p <= 0x7f ? *p : '.');
 }
