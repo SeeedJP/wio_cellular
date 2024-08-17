@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
 //   http://librarymanager#ArduinoJson 7.0.4
-//   ArduinoHttpClient 0.6.0
+//   http://librarymanager#ArduinoHttpClient 0.6.1
 
 #include <Adafruit_TinyUSB.h>
 #include <algorithm>
@@ -42,54 +42,6 @@ static constexpr int SOCKET_ID = 0;
 
 static JsonDocument JsonDoc;
 static WioCellularTcpClient<WioCellularModule> TcpClient{ WioCellular, PDP_CONTEXT_ID, SOCKET_ID };
-
-HttpResponse httpRequest(Client& client, const char* host, int port, const char* path, const char* method, const char* contentType, const char* requestBody) {
-  HttpResponse httpResponse;
-  Serial.print("### Requesting to ["); Serial.print(host); Serial.println("]");
-
-  HttpClient httpClient(client, host, port);
-  int err = httpClient.startRequest(path, method, contentType, strlen(requestBody), (const byte*)requestBody);
-  if (err != 0) {
-    httpClient.stop();
-    httpResponse.statusCode = err;
-    return httpResponse;
-  }
-
-  int statusCode = httpClient.responseStatusCode();
-  if (!statusCode) {
-    httpClient.stop();
-    httpResponse.statusCode = statusCode;
-    return httpResponse;
-  }
-
-  Serial.print("Status code returned "); Serial.println(statusCode);
-  httpResponse.statusCode = statusCode;
-
-  while (httpClient.headerAvailable()) {
-    String headerName  = httpClient.readHeaderName();
-    String headerValue = httpClient.readHeaderValue();
-    httpResponse.headers[headerName.c_str()] = headerValue.c_str();
-  }
-
-  int length = httpClient.contentLength();
-  if (length >= 0) {
-    Serial.print("Content length: ");
-    Serial.println(length);
-  }
-  if (httpClient.isResponseChunked()) {
-    Serial.println("The response is chunked");
-  }
-
-  String responseBody = httpClient.responseBody();
-  httpResponse.body = responseBody.c_str();
-
-  httpClient.stop();
-
-  Serial.println("### End HTTP request");
-  Serial.println();
-
-  return httpResponse;
-}
 
 void setup(void) {
   Serial.begin(115200);
@@ -126,15 +78,22 @@ void loop(void) {
 
     Serial.println("Header(s):");
     for (auto header : response.headers) {
-      Serial.print("  "); Serial.print(header.first.c_str()); Serial.print(" : "); Serial.print(header.second.c_str()); Serial.println();
+      Serial.print("  ");
+      Serial.print(header.first.c_str());
+      Serial.print(" : ");
+      Serial.print(header.second.c_str());
+      Serial.println();
     }
-    Serial.print("Body: "); Serial.println(response.body.c_str());
+    Serial.print("Body: ");
+    Serial.println(response.body.c_str());
 
     if (response.statusCode == 200) {
       JsonDoc.clear();
       deserializeJson(JsonDoc, response.body.c_str());
       // Output the IMSI field as an example of how to use the response
-      Serial.print("Response imsi> "); Serial.print(JsonDoc["imsi"].as<String>()); Serial.println();
+      Serial.print("Response imsi> ");
+      Serial.print(JsonDoc["imsi"].as<String>());
+      Serial.println();
     }
   }
 
@@ -176,4 +135,55 @@ static bool generateRequestBody(JsonDocument& doc) {
   Serial.println("### Completed");
 
   return true;
+}
+
+static HttpResponse httpRequest(Client& client, const char* host, int port, const char* path, const char* method, const char* contentType, const char* requestBody) {
+  HttpResponse httpResponse;
+  Serial.print("### Requesting to [");
+  Serial.print(host);
+  Serial.println("]");
+
+  HttpClient httpClient(client, host, port);
+  int err = httpClient.startRequest(path, method, contentType, strlen(requestBody), (const byte*)requestBody);
+  if (err != 0) {
+    httpClient.stop();
+    httpResponse.statusCode = err;
+    return httpResponse;
+  }
+
+  int statusCode = httpClient.responseStatusCode();
+  if (!statusCode) {
+    httpClient.stop();
+    httpResponse.statusCode = statusCode;
+    return httpResponse;
+  }
+
+  Serial.print("Status code returned ");
+  Serial.println(statusCode);
+  httpResponse.statusCode = statusCode;
+
+  while (httpClient.headerAvailable()) {
+    String headerName = httpClient.readHeaderName();
+    String headerValue = httpClient.readHeaderValue();
+    httpResponse.headers[headerName.c_str()] = headerValue.c_str();
+  }
+
+  int length = httpClient.contentLength();
+  if (length >= 0) {
+    Serial.print("Content length: ");
+    Serial.println(length);
+  }
+  if (httpClient.isResponseChunked()) {
+    Serial.println("The response is chunked");
+  }
+
+  String responseBody = httpClient.responseBody();
+  httpResponse.body = responseBody.c_str();
+
+  httpClient.stop();
+
+  Serial.println("### End HTTP request");
+  Serial.println();
+
+  return httpResponse;
 }
