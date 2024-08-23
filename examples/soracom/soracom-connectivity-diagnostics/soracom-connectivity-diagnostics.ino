@@ -207,7 +207,7 @@ void setup(void) {
   const auto start = millis();
   do {
     ABORT_IF_FAILED(WioCellular.getEpsNetworkRegistrationState(&state));
-  } while (state != 1 && state != 5 && millis() - start < 60000);
+  } while (state != 1 && state != 5 && millis() - start < 120000);
   CONSOLE.println(state == 1 || state == 5 ? "[OK]" : "[FAILED]");
   if (state != 1 && state != 5) {
     CONSOLE.println("Failed to connect cellular network.");
