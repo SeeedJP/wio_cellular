@@ -103,7 +103,7 @@ public:
                 printf("FRC> %s\n", response.c_str());
                 break;
             }
-            if (response == "ERROR" || response.compare(0, 12, "+CME ERROR: ") == 0 || response.compare(0, 12, "+CMS ERROR: ") == 0)
+            if (response == "ERROR" || internal::stringStartsWith(response, "+CME ERROR: ") || internal::stringStartsWith(response, "+CMS ERROR: "))
             {
                 printf("FRC> %s\n", response.c_str());
                 return WioCellularResult::CommandRejected;
@@ -152,7 +152,7 @@ public:
                 printf("FRC> %s\n", response.c_str());
                 break;
             }
-            if (response == "ERROR" || response.compare(0, 12, "+CME ERROR: ") == 0 || response.compare(0, 12, "+CMS ERROR: ") == 0)
+            if (response == "ERROR" || internal::stringStartsWith(response, "+CME ERROR: ") || internal::stringStartsWith(response, "+CMS ERROR: "))
             {
                 printf("FRC> %s\n", response.c_str());
                 return WioCellularResult::CommandRejected;
@@ -407,9 +407,10 @@ public:
         return queryCommand(
             "AT+CNUM", [phoneNumber](const std::string &response) -> bool
             {
-                if (response.compare(0, 7, "+CNUM: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CNUM: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(7)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() == 3)
                     {
                         *phoneNumber = parser[1];
@@ -589,9 +590,10 @@ public:
         return queryCommand(
             "AT+CPIN?", [state](const std::string &response) -> bool
             {
-                if (response.compare(0, 7, "+CPIN: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CPIN: ", &responseParameter))
                 {
-                    *state = response.substr(7);
+                    *state = responseParameter;
                     return true;
                 }
                 return false; },
@@ -623,9 +625,10 @@ public:
         return queryCommand(
             "AT+QCCID", [iccid](const std::string &response) -> bool
             {
-                if (response.compare(0, 8, "+QCCID: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QCCID: ", &responseParameter))
                 {
-                    *iccid = response.substr(8);
+                    *iccid = responseParameter;
                     return true;
                 }
                 return false; },
@@ -658,9 +661,10 @@ public:
         return queryCommand(
             "AT+QINISTAT", [status](const std::string &response) -> bool
             {
-                if (response.compare(0, 11, "+QINISTAT: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QINISTAT: ", &responseParameter))
                 {
-                    *status = std::stoi(response.substr(11));
+                    *status = std::stoi(responseParameter);
                     return true;
                 }
                 return false; },
@@ -689,9 +693,10 @@ public:
         return queryCommand(
             "AT+QSIMSTAT?", [enable, status](const std::string &response) -> bool
             {
-                if (response.compare(0, 11, "+QSIMSTAT: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QSIMSTAT: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(11)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() != 2)
                     {
                         return false;
@@ -748,14 +753,15 @@ public:
         return queryCommand(
             "AT+COPS?", [mode, format, oper, act](const std::string &response) -> bool
             {
-                if (response.compare(0, 7, "+COPS: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+COPS: ", &responseParameter))
                 {
                     if (mode) *mode = -1;
                     if (format) *format = -1;
                     if (oper) oper->clear();
                     if (act) *act = -1;
 
-                    AtParameterParser parser{response.substr(7)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() >= 1 && mode) *mode = std::stoi(parser[0]);
                     if (parser.size() >= 2 && format) *format = std::stoi(parser[1]);
                     if (parser.size() >= 3 && oper) *oper = parser[2];
@@ -925,9 +931,10 @@ public:
         return queryCommand(
             "AT+CGATT?", [state](const std::string &response) -> bool
             {
-                if (response.compare(0, 8, "+CGATT: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CGATT: ", &responseParameter))
                 {
-                    *state = std::stoi(response.substr(8));
+                    *state = std::stoi(responseParameter);
                     return true;
                 }
                 return false; },
@@ -973,9 +980,10 @@ public:
         return queryCommand(
             "AT+CGDCONT?", [contexts](const std::string &response) -> bool
             {
-                if (response.compare(0, 10, "+CGDCONT: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CGDCONT: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(10)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() != 7)
                     {
                         return false;
@@ -1010,9 +1018,10 @@ public:
         return queryCommand(
             "AT+CGACT?", [statuses](const std::string &response) -> bool
             {
-                if (response.compare(0, 8, "+CGACT: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CGACT: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(8)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() != 2)
                     {
                         return false;
@@ -1074,9 +1083,10 @@ public:
         return queryCommand(
             "AT+CEREG?", [state](const std::string &response) -> bool
             {
-                if (response.compare(0, 8, "+CEREG: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CEREG: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(8)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() >= 2)
                     {
                         *state = std::stoi(parser[1]);
@@ -1193,9 +1203,10 @@ public:
         {
             AtClient<Bg770a<INTERFACE>>::registerUrcHandler([this](const std::string &response) -> bool
                                                             {
-                if (response.compare(0, 15, "+QIURC: \"recv\",") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QIURC: \"recv\",", &responseParameter))
                 {
-                    const auto connectId = std::stoi(response.substr(15));
+                    const auto connectId = std::stoi(responseParameter);
                     printf("---> Socket received (connectId=%d)\n", connectId);
                     auto nofity = UrcSocketReceiveNofity_.find(connectId);
                     if (nofity != UrcSocketReceiveNofity_.end())
@@ -1215,7 +1226,7 @@ public:
         const auto handler = AtClient<Bg770a<INTERFACE>>::registerUrcHandler([connectId, &opened, &internalResult](const std::string &response) -> bool
                                                                              {
             const std::string prefix = internal::stringFormat("+QIOPEN: %d,", connectId);
-            if (response.compare(0, prefix.size(), prefix) == 0)
+            if (response.starts_with(prefix))
             {
                 opened = true;
                 internalResult = std::stoi(response.substr(prefix.size()));
@@ -1301,9 +1312,10 @@ public:
         return queryCommand(
             internal::stringFormat("AT+QISTATE=0,%d", cid), [statuses](const std::string &response) -> bool
             {
-                if (response.compare(0, 10, "+QISTATE: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QISTATE: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(10)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() != 10)
                     {
                         return false;
@@ -1390,9 +1402,10 @@ public:
         return queryCommand(
             internal::stringFormat("AT+QIRD=%d,0", connectId), [availableSize](const std::string &response) -> bool
             {
-                if (response.compare(0, 7, "+QIRD: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(7)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() < 3)
                     {
                         return false;
@@ -1437,9 +1450,10 @@ public:
         return queryCommand(
             internal::stringFormat("AT+QIRD=%d,%d", connectId, dataSize), [this, data, dataSize, readDataSize](const std::string &response) -> bool
             {
-                if (response.compare(0, 7, "+QIRD: ") == 0)
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
                 {
-                    AtParameterParser parser{response.substr(7)};
+                    AtParameterParser parser{responseParameter};
                     if (parser.size() < 1)
                     {
                         return false;

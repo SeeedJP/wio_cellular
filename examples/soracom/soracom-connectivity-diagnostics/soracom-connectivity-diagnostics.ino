@@ -124,7 +124,7 @@ static void pingToSoracomNetwork(void) {
 
   std::vector<std::string> pingResponse;
   const auto handler = WioCellular.registerUrcHandler([&pingResponse](const std::string &response) -> bool {
-    if (response.compare(0, 8, "+QPING: ") == 0) {
+    if (response.starts_with("+QPING: ")) {
       pingResponse.push_back(response);
       return true;
     }

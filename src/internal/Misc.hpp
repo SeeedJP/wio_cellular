@@ -23,6 +23,25 @@ namespace internal
         return {buf, len};
     }
 
+    template <typename T>
+    static bool stringStartsWith(const std::string &str, const T &prefix, std::string *rest = nullptr)
+    {
+        const auto prefixLen = sizeof(prefix) - 1;
+
+        if (str.compare(0, prefixLen, prefix) == 0)
+        {
+            if (rest)
+            {
+                *rest = str.substr(prefixLen);
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 } // namespace internal
 
 #endif // MISC_HPP
