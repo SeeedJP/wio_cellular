@@ -632,6 +632,78 @@ public:
             300);
     }
 
+    /**
+     * @~Japanese
+     * @brief SIM初期化ステータスを取得
+     *
+     * @param [out] status SIM初期化ステータス
+     * @return 実行結果
+     *
+     * SIMの初期化ステータスを取得します。
+     * 値を得る必要が無いときはnullptrを指定できます。
+     * * 0: 初期状態
+     * * 1: CPIN READY
+     * * 2: SMS DONE
+     * * 3: CPIN READY & SMS DONE
+     *
+     * > 5.8 AT+QINISTAT - (U)SIM-Related Commands
+     */
+    WioCellularResult getSimInitializationStatus(int *status)
+    {
+        if (!status)
+        {
+            return WioCellularResult::Ok;
+        }
+
+        return queryCommand(
+            "AT+QINISTAT", [status](const std::string &response) -> bool
+            {
+                if (response.compare(0, 11, "+QINISTAT: ") == 0)
+                {
+                    *status = std::stoi(response.substr(11));
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
+    /**
+     * @~Japanese
+     * @brief SIM挿入ステータスを取得
+     *
+     * @param [out] enable URC通知設定
+     * @param [out] status SIM挿入ステータス
+     * @return 実行結果
+     *
+     * SIM挿入のステータスとURC通知設定を取得します。
+     * * enable=0: URC通知が無効
+     * * enable=1: URC通知が有効
+     * * status=0: SIM無し
+     * * status=1: SIM有り
+     * * status=2: SIM有無不明
+     *
+     * > 5.10 AT+QSIMSTAT - (U)SIM-Related Commands
+     */
+    WioCellularResult getSimInsertionStatus(int *enable, int *status)
+    {
+        return queryCommand(
+            "AT+QSIMSTAT?", [enable, status](const std::string &response) -> bool
+            {
+                if (response.compare(0, 11, "+QSIMSTAT: ") == 0)
+                {
+                    AtParameterParser parser{response.substr(11)};
+                    if (parser.size() != 2)
+                    {
+                        return false;
+                    }
+                    if (enable) *enable = std::stoi(parser[0]);
+                    if (status) *status = std::stoi(parser[1]);
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////
     // Network Service Commands
 

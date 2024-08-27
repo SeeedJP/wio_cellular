@@ -166,6 +166,10 @@ static int CommandInfo(int argc, char **argv) {
   WioCellular.getModemInfo(&revision);
   std::string imei;
   WioCellular.getIMEI(&imei);
+  int simInserted;
+  WioCellular.getSimInsertionStatus(nullptr, &simInserted);
+  int simInitStatus;
+  WioCellular.getSimInitializationStatus(&simInitStatus);
   std::string simState;
   WioCellular.getSimState(&simState);
   std::string imsi;
@@ -177,6 +181,12 @@ static int CommandInfo(int argc, char **argv) {
 
   Serial.printf("Revision:     %s\n", revision.c_str());
   Serial.printf("IMEI:         %s\n", imei.c_str());
+  Serial.printf("SIM Inserted: %s\n", simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
+                                                                                 : "Unknown");
+  Serial.printf("SIM Init:     %s\n", simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
+                                                                     : simInitStatus == 2 ? "SMS Done"
+                                                                     : simInitStatus == 3 ? "CPIN Ready & SMS Done"
+                                                                                          : "Unknown");
   Serial.printf("SIM State:    %s\n", simState.c_str());
   Serial.printf("IMSI:         %s\n", imsi.c_str());
   Serial.printf("ICCID:        %s\n", iccid.c_str());
