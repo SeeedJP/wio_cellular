@@ -368,16 +368,13 @@ public:
      */
     WioCellularResult getModemInfo(std::string *revision)
     {
-        if (!revision)
-        {
-            return WioCellularResult::Ok;
-        }
-        revision->clear();
+        if (revision)
+            revision->clear();
 
         return queryCommand(
             "AT+QGMR", [revision](const std::string &response) -> bool
             {
-                *revision = response;
+                if (revision) *revision = response;
                 return true; },
             300);
     }
@@ -398,11 +395,8 @@ public:
      */
     WioCellularResult getPhoneNumber(std::string *phoneNumber)
     {
-        if (!phoneNumber)
-        {
-            return WioCellularResult::Ok;
-        }
-        phoneNumber->clear();
+        if (phoneNumber)
+            phoneNumber->clear();
 
         return queryCommand(
             "AT+CNUM", [phoneNumber](const std::string &response) -> bool
@@ -411,11 +405,9 @@ public:
                 if (internal::stringStartsWith(response, "+CNUM: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() == 3)
-                    {
-                        *phoneNumber = parser[1];
-                        return true;
-                    }
+                    if (parser.size() != 3) return false;
+                    if (phoneNumber) *phoneNumber = parser[1];
+                    return true;
                 }
                 return false; },
             300);
@@ -440,16 +432,13 @@ public:
      */
     WioCellularResult getIMEI(std::string *imei)
     {
-        if (!imei)
-        {
-            return WioCellularResult::Ok;
-        }
-        imei->clear();
+        if (imei)
+            imei->clear();
 
         return queryCommand(
             "AT+GSN", [imei](const std::string &response) -> bool
             {
-                *imei = response;
+                if (imei) *imei = response;
                 return true; },
             300);
     }
@@ -546,16 +535,13 @@ public:
      */
     WioCellularResult getIMSI(std::string *imsi)
     {
-        if (!imsi)
-        {
-            return WioCellularResult::Ok;
-        }
-        imsi->clear();
+        if (imsi)
+            imsi->clear();
 
         return queryCommand(
             "AT+CIMI", [imsi](const std::string &response) -> bool
             {
-                *imsi = response;
+                if (imsi) *imsi = response;
                 return true; },
             300);
     }
@@ -581,11 +567,8 @@ public:
      */
     WioCellularResult getSimState(std::string *state)
     {
-        if (!state)
-        {
-            return WioCellularResult::Ok;
-        }
-        state->clear();
+        if (state)
+            state->clear();
 
         return queryCommand(
             "AT+CPIN?", [state](const std::string &response) -> bool
@@ -593,7 +576,7 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+CPIN: ", &responseParameter))
                 {
-                    *state = responseParameter;
+                    if (state) *state = responseParameter;
                     return true;
                 }
                 return false; },
@@ -616,11 +599,8 @@ public:
      */
     WioCellularResult getSimCCID(std::string *iccid)
     {
-        if (!iccid)
-        {
-            return WioCellularResult::Ok;
-        }
-        iccid->clear();
+        if (iccid)
+            iccid->clear();
 
         return queryCommand(
             "AT+QCCID", [iccid](const std::string &response) -> bool
@@ -628,7 +608,7 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QCCID: ", &responseParameter))
                 {
-                    *iccid = responseParameter;
+                    if (iccid) *iccid = responseParameter;
                     return true;
                 }
                 return false; },
@@ -653,10 +633,8 @@ public:
      */
     WioCellularResult getSimInitializationStatus(int *status)
     {
-        if (!status)
-        {
-            return WioCellularResult::Ok;
-        }
+        if (status)
+            *status = -1;
 
         return queryCommand(
             "AT+QINISTAT", [status](const std::string &response) -> bool
@@ -664,7 +642,7 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QINISTAT: ", &responseParameter))
                 {
-                    *status = std::stoi(responseParameter);
+                    if (status) *status = std::stoi(responseParameter);
                     return true;
                 }
                 return false; },
@@ -690,6 +668,11 @@ public:
      */
     WioCellularResult getSimInsertionStatus(int *enable, int *status)
     {
+        if (enable)
+            *enable = -1;
+        if (status)
+            *status = -1;
+
         return queryCommand(
             "AT+QSIMSTAT?", [enable, status](const std::string &response) -> bool
             {
@@ -697,10 +680,7 @@ public:
                 if (internal::stringStartsWith(response, "+QSIMSTAT: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2)
-                    {
-                        return false;
-                    }
+                    if (parser.size() != 2) return false;
                     if (enable) *enable = std::stoi(parser[0]);
                     if (status) *status = std::stoi(parser[1]);
                     return true;
@@ -800,6 +780,11 @@ public:
      */
     WioCellularResult getSignalQuality(int *rssi, int *ber)
     {
+        if (rssi)
+            *rssi = -1;
+        if (ber)
+            *ber = -1;
+
         return queryCommand(
             "AT+CSQ", [rssi, ber](const std::string &response) -> bool
             {
@@ -807,10 +792,7 @@ public:
                 if (internal::stringStartsWith(response, "+CSQ: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2)
-                    {
-                        return false;
-                    }
+                    if (parser.size() != 2) return false;
                     if (rssi) *rssi = std::stoi(parser[0]);
                     if (ber) *ber = std::stoi(parser[1]);
                     return true;
@@ -969,11 +951,8 @@ public:
      */
     WioCellularResult getPacketDomainState(int *state)
     {
-        if (!state)
-        {
-            return WioCellularResult::Ok;
-        }
-        *state = -1;
+        if (state)
+            *state = -1;
 
         return queryCommand(
             "AT+CGATT?", [state](const std::string &response) -> bool
@@ -981,7 +960,7 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+CGATT: ", &responseParameter))
                 {
-                    *state = std::stoi(responseParameter);
+                    if (state) *state = std::stoi(responseParameter);
                     return true;
                 }
                 return false; },
@@ -1018,11 +997,8 @@ public:
      */
     WioCellularResult getPdpContext(std::vector<PdpContext> *contexts)
     {
-        if (!contexts)
-        {
-            return WioCellularResult::Ok;
-        }
-        contexts->clear();
+        if (contexts)
+            contexts->clear();
 
         return queryCommand(
             "AT+CGDCONT?", [contexts](const std::string &response) -> bool
@@ -1031,11 +1007,8 @@ public:
                 if (internal::stringStartsWith(response, "+CGDCONT: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() != 7)
-                    {
-                        return false;
-                    }
-                    contexts->push_back({std::stoi(parser[0]), parser[1], parser[2], parser[3], std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6])});
+                    if (parser.size() != 7) return false;
+                    if (contexts) contexts->push_back({std::stoi(parser[0]), parser[1], parser[2], parser[3], std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6])});
                     return true;
                 }
                 return false; },
@@ -1056,11 +1029,8 @@ public:
      */
     WioCellularResult getPdpContextStatus(std::vector<PdpContextStatus> *statuses)
     {
-        if (!statuses)
-        {
-            return WioCellularResult::Ok;
-        }
-        statuses->clear();
+        if (statuses)
+            statuses->clear();
 
         return queryCommand(
             "AT+CGACT?", [statuses](const std::string &response) -> bool
@@ -1069,11 +1039,8 @@ public:
                 if (internal::stringStartsWith(response, "+CGACT: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2)
-                    {
-                        return false;
-                    }
-                    statuses->push_back({std::stoi(parser[0]), std::stoi(parser[1])});
+                    if (parser.size() != 2) return false;
+                    if (statuses) statuses->push_back({std::stoi(parser[0]), std::stoi(parser[1])});
                     return true;
                 }
                 return false; },
@@ -1121,11 +1088,8 @@ public:
      */
     WioCellularResult getEpsNetworkRegistrationState(int *state)
     {
-        if (!state)
-        {
-            return WioCellularResult::Ok;
-        }
-        *state = -1;
+        if (state)
+            *state = -1;
 
         return queryCommand(
             "AT+CEREG?", [state](const std::string &response) -> bool
@@ -1134,11 +1098,9 @@ public:
                 if (internal::stringStartsWith(response, "+CEREG: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() >= 2)
-                    {
-                        *state = std::stoi(parser[1]);
-                        return true;
-                    }
+                    if (parser.size() < 2) return false;
+                    if (state) *state = std::stoi(parser[1]);
+                    return true;
                 }
                 return false; },
             300);
@@ -1350,11 +1312,8 @@ public:
      */
     WioCellularResult getSocketStatus(int cid, std::vector<SocketStatus> *statuses)
     {
-        if (!statuses)
-        {
-            return WioCellularResult::Ok;
-        }
-        statuses->clear();
+        if (statuses)
+            statuses->clear();
 
         return queryCommand(
             internal::stringFormat("AT+QISTATE=0,%d", cid), [statuses](const std::string &response) -> bool
@@ -1363,11 +1322,8 @@ public:
                 if (internal::stringStartsWith(response, "+QISTATE: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() != 10)
-                    {
-                        return false;
-                    }
-                    statuses->push_back({std::stoi(parser[0]), parser[1], parser[2], std::stoi(parser[3]), std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6]), std::stoi(parser[7]), std::stoi(parser[8]), parser[9]});
+                    if (parser.size() != 10) return false;
+                    if (statuses) statuses->push_back({std::stoi(parser[0]), parser[1], parser[2], std::stoi(parser[3]), std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6]), std::stoi(parser[7]), std::stoi(parser[8]), parser[9]});
                     return true;
                 }
                 return false; },
@@ -1440,11 +1396,8 @@ public:
      */
     WioCellularResult getSocketReceiveAvailable(int connectId, size_t *availableSize)
     {
-        if (!availableSize)
-        {
-            return WioCellularResult::Ok;
-        }
-        *availableSize = -1;
+        if (availableSize)
+            *availableSize = -1;
 
         return queryCommand(
             internal::stringFormat("AT+QIRD=%d,0", connectId), [availableSize](const std::string &response) -> bool
@@ -1453,11 +1406,8 @@ public:
                 if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() < 3)
-                    {
-                        return false;
-                    }
-                    *availableSize = std::stoi(parser[2]);
+                    if (parser.size() < 3) return false;
+                    if (availableSize) *availableSize = std::stoi(parser[2]);
                     return true;
                 }
                 return false; },
@@ -1488,9 +1438,7 @@ public:
             return WioCellularResult::Ok;
         }
         if (readDataSize)
-        {
             *readDataSize = 0;
-        }
 
         UrcSocketReceiveNofity_[connectId] = false;
 
@@ -1501,10 +1449,7 @@ public:
                 if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
                 {
                     AtParameterParser parser{responseParameter};
-                    if (parser.size() < 1)
-                    {
-                        return false;
-                    }
+                    if (parser.size() < 1) return false;
                     const size_t actualDataSize = std::stoi(parser[0]);
                     assert(actualDataSize <= dataSize);
                     if (actualDataSize >= 1)
