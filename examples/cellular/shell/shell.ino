@@ -196,6 +196,9 @@ static int CommandInfo(int argc, char **argv) {
 }
 
 static int CommandStatus(int argc, char **argv) {
+  int rssi;
+  int ber;
+  WioCellular.getSignalQuality(&rssi, &ber);
   int state;
   WioCellular.getEpsNetworkRegistrationState(&state);
   int mode;
@@ -206,6 +209,8 @@ static int CommandStatus(int argc, char **argv) {
   int psState;
   WioCellular.getPacketDomainState(&psState);
 
+  Serial.printf("RSSI:                %d\n", rssi);
+  Serial.printf("BER:                 %d\n", ber);
   Serial.printf("Registration State:  %d\n", state);
   Serial.printf("Operator:            %s, %d\n", oper.c_str(), act);
   Serial.printf("Packet Domain State: %d\n", psState);

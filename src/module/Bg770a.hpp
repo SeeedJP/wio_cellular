@@ -774,6 +774,53 @@ public:
 
     /**
      * @~Japanese
+     * @brief 受信信号強度を取得
+     *
+     * @param [out] rssi 受信信号強度
+     * @param [out] ber ビット誤り率
+     * @return 実行結果
+     *
+     * 受信信号強度とビット誤り率を取得します。
+     * * rssi=0   : -113[dBm]以下
+     * * rssi=1   : -111[dBm]
+     * * rssi=2~30: -109~-53[dBm]
+     * * rssi=31  : -51[dBm]以上
+     * * rssi=99  : 不明
+     * * ber=0: 0~0.2%
+     * * ber=0: 0.2~0.4%
+     * * ber=0: 0.4~0.8%
+     * * ber=0: 0.8~1.6%
+     * * ber=0: 1.6~3.2%
+     * * ber=0: 3.2~6.4%
+     * * ber=0: 6.4~12.8%
+     * * ber=0: 12.8~%
+     * * ber=99 : 不明
+     *
+     * > 6.3 AT+CSQ - Network Service Commands
+     */
+    WioCellularResult getSignalQuality(int *rssi, int *ber)
+    {
+        return queryCommand(
+            "AT+CSQ", [rssi, ber](const std::string &response) -> bool
+            {
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+CSQ: ", &responseParameter))
+                {
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 2)
+                    {
+                        return false;
+                    }
+                    if (rssi) *rssi = std::stoi(parser[0]);
+                    if (ber) *ber = std::stoi(parser[1]);
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
+    /**
+     * @~Japanese
      * @brief eDRXを設定
      *
      * @param [in] mode モード
