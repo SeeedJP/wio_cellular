@@ -1512,6 +1512,187 @@ public:
 
     /**
      * @~Japanese
+     * @brief ネットワーク探索の周波数バンドを取得
+     *
+     * @param [out] gsmBandValStr GSM周波数バンド
+     * @param [out] emtcBandValStr eMTC周波数バンド
+     * @param [out] nbiotBandValStr NB-IoT周波数バンド
+     * @return 実行結果
+     *
+     * ネットワーク探索の周波数バンドを取得します。
+     * * gsmBandValStr="0x0": 変更なし
+     * * emtcBandValStr="0x0":                 変更なし
+     * * emtcBandValStr="0x1":                 LTE B1
+     * * emtcBandValStr="0x2":                 LTE B2
+     * * emtcBandValStr="0x4":                 LTE B3
+     * * emtcBandValStr="0x8":                 LTE B4
+     * * emtcBandValStr="0x10":                LTE B5
+     * * emtcBandValStr="0x80":                LTE B8
+     * * emtcBandValStr="0x800":               LTE B12
+     * * emtcBandValStr="0x1000":              LTE B13
+     * * emtcBandValStr="0x20000":             LTE B18
+     * * emtcBandValStr="0x40000":             LTE B19
+     * * emtcBandValStr="0x80000":             LTE B20
+     * * emtcBandValStr="0x1000000":           LTE B25
+     * * emtcBandValStr="0x2000000":           LTE B26
+     * * emtcBandValStr="0x4000000":           LTE B27
+     * * emtcBandValStr="0x8000000":           LTE B28
+     * * emtcBandValStr="0x20000000000000000": LTE B66
+     * * nbiotBandValStr="0x0":                 変更なし
+     * * nbiotBandValStr="0x1":                 LTE B1
+     * * nbiotBandValStr="0x2":                 LTE B2
+     * * nbiotBandValStr="0x4":                 LTE B3
+     * * nbiotBandValStr="0x8":                 LTE B4
+     * * nbiotBandValStr="0x10":                LTE B5
+     * * nbiotBandValStr="0x80":                LTE B8
+     * * nbiotBandValStr="0x800":               LTE B12
+     * * nbiotBandValStr="0x1000":              LTE B13
+     * * nbiotBandValStr="0x10000":             LTE B17
+     * * nbiotBandValStr="0x20000":             LTE B18
+     * * nbiotBandValStr="0x40000":             LTE B19
+     * * nbiotBandValStr="0x80000":             LTE B20
+     * * nbiotBandValStr="0x1000000":           LTE B25
+     * * nbiotBandValStr="0x8000000":           LTE B28
+     * * nbiotBandValStr="0x20000000000000000": LTE B66
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.4 AT+QCFG="band" - Configure Frequency Band
+     */
+    WioCellularResult getSearchFrequencyBand(std::string *gsmBandValStr, std::string *emtcBandValStr, std::string *nbiotBandValStr)
+    {
+        if (gsmBandValStr)
+            gsmBandValStr->clear();
+        if (emtcBandValStr)
+            emtcBandValStr->clear();
+        if (nbiotBandValStr)
+            nbiotBandValStr->clear();
+
+        return queryCommand(
+            "AT+QCFG=\"band\"", [gsmBandValStr, emtcBandValStr, nbiotBandValStr](const std::string &response) -> bool
+            {
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QCFG: \"band\",", &responseParameter))
+                {
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 3) return false;
+                    if (gsmBandValStr) *gsmBandValStr = parser[0];
+                    if (emtcBandValStr) *emtcBandValStr = parser[1];
+                    if (nbiotBandValStr) *nbiotBandValStr = parser[2];
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
+    /**
+     * @~Japanese
+     * @brief ネットワーク探索の周波数バンドを設定
+     *
+     * @param [in] gsmBandValStr GSM周波数バンド
+     * @param [in] emtcBandValStr eMTC周波数バンド
+     * @param [in] nbiotBandValStr NB-IoT周波数バンド
+     * @return 実行結果
+     *
+     * ネットワーク探索の周波数バンドを設定します。
+     * * gsmBandValStr="0x0": 変更なし
+     * * emtcBandValStr="0x0":                 変更なし
+     * * emtcBandValStr="0x1":                 LTE B1
+     * * emtcBandValStr="0x2":                 LTE B2
+     * * emtcBandValStr="0x4":                 LTE B3
+     * * emtcBandValStr="0x8":                 LTE B4
+     * * emtcBandValStr="0x10":                LTE B5
+     * * emtcBandValStr="0x80":                LTE B8
+     * * emtcBandValStr="0x800":               LTE B12
+     * * emtcBandValStr="0x1000":              LTE B13
+     * * emtcBandValStr="0x20000":             LTE B18
+     * * emtcBandValStr="0x40000":             LTE B19
+     * * emtcBandValStr="0x80000":             LTE B20
+     * * emtcBandValStr="0x1000000":           LTE B25
+     * * emtcBandValStr="0x2000000":           LTE B26
+     * * emtcBandValStr="0x4000000":           LTE B27
+     * * emtcBandValStr="0x8000000":           LTE B28
+     * * emtcBandValStr="0x20000000000000000": LTE B66
+     * * nbiotBandValStr="0x0":                 変更なし
+     * * nbiotBandValStr="0x1":                 LTE B1
+     * * nbiotBandValStr="0x2":                 LTE B2
+     * * nbiotBandValStr="0x4":                 LTE B3
+     * * nbiotBandValStr="0x8":                 LTE B4
+     * * nbiotBandValStr="0x10":                LTE B5
+     * * nbiotBandValStr="0x80":                LTE B8
+     * * nbiotBandValStr="0x800":               LTE B12
+     * * nbiotBandValStr="0x1000":              LTE B13
+     * * nbiotBandValStr="0x10000":             LTE B17
+     * * nbiotBandValStr="0x20000":             LTE B18
+     * * nbiotBandValStr="0x40000":             LTE B19
+     * * nbiotBandValStr="0x80000":             LTE B20
+     * * nbiotBandValStr="0x1000000":           LTE B25
+     * * nbiotBandValStr="0x8000000":           LTE B28
+     * * nbiotBandValStr="0x20000000000000000": LTE B66
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.4 AT+QCFG="band" - Configure Frequency Band
+     */
+    WioCellularResult setSearchFrequencyBand(const std::string &gsmBandValStr, const std::string &emtcBandValStr, const std::string &nbiotBandValStr)
+    {
+        return executeCommand(internal::stringFormat("AT+QCFG=\"band\",%s,%s,%s", gsmBandValStr.c_str(), emtcBandValStr.c_str(), nbiotBandValStr.c_str()), 4500);
+    }
+
+    /**
+     * @~Japanese
+     * @brief ネットワーク探索のアクセステクノロジーを取得
+     *
+     * @param [out] mode 探索するアクセステクノロジー
+     * @return 実行結果
+     *
+     * ネットワーク探索のアクセステクノロジーを取得します。
+     * 値を得る必要が無いときはnullptrを指定できます。
+     * * mode=0: eMTC
+     * * mode=1: NB-IoT
+     * * mode=2: eMTCとNB-IoT
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.5 AT+QCFG="iotopmode" - Configure Network Category to be Searched Under LTE RAT
+     */
+    WioCellularResult getSearchAccessTechnology(int *mode)
+    {
+        if (mode)
+            *mode = -1;
+
+        return queryCommand(
+            "AT+QCFG=\"iotopmode\"", [mode](const std::string &response) -> bool
+            {
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QCFG: \"iotopmode\",", &responseParameter))
+                {
+                    if (mode) *mode = std::stoi(responseParameter);
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
+    /**
+     * @~Japanese
+     * @brief ネットワーク探索のアクセステクノロジーを設定
+     *
+     * @param [in] mode 探索するアクセステクノロジー
+     * @return 実行結果
+     *
+     * ネットワーク探索のアクセステクノロジーを設定します。
+     * * mode=0: eMTC
+     * * mode=1: NB-IoT
+     * * mode=2: eMTCとNB-IoT
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.5 AT+QCFG="iotopmode" - Configure Network Category to be Searched Under LTE RAT
+     */
+    WioCellularResult setSearchAccessTechnology(int mode)
+    {
+        return executeCommand(internal::stringFormat("AT+QCFG=\"iotopmode\",%d", mode), 4500);
+    }
+
+    /**
+     * @~Japanese
      * @brief PSM遷移のURC通知を設定
      *
      * @param [in] enable 有効

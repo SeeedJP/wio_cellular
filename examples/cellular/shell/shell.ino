@@ -162,10 +162,10 @@ static int commandCallback(int argc, char **argv, void *extobj) {
 }
 
 static int CommandInfo(int argc, char **argv) {
-  std::string revision;
-  WioCellular.getModemInfo(&revision);
   std::string imei;
   WioCellular.getIMEI(&imei);
+  std::string revision;
+  WioCellular.getModemInfo(&revision);
   int simInserted;
   WioCellular.getSimInsertionStatus(nullptr, &simInserted);
   int simInitStatus;
@@ -178,9 +178,15 @@ static int CommandInfo(int argc, char **argv) {
   WioCellular.getSimCCID(&iccid);
   std::string phoneNumber;
   WioCellular.getPhoneNumber(&phoneNumber);
+  int searchAct;
+  WioCellular.getSearchAccessTechnology(&searchAct);
+  std::string gsmBand;
+  std::string emtcBand;
+  std::string nbiotBand;
+  WioCellular.getSearchFrequencyBand(&gsmBand, &emtcBand, &nbiotBand);
 
-  Serial.printf("Revision:     %s\n", revision.c_str());
   Serial.printf("IMEI:         %s\n", imei.c_str());
+  Serial.printf("Revision:     %s\n", revision.c_str());
   Serial.printf("SIM Inserted: %s\n", simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
                                                                                  : "Unknown");
   Serial.printf("SIM Init:     %s\n", simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
@@ -191,6 +197,11 @@ static int CommandInfo(int argc, char **argv) {
   Serial.printf("IMSI:         %s\n", imsi.c_str());
   Serial.printf("ICCID:        %s\n", iccid.c_str());
   Serial.printf("Phone Number: %s\n", phoneNumber.c_str());
+  Serial.printf("Search Access Technology: %s\n", searchAct == 0 ? "eMTC" : searchAct == 1 ? "NB-IoT"
+                                                                          : searchAct == 2 ? "eMTC and NB-IoT"
+                                                                                           : "Unknown");
+  Serial.printf("Search Frequency Band - eMTC:   %s\n", emtcBand.c_str());
+  Serial.printf("Search Frequency Band - NB-IoT: %s\n", nbiotBand.c_str());
 
   return 0;
 }
