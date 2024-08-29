@@ -1512,6 +1512,61 @@ public:
 
     /**
      * @~Japanese
+     * @brief ネットワーク探索のアクセステクノロジー順序を取得
+     *
+     * @param [out] scanseq 探索するアクセステクノロジー順序
+     * @return 実行結果
+     *
+     * ネットワーク探索のアクセステクノロジー順序を取得します。
+     * 値を得る必要が無いときはnullptrを指定できます。
+     * * scanseq="0203": eMTC->NB-IoT
+     * * scanseq="0302": NB-IoT->eMTC
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.3 AT+QCFG="nwscanseq" - Configure RATs Searching Sequence
+     */
+    WioCellularResult getSearchAccessTechnologySequence(std::string *scanseq)
+    {
+        if (scanseq)
+            scanseq->clear();
+
+        return queryCommand(
+            "AT+QCFG=\"nwscanseq\"", [scanseq](const std::string &response) -> bool
+            {
+                std::string responseParameter;
+                if (internal::stringStartsWith(response, "+QCFG: \"nwscanseq\",", &responseParameter))
+                {
+                    if (scanseq) *scanseq = responseParameter;
+                    return true;
+                }
+                return false; },
+            300);
+    }
+
+    /**
+     * @~Japanese
+     * @brief ネットワーク探索のアクセステクノロジー順序を設定
+     *
+     * @param [in] scanseq 探索するアクセステクノロジー順序
+     * @return 実行結果
+     *
+     * ネットワーク探索のアクセステクノロジー順序を設定します。
+     * * scanseq="00": 自動(eMTC->NB-IoT)
+     * * scanseq="02": eMTC->NB-IoT
+     * * scanseq="0203": eMTC->NB-IoT
+     * * scanseq="03": NB-IoT->eMTC
+     * * scanseq="0302": NB-IoT->eMTC
+     *
+     * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
+     * > 2.1.1.3 AT+QCFG="nwscanseq" - Configure RATs Searching Sequence
+     */
+    WioCellularResult setSearchAccessTechnologySequence(const std::string &scanseq)
+    {
+        return executeCommand(internal::stringFormat("AT+QCFG=\"nwscanseq\",%s", scanseq.c_str()), 300);
+    }
+
+    /**
+     * @~Japanese
      * @brief ネットワーク探索の周波数バンドを取得
      *
      * @param [out] gsmBandValStr GSM周波数バンド

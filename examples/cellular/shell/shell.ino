@@ -180,28 +180,32 @@ static int CommandInfo(int argc, char **argv) {
   WioCellular.getPhoneNumber(&phoneNumber);
   int searchAct;
   WioCellular.getSearchAccessTechnology(&searchAct);
+  std::string searchActSeq;
+  WioCellular.getSearchAccessTechnologySequence(&searchActSeq);
   std::string gsmBand;
   std::string emtcBand;
   std::string nbiotBand;
   WioCellular.getSearchFrequencyBand(&gsmBand, &emtcBand, &nbiotBand);
 
-  Serial.printf("IMEI:         %s\n", imei.c_str());
-  Serial.printf("Revision:     %s\n", revision.c_str());
-  Serial.printf("SIM Inserted: %s\n", simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
-                                                                                 : "Unknown");
-  Serial.printf("SIM Init:     %s\n", simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
-                                                                     : simInitStatus == 2 ? "SMS Done"
-                                                                     : simInitStatus == 3 ? "CPIN Ready & SMS Done"
-                                                                                          : "Unknown");
-  Serial.printf("SIM State:    %s\n", simState.c_str());
-  Serial.printf("IMSI:         %s\n", imsi.c_str());
-  Serial.printf("ICCID:        %s\n", iccid.c_str());
-  Serial.printf("Phone Number: %s\n", phoneNumber.c_str());
-  Serial.printf("Search Access Technology: %s\n", searchAct == 0 ? "eMTC" : searchAct == 1 ? "NB-IoT"
-                                                                          : searchAct == 2 ? "eMTC and NB-IoT"
-                                                                                           : "Unknown");
-  Serial.printf("Search Frequency Band - eMTC:   %s\n", emtcBand.c_str());
-  Serial.printf("Search Frequency Band - NB-IoT: %s\n", nbiotBand.c_str());
+  Serial.printf("IMEI:                 %s\n", imei.c_str());
+  Serial.printf("Revision:             %s\n", revision.c_str());
+  Serial.printf("SIM Inserted:         %s\n", simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
+                                                                                         : "Unknown");
+  Serial.printf("SIM Init:             %s\n", simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
+                                                                             : simInitStatus == 2 ? "SMS Done"
+                                                                             : simInitStatus == 3 ? "CPIN Ready & SMS Done"
+                                                                                                  : "Unknown");
+  Serial.printf("SIM State:            %s\n", simState.c_str());
+  Serial.printf("IMSI:                 %s\n", imsi.c_str());
+  Serial.printf("ICCID:                %s\n", iccid.c_str());
+  Serial.printf("Phone Number:         %s\n", phoneNumber.c_str());
+  Serial.printf("Search ACT:           %s\n", searchAct == 0 ? "eMTC" : searchAct == 1 ? "NB-IoT"
+                                                                      : searchAct == 2 ? "eMTC and NB-IoT"
+                                                                                       : "Unknown");
+  Serial.printf("Search ACT Sequence:  %s\n", searchActSeq == "0203" ? "eMTC -> NB-IoT" : searchActSeq == "0302" ? "NB-IoT -> eMTC"
+                                                                                                                 : "Unknown");
+  Serial.printf("Search Band - eMTC:   %s\n", emtcBand.c_str());
+  Serial.printf("Search Band - NB-IoT: %s\n", nbiotBand.c_str());
 
   return 0;
 }
