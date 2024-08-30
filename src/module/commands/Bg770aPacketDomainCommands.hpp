@@ -122,7 +122,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+CGATT: ", &responseParameter))
                 {
-                    if (state) *state = std::stoi(responseParameter);
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (state) *state = std::stoi(parser[0]);
                     return true;
                 }
                 return false; },

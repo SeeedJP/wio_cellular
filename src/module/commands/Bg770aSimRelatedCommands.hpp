@@ -74,7 +74,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+CPIN: ", &responseParameter))
                 {
-                    if (state) *state = responseParameter;
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (state) *state = parser[0];
                     return true;
                 }
                 return false; },
@@ -107,7 +109,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QCCID: ", &responseParameter))
                 {
-                    if (iccid) *iccid = responseParameter;
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (iccid) *iccid = parser[0];
                     return true;
                 }
                 return false; },
@@ -142,7 +146,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QINISTAT: ", &responseParameter))
                 {
-                    if (status) *status = std::stoi(responseParameter);
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (status) *status = std::stoi(parser[0]);
                     return true;
                 }
                 return false; },

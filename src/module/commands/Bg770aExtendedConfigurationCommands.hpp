@@ -41,7 +41,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QCFG: \"nwscanseq\",", &responseParameter))
                 {
-                    if (scanseq) *scanseq = responseParameter;
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (scanseq) *scanseq = parser[0];
                     return true;
                 }
                 return false; },
@@ -224,7 +226,9 @@ public:
                 std::string responseParameter;
                 if (internal::stringStartsWith(response, "+QCFG: \"iotopmode\",", &responseParameter))
                 {
-                    if (mode) *mode = std::stoi(responseParameter);
+                    AtParameterParser parser{responseParameter};
+                    if (parser.size() != 1) return false;
+                    if (mode) *mode = std::stoi(parser[0]);
                     return true;
                 }
                 return false; },
