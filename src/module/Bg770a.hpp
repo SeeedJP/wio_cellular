@@ -1512,6 +1512,65 @@ public:
 
     /**
      * @~Japanese
+     * @brief PINGで疎通テスト
+     *
+     * @param [in] host 通信先ホスト
+     * @param [in] count 疎通テスト回数
+     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @return 実行結果
+     *
+     * PINGでネットワークを疎通テストします。
+     * timeoutは1000の倍数を指定してください。
+     *
+     * > BG770A-GL&BG95xA-GL TCP/IP Application Note @n
+     * > 2.3.10 - AT+QPING Ping a Remote Host
+     */
+    WioCellularResult ping(const std::string &host, int count, int eachTimeout)
+    {
+        if (count < 1)
+            return WioCellularResult::ArgumentOutOfRange;
+        if (eachTimeout < 1000)
+            return WioCellularResult::ArgumentOutOfRange;
+        if (count * (eachTimeout / 1000) > 300)
+            return WioCellularResult::ArgumentOutOfRange;
+
+        WioCellularResult result = WioCellularResult::Ok;
+
+        std::vector<std::string> pingResponse;
+        const auto handler = AtClient<Bg770a<INTERFACE>>::registerUrcHandler([&pingResponse](const std::string &response) -> bool
+                                                                             {
+            if (response.starts_with("+QPING: ")) {
+                pingResponse.push_back(response);
+                return true;
+            }
+            return false; });
+
+        if ((result = executeCommand(internal::stringFormat("AT+QPING=1,\"%s\",%d,%d", host.c_str(), eachTimeout / 1000, count), 300000)) == WioCellularResult::Ok)
+        {
+            constexpr int timeout = 300000;
+            const auto start = millis();
+            while (pingResponse.size() < static_cast<size_t>(count + 1))
+            {
+                AtClient<Bg770a<INTERFACE>>::doWork(timeout - (millis() - start));
+                if (millis() - start >= static_cast<uint32_t>(timeout))
+                {
+                    result = WioCellularResult::ReadResponseTimeout;
+                    break;
+                }
+            }
+        }
+        AtClient<Bg770a<INTERFACE>>::unregisterUrcHandler(handler);
+        if (result != WioCellularResult::Ok)
+        {
+            return result;
+        }
+        assert(pingResponse.size() == static_cast<size_t>(count + 1));
+
+        return result;
+    }
+
+    /**
+     * @~Japanese
      * @brief ネットワーク探索のアクセステクノロジー順序を取得
      *
      * @param [out] scanseq 探索するアクセステクノロジー順序
