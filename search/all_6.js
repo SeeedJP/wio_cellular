@@ -11,8 +11,14 @@ var searchData=
   ['getpdpcontextstatus_52',['getPdpContextStatus',['../classBg770a.html#a9b9affa9bde7221d9d4987404111f6e7',1,'Bg770a']]],
   ['getphonenumber_53',['getPhoneNumber',['../classBg770a.html#ab5b447c163127490b573ed0b7bd4a0a6',1,'Bg770a']]],
   ['getreceivednotificationsemaphone_54',['getReceivedNotificationSemaphone',['../classBg770aInterface.html#ab1292b558f9d764aa6caa03237999e50',1,'Bg770aInterface']]],
-  ['getsimccid_55',['getSimCCID',['../classBg770a.html#a81355712c14ede2378a14d2b47a9a368',1,'Bg770a']]],
-  ['getsimstate_56',['getSimState',['../classBg770a.html#af62c71f1fc8d2d2beebc41617604cd1c',1,'Bg770a']]],
-  ['getsocketreceiveavailable_57',['getSocketReceiveAvailable',['../classBg770a.html#a3290bd997370c3562779cff283c9111a',1,'Bg770a']]],
-  ['getsocketstatus_58',['getSocketStatus',['../classBg770a.html#a2df2e54d4c89514559ebc8b7a8ad586b',1,'Bg770a']]]
+  ['getsearchaccesstechnology_55',['getSearchAccessTechnology',['../classBg770a.html#a82b54193bc78ee0c6836b9d860bff0fc',1,'Bg770a']]],
+  ['getsearchaccesstechnologysequence_56',['getSearchAccessTechnologySequence',['../classBg770a.html#aaa4c363755aa6996b3e985b4ba3939f4',1,'Bg770a']]],
+  ['getsearchfrequencyband_57',['getSearchFrequencyBand',['../classBg770a.html#acae7269badc4c57ba4063d60083e93e5',1,'Bg770a']]],
+  ['getsignalquality_58',['getSignalQuality',['../classBg770a.html#abc191af5a9eb80b3a302fcfdba5c6cab',1,'Bg770a']]],
+  ['getsimccid_59',['getSimCCID',['../classBg770a.html#a81355712c14ede2378a14d2b47a9a368',1,'Bg770a']]],
+  ['getsiminitializationstatus_60',['getSimInitializationStatus',['../classBg770a.html#aa1ed67d49b4d2d007a72281e583e7aac',1,'Bg770a']]],
+  ['getsiminsertionstatus_61',['getSimInsertionStatus',['../classBg770a.html#af15dc7c55c1777ae1991398d2229c506',1,'Bg770a']]],
+  ['getsimstate_62',['getSimState',['../classBg770a.html#af62c71f1fc8d2d2beebc41617604cd1c',1,'Bg770a']]],
+  ['getsocketreceiveavailable_63',['getSocketReceiveAvailable',['../classBg770a.html#a3290bd997370c3562779cff283c9111a',1,'Bg770a']]],
+  ['getsocketstatus_64',['getSocketStatus',['../classBg770a.html#a2df2e54d4c89514559ebc8b7a8ad586b',1,'Bg770a']]]
 ];
