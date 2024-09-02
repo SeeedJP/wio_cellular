@@ -239,7 +239,7 @@ public:
      * @~Japanese
      * @brief バイナリ読み込み
      *
-     * @param [in] data 受信データ。
+     * @param [in] data 受信データ。nullを指定すると読み捨てます。
      * @param [in] dataSize 受信データのサイズ。
      * @param [in] timeout タイムアウト時間[ミリ秒]。
      * @retval true 成功
@@ -250,7 +250,6 @@ public:
      */
     bool readBinary(void *data, size_t dataSize, int timeout)
     {
-        assert(data != nullptr);
         assert(dataSize >= 1);
 
         const auto start = millis();
@@ -267,7 +266,8 @@ public:
                     break;
                 }
 
-                static_cast<uint8_t *>(data)[i] = c;
+                if (data)
+                    static_cast<uint8_t *>(data)[i] = c;
                 if (++i >= dataSize)
                 {
                     return true;

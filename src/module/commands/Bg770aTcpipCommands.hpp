@@ -365,7 +365,7 @@ public:
      * @brief ソケットから受信
      *
      * @param [in] connectId 接続ID。
-     * @param [in,out] data データ。nullptrを指定すると受信しません。
+     * @param [in,out] data データ。nullptrを指定すると読み捨てます。
      * @param [in] dataSize データサイズ。0を指定すると受信しません。
      * @param [out] readDataSize 受信したデータサイズ。nullptrを指定すると値を代入しません。
      * @return 実行結果。
@@ -381,7 +381,7 @@ public:
     {
         assert(0 <= connectId && connectId <= 11);
 
-        if (!data || dataSize <= 0)
+        if (dataSize <= 0)
         {
             return WioCellularResult::Ok;
         }
@@ -419,7 +419,7 @@ public:
      * @brief ソケットから受信
      *
      * @param [in] connectId 接続ID。
-     * @param [in,out] data データ。nullptrを指定すると受信しません。
+     * @param [in,out] data データ。nullptrを指定すると読み捨てます
      * @param [in] dataSize データサイズ。0を指定すると受信しません。
      * @param [out] readDataSize 受信したデータサイズ。nullptrを指定すると値を代入しません。
      * @param [in] timeout タイムアウト時間[ミリ秒]。
