@@ -164,12 +164,9 @@ public:
      */
     WioCellularResult setEdrx(int mode, int actType, int edrxCycle)
     {
-        if (mode < 0 || 3 < mode)
-            return WioCellularResult::ArgumentOutOfRange;
-        if (actType != 4 && actType != 5)
-            return WioCellularResult::ArgumentOutOfRange;
-        if (edrxCycle < 0 || 15 < edrxCycle)
-            return WioCellularResult::ArgumentOutOfRange;
+        assert(0 <= mode && mode <= 3);
+        assert(actType == 4 || actType == 5);
+        assert(0 <= edrxCycle && edrxCycle <= 15);
 
         std::string edrxCycleStr;
         for (int i = 0; i < 4; ++i)

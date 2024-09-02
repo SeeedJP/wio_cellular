@@ -69,6 +69,8 @@ public:
      */
     WioCellularResult setSearchAccessTechnologySequence(const std::string &scanseq)
     {
+        assert(scanseq == "00" || scanseq == "02" || scanseq == "0203" || scanseq == "03" || scanseq == "0302");
+
         return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QCFG=\"nwscanseq\",%s", scanseq.c_str()), 300);
     }
 
@@ -196,6 +198,10 @@ public:
      */
     WioCellularResult setSearchFrequencyBand(const std::string &gsmBandValStr, const std::string &emtcBandValStr, const std::string &nbiotBandValStr)
     {
+        assert(!gsmBandValStr.empty());
+        assert(!emtcBandValStr.empty());
+        assert(!nbiotBandValStr.empty());
+
         return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QCFG=\"band\",%s,%s,%s", gsmBandValStr.c_str(), emtcBandValStr.c_str(), nbiotBandValStr.c_str()), 4500);
     }
 
@@ -252,6 +258,8 @@ public:
      */
     WioCellularResult setSearchAccessTechnology(int mode)
     {
+        assert(0 <= mode && mode <= 2);
+
         return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QCFG=\"iotopmode\",%d", mode), 4500);
     }
 
@@ -290,12 +298,9 @@ public:
      */
     WioCellularResult setPsm(int mode, int periodicTau, int activeTau)
     {
-        if (mode < 0 || 1 < mode)
-            return WioCellularResult::ArgumentOutOfRange;
-        if (periodicTau < 0 || 32 <= periodicTau / 36000)
-            return WioCellularResult::ArgumentOutOfRange;
-        if (activeTau < 0 || 32 <= activeTau / 360)
-            return WioCellularResult::ArgumentOutOfRange;
+        assert(mode == 0 || mode == 1);
+        assert(0 <= periodicTau && periodicTau / 36000 < 32);
+        assert(0 <= activeTau && activeTau / 360 < 32);
 
         int periodic;
         if (periodicTau / 2 < 32) // 2sec

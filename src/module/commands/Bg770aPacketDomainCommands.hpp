@@ -232,6 +232,8 @@ public:
      */
     WioCellularResult setEpsNetworkRegistrationStatusUrc(int n)
     {
+        assert(n == 0 || n == 1 || n == 2 || n == 4);
+
         return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+CEREG=%d", n), 300);
     }
 

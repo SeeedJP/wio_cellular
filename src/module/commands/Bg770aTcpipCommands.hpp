@@ -135,6 +135,13 @@ public:
      */
     WioCellularResult openSocket(int cid, int connectId, const std::string &serviceType, const std::string &ipAddress, int remotePort, int localPort)
     {
+        assert(1 <= cid && cid <= 5);
+        assert(0 <= connectId && connectId <= 11);
+        assert(serviceType == "TCP" || serviceType == "UDP" || serviceType == "TCP LISTENER" || serviceType == "UDP SERVICE");
+        assert(!ipAddress.empty());
+        assert(0 <= remotePort && remotePort <= 65535);
+        assert(0 <= localPort && localPort <= 65535);
+
         WioCellularResult result = WioCellularResult::Ok;
 
         if (!UrcSocketReceiveAttached_)
@@ -213,6 +220,8 @@ public:
      */
     WioCellularResult closeSocket(int connectId)
     {
+        assert(0 <= connectId && connectId <= 11);
+
         WioCellularResult result = WioCellularResult::Ok;
 
         if ((result = static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QICLOSE=%d", connectId), 11000)) != WioCellularResult::Ok)
@@ -276,6 +285,8 @@ public:
      */
     WioCellularResult sendSocket(int connectId, const void *data, size_t dataSize)
     {
+        assert(0 <= connectId && connectId <= 11);
+
         if (!data || dataSize <= 0)
         {
             return WioCellularResult::Ok;
@@ -325,6 +336,8 @@ public:
      */
     WioCellularResult getSocketReceiveAvailable(int connectId, size_t *availableSize)
     {
+        assert(0 <= connectId && connectId <= 11);
+
         if (availableSize)
             *availableSize = -1;
 
@@ -362,6 +375,8 @@ public:
      */
     WioCellularResult receiveSocket(int connectId, void *data, size_t dataSize, size_t *readDataSize)
     {
+        assert(0 <= connectId && connectId <= 11);
+
         if (!data || dataSize <= 0)
         {
             return WioCellularResult::Ok;

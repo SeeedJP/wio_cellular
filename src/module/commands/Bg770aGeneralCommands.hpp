@@ -114,6 +114,8 @@ public:
      */
     WioCellularResult setPhoneFunctionality(int fun)
     {
+        assert(fun == 0 || fun == 1 || fun == 4);
+
         return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+CFUN=%d", fun), 300);
     }
 
