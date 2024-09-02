@@ -38,9 +38,9 @@ public:
      * @~Japanese
      * @brief コンストラクタ
      *
-     * @param [in] module モジュールのインスタンス
-     * @param [in] pdpContextId PDPコンテキスト
-     * @param [in] connectId 接続ID
+     * @param [in] module モジュールのインスタンス。
+     * @param [in] pdpContextId PDPコンテキスト。
+     * @param [in] connectId 接続ID。
      *
      * コンストラクタ。
      */
@@ -67,8 +67,8 @@ public:
      * @~Japanese
      * @brief TCPサーバーに接続
      *
-     * @param [in] ip IPアドレス
-     * @param [in] port ポート番号
+     * @param [in] ip IPアドレス。
+     * @param [in] port ポート番号。
      * @retval 1 成功
      * @retval 0 エラー
      *
@@ -94,8 +94,8 @@ public:
      * @~Japanese
      * @brief TCPサーバーに接続
      *
-     * @param [in] host ホスト名
-     * @param [in] port ポート番号
+     * @param [in] host ホスト名。
+     * @param [in] port ポート番号。
      * @retval 1 成功
      * @retval 0 エラー
      *
@@ -118,8 +118,8 @@ public:
      * @~Japanese
      * @brief TCPサーバーへ送信
      *
-     * @param [in] data データ
-     * @return 送信したデータサイズ
+     * @param [in] data データ。
+     * @return 送信したデータサイズ。
      *
      * TCPサーバーへ送信します。
      */
@@ -132,9 +132,9 @@ public:
      * @~Japanese
      * @brief TCPサーバーへ送信
      *
-     * @param [in] buf データ
-     * @param [in] size データサイズ
-     * @return 送信したデータサイズ
+     * @param [in] buf データ。
+     * @param [in] size データサイズ。
+     * @return 送信したデータサイズ。
      *
      * TCPサーバーへ送信します。
      */
@@ -203,8 +203,8 @@ public:
      * @~Japanese
      * @brief TCPサーバーから受信
      *
-     * @param [in,out] buf データ
-     * @param [in] size データサイズ
+     * @param [in,out] buf データ。
+     * @param [in] size データサイズ。
      * @retval >=0 受信したデータサイズ
      * @retval <0 エラー
      *

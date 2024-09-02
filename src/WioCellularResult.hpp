@@ -69,8 +69,8 @@ enum class WioCellularResult
  * @~Japanese
  * @brief 実行結果を文字列に変換
  *
- * @param [in] result 実行結果
- * @return 実行結果の文字列
+ * @param [in] result 実行結果。
+ * @return 実行結果の文字列。
  *
  * 実行結果を文字列に変換します。
  */

@@ -48,7 +48,7 @@ public:
      * @~Japanese
      * @brief コンストラクタ
      *
-     * @param [in] interface インターフェースのインスタンス
+     * @param [in] interface インターフェースのインスタンス。
      *
      * コンストラクタ。
      * interfaceにインターフェースのインスタンスを指定します。
@@ -66,7 +66,7 @@ public:
      * @~Japanese
      * @brief インターフェースを取得
      *
-     * @return インターフェースのインスタンス
+     * @return インターフェースのインスタンス。
      *
      * インターフェースを取得します。
      */
@@ -79,9 +79,9 @@ public:
      * @~Japanese
      * @brief 実行コマンドを実行
      *
-     * @param [in] command コマンド
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] command コマンド。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * 実行コマンドを実行します。
      */
@@ -126,10 +126,10 @@ public:
      * @~Japanese
      * @brief 問い合わせコマンドを実行
      *
-     * @param [in] command コマンド
-     * @param [in] informationTextHandler information textのハンドラ
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] command コマンド。
+     * @param [in] informationTextHandler information textのハンドラ。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * 問い合わせコマンドを実行します。
      * informaton textを読み込んだときはinformationTextHandlerを呼び出します。
@@ -182,10 +182,10 @@ public:
      * @~Japanese
      * @brief 送信コマンドを実行
      *
-     * @param [in] command コマンド
-     * @param [in] informationTextHandler information textのハンドラ
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] command コマンド。
+     * @param [in] informationTextHandler information textのハンドラ。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * 問い合わせコマンドを実行します。
      * informaton textを読み込んだときはinformationTextHandlerを呼び出します。
@@ -240,8 +240,8 @@ public:
      * @~Japanese
      * @brief 電源をオン
      *
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * 電源をオンします。
      * 処理完了までに10秒程度かかります．
@@ -344,7 +344,7 @@ public:
      * @~Japanese
      * @brief 電源をオフ
      *
-     * @return 実行結果
+     * @return 実行結果。
      *
      * 電源をオフします。
      */

@@ -12,6 +12,14 @@
 #include "internal/Misc.hpp"
 #include "WioCellularResult.hpp"
 
+/**
+ * @~Japanese
+ * @brief Quectel BG770Aモジュールのパケットドメインコマンド
+ *
+ * @tparam MODULE モジュールのクラス
+ *
+ * Quectel BG770Aモジュールのパケットドメインコマンドです。
+ */
 template <typename MODULE>
 class Bg770aPacketDomainCommands
 {
@@ -25,7 +33,7 @@ public:
         /**
          * @~Japanese
          * @brief PDPコンテキストID
-         * 1~15
+         * * 1~15
          */
         int cid;
         /**
@@ -83,7 +91,7 @@ public:
         /**
          * @~Japanese
          * @brief PDPコンテキストID
-         * 1~15
+         * * 1~15
          */
         int cid;
         /**
@@ -99,14 +107,13 @@ public:
      * @~Japanese
      * @brief パケットドメインサービスの状態を取得
      *
-     * @param [out] state 状態
-     * @return 実行結果
+     * @param [out] state 状態。nullptrを指定すると値を代入しません。
+     *   @arg -1: 無し
+     *   @arg 0: 切断
+     *   @arg 1: 接続
+     * @return 実行結果。
      *
      * パケットドメインサービスの状態を取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
-     * * state=-1: 無し
-     * * state=0: 切断
-     * * state=1: 接続
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 8.1. AT+CGATT PS Attach or Detach
@@ -135,8 +142,8 @@ public:
      * @~Japanese
      * @brief PDPコンテキストを設定
      *
-     * @param [in] context PDPコンテキスト
-     * @return 実行結果
+     * @param [in] context PDPコンテキスト。
+     * @return 実行結果。
      *
      * PDPコンテキストを設定します。
      *
@@ -152,11 +159,10 @@ public:
      * @~Japanese
      * @brief PDPコンテキストを取得
      *
-     * @param [out] contexts PDPコンテキスト
-     * @return 実行結果
+     * @param [out] contexts PDPコンテキスト。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * PDPコンテキストを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 8.2. AT+CGDCONT Define PDP Context
@@ -185,11 +191,10 @@ public:
      * @~Japanese
      * @brief PDPコンテキストステータスを取得
      *
-     * @param [out] statuses PDPコンテキストステータス
-     * @return 実行結果
+     * @param [out] statuses PDPコンテキストステータス。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * PDPコンテキストステータスを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 8.3. AT+CGACT PDP Context Activate or Deactivate
@@ -218,14 +223,14 @@ public:
      * @~Japanese
      * @brief EPSネットワーク登録ステータスのURC通知を設定
      *
-     * @param [in] n URC通知設定
-     * @return 実行結果
+     * @param [in] n URC通知設定。
+     *   @arg 0: URC通知を無効
+     *   @arg 1: URC通知を有効 "+CEREG: <stat>"
+     *   @arg 2: URC通知を有効 "+CEREG: <stat>[,[<tac>],[<ci>],[<AcT>]]"
+     *   @arg 4: URC通知を有効 "+CEREG: <stat>[,[<tac>],[<ci>],[<AcT>][,,[,[<Active-Time>],[<Periodic-TAU>]]]]"
+     * @return 実行結果。
      *
      * EPSネットワーク登録ステータスのURC通知を設定します。
-     * * n=0: URC通知を無効
-     * * n=1: URC通知を有効 "+CEREG: <stat>"
-     * * n=2: URC通知を有効 "+CEREG: <stat>[,[<tac>],[<ci>],[<AcT>]]"
-     * * n=4: URC通知を有効 "+CEREG: <stat>[,[<tac>],[<ci>],[<AcT>][,,[,[<Active-Time>],[<Periodic-TAU>]]]]"
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 8.8. AT+CEREG EPS Network Registration Status
@@ -241,18 +246,17 @@ public:
      * @~Japanese
      * @brief EPSネットワーク登録状態を取得
      *
-     * @param [out] state EPSネットワーク登録状態
-     * @return 実行結果
+     * @param [out] state EPSネットワーク登録状態。nullptrを指定すると値を代入しません。
+     *   @arg -1: 無し
+     *   @arg 0: 未登録
+     *   @arg 1: 登録済み、ホームネットワーク
+     *   @arg 2: 登録中
+     *   @arg 3: 登録拒否
+     *   @arg 4: 不明
+     *   @arg 5: 登録済み、ローミング
+     * @return 実行結果。
      *
      * EPSネットワーク登録状態を取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
-     * * state=-1: 無し
-     * * state=0: 未登録
-     * * state=1: 登録済み、ホームネットワーク
-     * * state=2: 登録中
-     * * state=3: 登録拒否
-     * * state=4: 不明
-     * * state=5: 登録済み、ローミング
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 8.8. AT+CEREG EPS Network Registration Status

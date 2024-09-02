@@ -267,7 +267,7 @@ public:
      * @~Japanese
      * @brief 読み込み可能待ち
      *
-     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
      *
      * 読み込みが可能になるまで待ちます。
      * この関数から返っても受信データがあることを保証するものではありません。
@@ -297,7 +297,7 @@ public:
      * @~Japanese
      * @brief 1バイト書き込み
      *
-     * @param [in] data 送信データ
+     * @param [in] data 送信データ。
      *
      * MainUARTへ送信するデータを書き込みます。
      */

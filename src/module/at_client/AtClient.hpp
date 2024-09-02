@@ -75,8 +75,8 @@ public:
      * @~Japanese
      * @brief URC処理ハンドラを登録
      *
-     * @param [in] handler URC処理ハンドラ
-     * @return URC処理ハンドラのイテレータ
+     * @param [in] handler URC処理ハンドラ。
+     * @return URC処理ハンドラのイテレータ。
      *
      * URC(unsolicited result code)を処理するハンドラを登録します。
      * 戻り値のイテレータを使って、後でハンドラを解除することができます。
@@ -90,7 +90,7 @@ public:
      * @~Japanese
      * @brief URC処理ハンドラを解除
      *
-     * @param [in] it URC処理ハンドラのイテレータ
+     * @param [in] it URC処理ハンドラのイテレータ。
      *
      * URC(unsolicited result code)を処理するハンドラを解除します。
      */
@@ -103,7 +103,7 @@ public:
      * @~Japanese
      * @brief URC処理を実行
      *
-     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
      *
      * レスポンスを確認して、URC(unsolicited result code)の処理を実行します。
      * 永久にURC待ちしたいときはtimeoutに-1を指定します。
@@ -122,8 +122,8 @@ public:
      * @~Japanese
      * @brief コマンド書き込みと待機
      *
-     * @param [in] command 送信コマンド
-     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @param [in] command 送信コマンド。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
      *
      * コマンドを書き込んでコマンドエコーを待機します。
      * 待機する間、URC(unsolicited result code)のレスポンスがあれば対応する処理を実行します。
@@ -156,8 +156,8 @@ public:
      * @~Japanese
      * @brief レスポンス読み込み
      *
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @param [in] pred S4無しレスポンスのマッチング判定
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @param [in] pred S4無しレスポンスのマッチング判定。
      * @retval size()==0 受信データ無し
      * @retval size()>0 受信データ
      *
@@ -219,8 +219,8 @@ public:
      * @~Japanese
      * @brief バイナリ書き込み
      *
-     * @param [in] data 送信データ
-     * @param [in] dataSize 送信データのサイズ
+     * @param [in] data 送信データ。
+     * @param [in] dataSize 送信データのサイズ。
      *
      * バイナリデータを書き込みます。
      */
@@ -239,9 +239,9 @@ public:
      * @~Japanese
      * @brief バイナリ読み込み
      *
-     * @param [in] data 受信データ
-     * @param [in] dataSize 受信データのサイズ
-     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @param [in] data 受信データ。
+     * @param [in] dataSize 受信データのサイズ。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
      * @retval true 成功
      * @retval false タイムアウト
      *
@@ -285,8 +285,8 @@ public:
      * @~Japanese
      * @brief バイナリ読み込み（読み捨て）
      *
-     * @param [in] dataSize 受信データのサイズ
-     * @param [in] timeout タイムアウト時間[ミリ秒]
+     * @param [in] dataSize 受信データのサイズ。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
      * @retval true 成功
      * @retval false タイムアウト
      *

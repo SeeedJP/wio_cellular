@@ -13,6 +13,14 @@
 #include "internal/Misc.hpp"
 #include "WioCellularResult.hpp"
 
+/**
+ * @~Japanese
+ * @brief Quectel BG770AモジュールのTCP/IPコマンド
+ *
+ * @tparam MODULE モジュールのクラス
+ *
+ * Quectel BG770AモジュールのTCP/IPコマンドです。
+ */
 template <typename MODULE>
 class Bg770aTcpipCommands
 {
@@ -33,7 +41,7 @@ public:
         /**
          * @~Japanese
          * @brief 接続ID
-         * 0~11
+         * * 0~11
          */
         int connectId;
         /**
@@ -54,11 +62,13 @@ public:
         /**
          * @~Japanese
          * @brief リモートポート番号
+         * * 0~65535
          */
         int remotePort;
         /**
          * @~Japanese
          * @brief ローカルポート番号
+         * * 0~65535
          */
         int localPort;
         /**
@@ -74,7 +84,7 @@ public:
         /**
          * @~Japanese
          * @brief PDPコンテキストID
-         * 1~5
+         * * 1~5
          */
         int cid;
         /**
@@ -106,10 +116,7 @@ public:
      * @~Japanese
      * @brief コンストラクタ
      *
-     * @param [in] interface インターフェースのインスタンス
-     *
      * コンストラクタ。
-     * interfaceにインターフェースのインスタンスを指定します。
      */
     Bg770aTcpipCommands(void) : UrcSocketReceiveAttached_{false},
                                 UrcSocketReceiveNofity_{}
@@ -120,13 +127,13 @@ public:
      * @~Japanese
      * @brief ソケットをオープン
      *
-     * @param [in] cid PDPコンテキストID
-     * @param [in] connectId 接続ID
-     * @param [in] serviceType サービスタイプ
-     * @param [in] ipAddress IPアドレス
-     * @param [in] remotePort リモートポート番号
-     * @param [in] localPort ローカルポート番号
-     * @return 実行結果
+     * @param [in] cid PDPコンテキストID。
+     * @param [in] connectId 接続ID。
+     * @param [in] serviceType サービスタイプ。
+     * @param [in] ipAddress IPアドレス。
+     * @param [in] remotePort リモートポート番号。
+     * @param [in] localPort ローカルポート番号。
+     * @return 実行結果。
      *
      * ソケットをオープンします。
      *
@@ -210,8 +217,8 @@ public:
      * @~Japanese
      * @brief ソケットをクローズ
      *
-     * @param [in] connectId 接続ID
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @return 実行結果。
      *
      * ソケットをクローズします。
      *
@@ -238,12 +245,11 @@ public:
      * @~Japanese
      * @brief ソケットサービスステータスを取得
      *
-     * @param [in] cid PDPコンテキストID
-     * @param [out] statuses ソケットサービスステータス
-     * @return 実行結果
+     * @param [in] cid PDPコンテキストID。
+     * @param [out] statuses ソケットサービスステータス。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * ソケットサービスステータスを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
      * > BG770A-GL&BG95xA-GL TCP/IP Application Note @n
      * > 2.3.7. AT+QISTATE Query Socket Service Status
@@ -272,13 +278,12 @@ public:
      * @~Japanese
      * @brief ソケットへ送信
      *
-     * @param [in] connectId 接続ID
-     * @param [in] data データ
-     * @param [in] dataSize データサイズ
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @param [in] data データ。nullptrを指定すると送信しません。
+     * @param [in] dataSize データサイズ。0を指定すると送信しません。
+     * @return 実行結果。
      *
      * ソケットへ送信します。
-     * 値を送る必要が無いときはdata=nullptrもしくはdataSize<=0を指定できます。
      *
      * > BG770A-GL&BG95xA-GL TCP/IP Application Note @n
      * > 2.3.8. AT+QISEND Send Data
@@ -309,9 +314,9 @@ public:
      * @~Japanese
      * @brief ソケットへ送信
      *
-     * @param [in] connectId 接続ID
-     * @param [in] data データ
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @param [in] data データ。長さ0の場合は送信しません。
+     * @return 実行結果。
      *
      * ソケットへ送信します。
      */
@@ -324,12 +329,11 @@ public:
      * @~Japanese
      * @brief ソケットから未読のデータサイズを取得
      *
-     * @param [in] connectId 接続ID
-     * @param [out] availableSize 未読のデータサイズ
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @param [out] availableSize 未読のデータサイズ。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * ソケットから未読のデータサイズを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
      * > BG770A-GL&BG95xA-GL TCP/IP Application Note @n
      * > 2.3.9. AT+QIRD Retrieve the Received TCP/IP Data
@@ -360,11 +364,11 @@ public:
      * @~Japanese
      * @brief ソケットから受信
      *
-     * @param [in] connectId 接続ID
-     * @param [in,out] data データ
-     * @param [in] dataSize データサイズ
-     * @param [out] readDataSize 受信したデータサイズ
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @param [in,out] data データ。nullptrを指定すると受信しません。
+     * @param [in] dataSize データサイズ。0を指定すると受信しません。
+     * @param [out] readDataSize 受信したデータサイズ。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * ソケットから受信します。
      * 受信したデータが無いときは*readDataSize=0を返します。
@@ -403,10 +407,7 @@ public:
                             return false;
                         }
                     }
-                    if (readDataSize)
-                    {
-                        *readDataSize = actualDataSize;
-                    }
+                    if (readDataSize) *readDataSize = actualDataSize;
                     return true;
                 }
                 return false; },
@@ -417,15 +418,14 @@ public:
      * @~Japanese
      * @brief ソケットから受信
      *
-     * @param [in] connectId 接続ID
-     * @param [in,out] data データ
-     * @param [in] dataSize データサイズ
-     * @param [out] readDataSize 受信したデータサイズ
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] connectId 接続ID。
+     * @param [in,out] data データ。nullptrを指定すると受信しません。
+     * @param [in] dataSize データサイズ。0を指定すると受信しません。
+     * @param [out] readDataSize 受信したデータサイズ。nullptrを指定すると値を代入しません。
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * ソケットから受信します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      */
     WioCellularResult receiveSocket(int connectId, void *data, size_t dataSize, size_t *readDataSize, int timeout)
     {

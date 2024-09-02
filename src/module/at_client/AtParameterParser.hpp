@@ -26,7 +26,7 @@ public:
      * @~Japanese
      * @brief コンストラクタ
      *
-     * @param [in] parameters パラメータ
+     * @param [in] parameters パラメータ。
      *
      * コンストラクタ。
      * パラメータを解析します。
@@ -76,7 +76,7 @@ public:
      * @~Japanese
      * @brief パラメータ数を取得
      *
-     * @return パラメータ数
+     * @return パラメータ数。
      *
      * パラメータ数を取得します。
      */
@@ -89,8 +89,8 @@ public:
      * @~Japanese
      * @brief パラメータ要素を取得
      *
-     * @param [in] index インデックス
-     * @return パラメータ要素
+     * @param [in] index インデックス。
+     * @return パラメータ要素。
      *
      * 指定したインデックスのパラメータ要素を取得します。
      */

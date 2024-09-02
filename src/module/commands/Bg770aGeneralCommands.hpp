@@ -10,6 +10,14 @@
 #include "internal/Misc.hpp"
 #include "WioCellularResult.hpp"
 
+/**
+ * @~Japanese
+ * @brief Quectel BG770Aモジュールの一般コマンド
+ *
+ * @tparam MODULE モジュールのクラス
+ *
+ * Quectel BG770Aモジュールの一般コマンドです。
+ */
 template <typename MODULE>
 class Bg770aGeneralCommands
 {
@@ -18,13 +26,12 @@ public:
      * @~Japanese
      * @brief IMEIを取得
      *
-     * @param [out] imei IMEI(international mobile equipment identity)
-     * @return 実行結果
+     * @param [out] imei IMEI(international mobile equipment identity)。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * IMEI(international mobile equipment identity)を取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
-     * 例：865502060000048
+     * 例: imei = "865502060000048"
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 2.8. AT+GSN Request International Mobile Equipment Identity (IMEI)
@@ -46,8 +53,8 @@ public:
      * @~Japanese
      * @brief 全ての設定をリセット
      *
-     * @param [in] timeout タイムアウト時間[ミリ秒]
-     * @return 実行結果
+     * @param [in] timeout タイムアウト時間[ミリ秒]。
+     * @return 実行結果。
      *
      * 全ての設定を工場出荷時のデフォルトにします。
      * 処理完了までに20秒程度かかります．
@@ -101,13 +108,13 @@ public:
      * @~Japanese
      * @brief 電話の機能レベルを設定
      *
-     * @param [in] fun 機能レベル
-     * @return 実行結果
+     * @param [in] fun 機能レベル。
+     *   @arg 1: 全機能（RFフロントエンドとSIMカードを有効）
+     *   @arg 4: SIMカードのみ有効（RFフロントエンドは無効）
+     *   @arg 0: 最小機能
+     * @return 実行結果。
      *
      * 電話の機能レベルを設定します。
-     * * fun=0: 最小機能
-     * * fun=1: 全機能（RFフロントエンドとSIMカードを有効）
-     * * fun=4: SIMカードのみ有効（RFフロントエンドは無効）
      *
      * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
      * > 2.21. AT+CFUN Set UE Functionality
@@ -123,13 +130,12 @@ public:
      * @~Japanese
      * @brief ファームウェアのレビジョンを取得
      *
-     * @param [out] revision ファームウェアのレビジョン
-     * @return 実行結果
+     * @param [out] revision ファームウェアのレビジョン。nullptrを指定すると値を代入しません。
+     * @return 実行結果。
      *
      * ファームウェアのレビジョンを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
      *
-     * 例：BG770AGLAAR02A05_JP_01.200.01.200
+     * 例: revision = "BG770AGLAAR02A05_JP_01.200.01.200"
      *
      * > BG96 AT Commands Manual @n
      * > 2.26. AT+QGMR Request Modem and Application Firmware Versions

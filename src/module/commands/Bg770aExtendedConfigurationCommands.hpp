@@ -11,6 +11,14 @@
 #include "internal/Misc.hpp"
 #include "WioCellularResult.hpp"
 
+/**
+ * @~Japanese
+ * @brief Quectel BG770Aモジュールの拡張設定コマンド
+ *
+ * @tparam MODULE モジュールのクラス
+ *
+ * Quectel BG770Aモジュールの拡張設定コマンドです。
+ */
 template <typename MODULE>
 class Bg770aExtendedConfigurationCommands
 {
@@ -19,13 +27,12 @@ public:
      * @~Japanese
      * @brief ネットワーク探索のアクセステクノロジー順序を取得
      *
-     * @param [out] scanseq 探索するアクセステクノロジー順序
-     * @return 実行結果
+     * @param [out] scanseq 探索するアクセステクノロジー順序。nullptrを指定すると値を代入しません。
+     *   @arg "0203": eMTC->NB-IoT
+     *   @arg "0302": NB-IoT->eMTC
+     * @return 実行結果。
      *
      * ネットワーク探索のアクセステクノロジー順序を取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
-     * * scanseq="0203": eMTC->NB-IoT
-     * * scanseq="0302": NB-IoT->eMTC
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.3. AT+QCFG="nwscanseq" Configure RATs Searching Sequence
@@ -54,15 +61,15 @@ public:
      * @~Japanese
      * @brief ネットワーク探索のアクセステクノロジー順序を設定
      *
-     * @param [in] scanseq 探索するアクセステクノロジー順序
-     * @return 実行結果
+     * @param [in] scanseq 探索するアクセステクノロジー順序。
+     *   @arg "00": 自動(eMTC->NB-IoT)
+     *   @arg "02": eMTC->NB-IoT
+     *   @arg "0203": eMTC->NB-IoT
+     *   @arg "03": NB-IoT->eMTC
+     *   @arg "0302": NB-IoT->eMTC
+     * @return 実行結果。
      *
      * ネットワーク探索のアクセステクノロジー順序を設定します。
-     * * scanseq="00": 自動(eMTC->NB-IoT)
-     * * scanseq="02": eMTC->NB-IoT
-     * * scanseq="0203": eMTC->NB-IoT
-     * * scanseq="03": NB-IoT->eMTC
-     * * scanseq="0302": NB-IoT->eMTC
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.3. AT+QCFG="nwscanseq" Configure RATs Searching Sequence
@@ -78,46 +85,46 @@ public:
      * @~Japanese
      * @brief ネットワーク探索の周波数バンドを取得
      *
-     * @param [out] gsmBandValStr GSM周波数バンド
-     * @param [out] emtcBandValStr eMTC周波数バンド
-     * @param [out] nbiotBandValStr NB-IoT周波数バンド
-     * @return 実行結果
+     * @param [out] gsmBandValStr GSM周波数バンド。nullptrを指定すると値を代入しません。
+     *   @arg "0x0": 変更なし
+     * @param [out] emtcBandValStr eMTC周波数バンド。nullptrを指定すると値を代入しません。
+     *   @arg "0x0": 変更なし
+     *   @arg "0x1": LTE B1
+     *   @arg "0x2": LTE B2
+     *   @arg "0x4": LTE B3
+     *   @arg "0x8": LTE B4
+     *   @arg "0x10": LTE B5
+     *   @arg "0x80": LTE B8
+     *   @arg "0x800": LTE B12
+     *   @arg "0x1000": LTE B13
+     *   @arg "0x20000": LTE B18
+     *   @arg "0x40000": LTE B19
+     *   @arg "0x80000": LTE B20
+     *   @arg "0x1000000": LTE B25
+     *   @arg "0x2000000": LTE B26
+     *   @arg "0x4000000": LTE B27
+     *   @arg "0x8000000": LTE B28
+     *   @arg "0x20000000000000000": LTE B66
+     * @param [out] nbiotBandValStr NB-IoT周波数バンド。nullptrを指定すると値を代入しません。
+     *   @arg "0x0": 変更なし
+     *   @arg "0x1": LTE B1
+     *   @arg "0x2": LTE B2
+     *   @arg "0x4": LTE B3
+     *   @arg "0x8": LTE B4
+     *   @arg "0x10": LTE B5
+     *   @arg "0x80": LTE B8
+     *   @arg "0x800": LTE B12
+     *   @arg "0x1000": LTE B13
+     *   @arg "0x10000": LTE B17
+     *   @arg "0x20000": LTE B18
+     *   @arg "0x40000": LTE B19
+     *   @arg "0x80000": LTE B20
+     *   @arg "0x1000000": LTE B25
+     *   @arg "0x8000000": LTE B28
+     *   @arg "0x20000000000000000": LTE B66
+     * @return 実行結果。
      *
      * ネットワーク探索の周波数バンドを取得します。
-     * * gsmBandValStr="0x0": 変更なし
-     * * emtcBandValStr="0x0":                 変更なし
-     * * emtcBandValStr="0x1":                 LTE B1
-     * * emtcBandValStr="0x2":                 LTE B2
-     * * emtcBandValStr="0x4":                 LTE B3
-     * * emtcBandValStr="0x8":                 LTE B4
-     * * emtcBandValStr="0x10":                LTE B5
-     * * emtcBandValStr="0x80":                LTE B8
-     * * emtcBandValStr="0x800":               LTE B12
-     * * emtcBandValStr="0x1000":              LTE B13
-     * * emtcBandValStr="0x20000":             LTE B18
-     * * emtcBandValStr="0x40000":             LTE B19
-     * * emtcBandValStr="0x80000":             LTE B20
-     * * emtcBandValStr="0x1000000":           LTE B25
-     * * emtcBandValStr="0x2000000":           LTE B26
-     * * emtcBandValStr="0x4000000":           LTE B27
-     * * emtcBandValStr="0x8000000":           LTE B28
-     * * emtcBandValStr="0x20000000000000000": LTE B66
-     * * nbiotBandValStr="0x0":                 変更なし
-     * * nbiotBandValStr="0x1":                 LTE B1
-     * * nbiotBandValStr="0x2":                 LTE B2
-     * * nbiotBandValStr="0x4":                 LTE B3
-     * * nbiotBandValStr="0x8":                 LTE B4
-     * * nbiotBandValStr="0x10":                LTE B5
-     * * nbiotBandValStr="0x80":                LTE B8
-     * * nbiotBandValStr="0x800":               LTE B12
-     * * nbiotBandValStr="0x1000":              LTE B13
-     * * nbiotBandValStr="0x10000":             LTE B17
-     * * nbiotBandValStr="0x20000":             LTE B18
-     * * nbiotBandValStr="0x40000":             LTE B19
-     * * nbiotBandValStr="0x80000":             LTE B20
-     * * nbiotBandValStr="0x1000000":           LTE B25
-     * * nbiotBandValStr="0x8000000":           LTE B28
-     * * nbiotBandValStr="0x20000000000000000": LTE B66
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.4. AT+QCFG="band" Configure Frequency Band
@@ -152,46 +159,46 @@ public:
      * @~Japanese
      * @brief ネットワーク探索の周波数バンドを設定
      *
-     * @param [in] gsmBandValStr GSM周波数バンド
-     * @param [in] emtcBandValStr eMTC周波数バンド
-     * @param [in] nbiotBandValStr NB-IoT周波数バンド
-     * @return 実行結果
+     * @param [in] gsmBandValStr GSM周波数バンド。
+     *   @arg "0x0": 変更なし
+     * @param [in] emtcBandValStr eMTC周波数バンド。
+     *   @arg "0x0": 変更なし
+     *   @arg "0x1": LTE B1
+     *   @arg "0x2": LTE B2
+     *   @arg "0x4": LTE B3
+     *   @arg "0x8": LTE B4
+     *   @arg "0x10": LTE B5
+     *   @arg "0x80": LTE B8
+     *   @arg "0x800": LTE B12
+     *   @arg "0x1000": LTE B13
+     *   @arg "0x20000": LTE B18
+     *   @arg "0x40000": LTE B19
+     *   @arg "0x80000": LTE B20
+     *   @arg "0x1000000": LTE B25
+     *   @arg "0x2000000": LTE B26
+     *   @arg "0x4000000": LTE B27
+     *   @arg "0x8000000": LTE B28
+     *   @arg "0x20000000000000000": LTE B66
+     * @param [in] nbiotBandValStr NB-IoT周波数バンド。
+     *   @arg "0x0": 変更なし
+     *   @arg "0x1": LTE B1
+     *   @arg "0x2": LTE B2
+     *   @arg "0x4": LTE B3
+     *   @arg "0x8": LTE B4
+     *   @arg "0x10": LTE B5
+     *   @arg "0x80": LTE B8
+     *   @arg "0x800": LTE B12
+     *   @arg "0x1000": LTE B13
+     *   @arg "0x10000": LTE B17
+     *   @arg "0x20000": LTE B18
+     *   @arg "0x40000": LTE B19
+     *   @arg "0x80000": LTE B20
+     *   @arg "0x1000000": LTE B25
+     *   @arg "0x8000000": LTE B28
+     *   @arg "0x20000000000000000": LTE B66
+     * @return 実行結果。
      *
      * ネットワーク探索の周波数バンドを設定します。
-     * * gsmBandValStr="0x0": 変更なし
-     * * emtcBandValStr="0x0":                 変更なし
-     * * emtcBandValStr="0x1":                 LTE B1
-     * * emtcBandValStr="0x2":                 LTE B2
-     * * emtcBandValStr="0x4":                 LTE B3
-     * * emtcBandValStr="0x8":                 LTE B4
-     * * emtcBandValStr="0x10":                LTE B5
-     * * emtcBandValStr="0x80":                LTE B8
-     * * emtcBandValStr="0x800":               LTE B12
-     * * emtcBandValStr="0x1000":              LTE B13
-     * * emtcBandValStr="0x20000":             LTE B18
-     * * emtcBandValStr="0x40000":             LTE B19
-     * * emtcBandValStr="0x80000":             LTE B20
-     * * emtcBandValStr="0x1000000":           LTE B25
-     * * emtcBandValStr="0x2000000":           LTE B26
-     * * emtcBandValStr="0x4000000":           LTE B27
-     * * emtcBandValStr="0x8000000":           LTE B28
-     * * emtcBandValStr="0x20000000000000000": LTE B66
-     * * nbiotBandValStr="0x0":                 変更なし
-     * * nbiotBandValStr="0x1":                 LTE B1
-     * * nbiotBandValStr="0x2":                 LTE B2
-     * * nbiotBandValStr="0x4":                 LTE B3
-     * * nbiotBandValStr="0x8":                 LTE B4
-     * * nbiotBandValStr="0x10":                LTE B5
-     * * nbiotBandValStr="0x80":                LTE B8
-     * * nbiotBandValStr="0x800":               LTE B12
-     * * nbiotBandValStr="0x1000":              LTE B13
-     * * nbiotBandValStr="0x10000":             LTE B17
-     * * nbiotBandValStr="0x20000":             LTE B18
-     * * nbiotBandValStr="0x40000":             LTE B19
-     * * nbiotBandValStr="0x80000":             LTE B20
-     * * nbiotBandValStr="0x1000000":           LTE B25
-     * * nbiotBandValStr="0x8000000":           LTE B28
-     * * nbiotBandValStr="0x20000000000000000": LTE B66
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.4. AT+QCFG="band" Configure Frequency Band
@@ -209,14 +216,13 @@ public:
      * @~Japanese
      * @brief ネットワーク探索のアクセステクノロジーを取得
      *
-     * @param [out] mode 探索するアクセステクノロジー
-     * @return 実行結果
+     * @param [out] mode 探索するアクセステクノロジー。nullptrを指定すると値を代入しません。
+     *   @arg 0: eMTC
+     *   @arg 1: NB-IoT
+     *   @arg 2: eMTCとNB-IoT
+     * @return 実行結果。
      *
      * ネットワーク探索のアクセステクノロジーを取得します。
-     * 値を得る必要が無いときはnullptrを指定できます。
-     * * mode=0: eMTC
-     * * mode=1: NB-IoT
-     * * mode=2: eMTCとNB-IoT
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.5. AT+QCFG="iotopmode" Configure Network Category to be Searched Under LTE RAT
@@ -245,13 +251,13 @@ public:
      * @~Japanese
      * @brief ネットワーク探索のアクセステクノロジーを設定
      *
-     * @param [in] mode 探索するアクセステクノロジー
-     * @return 実行結果
+     * @param [in] mode 探索するアクセステクノロジー。
+     *   @arg 0: eMTC
+     *   @arg 1: NB-IoT
+     *   @arg 2: eMTCとNB-IoT
+     * @return 実行結果。
      *
      * ネットワーク探索のアクセステクノロジーを設定します。
-     * * mode=0: eMTC
-     * * mode=1: NB-IoT
-     * * mode=2: eMTCとNB-IoT
      *
      * > BG77xA-GL&BG95xA-GL QCFG AT Commands Manual @n
      * > 2.1.1.5. AT+QCFG="iotopmode" Configure Network Category to be Searched Under LTE RAT
@@ -267,8 +273,8 @@ public:
      * @~Japanese
      * @brief PSM遷移のURC通知を設定
      *
-     * @param [in] enable 有効
-     * @return 実行結果
+     * @param [in] enable 有効。
+     * @return 実行結果。
      *
      * PSM遷移のURC通知を設定します。
      *
@@ -284,14 +290,23 @@ public:
      * @~Japanese
      * @brief PSMを設定
      *
-     * @param [in] mode モード
-     * @param [in] periodicTau 周期時間[秒]
-     * @param [in] activeTau アクティブ時間[秒]
-     * @return 実行結果
+     * @param [in] mode モード。
+     *   @arg 0: 無効
+     *   @arg 1: 有効
+     * @param [in] periodicTau 周期時間[秒]。
+     *   @arg 2~63: 2~63[秒](2秒単位)
+     *   @arg 64~959: 64~959[秒](30秒単位)
+     *   @arg 960~1919: 960~1919[秒](1分単位)
+     *   @arg 1920~19199: 1920~19199[秒](10分単位)
+     *   @arg 19200~115199: 19200~115199[秒](1時間単位)
+     *   @arg 115200~1151999: 115200~1151999[秒](10時間単位)
+     * @param [in] activeTau アクティブ時間[秒]。
+     *   @arg 2~63: 2~63[秒](2秒単位)
+     *   @arg 64~959: 64~1919[秒](1分単位)
+     *   @arg 1920~11519: 960~11519[秒](1/10時間単位)
+     * @return 実行結果。
      *
      * PSMを設定します。
-     * * mode=0: 無効
-     * * mode=1: 有効
      *
      * > BG770A-GL&BG95xA-GL PSM Application Note @n
      * > 2.1.1.8. AT+QCFG="psm/urc" Enable/Disable PSM Entering Indication
