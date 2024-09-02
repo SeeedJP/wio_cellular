@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['sendcommand_245',['sendCommand',['../classBg770a.html#a43133ce297ba8fe8d41c28fe8a6134e5',1,'Bg770a']]],
-  ['sendsocket_246',['sendSocket',['../classBg770a.html#a3879852ff09362f79508790d4e8418fa',1,'Bg770a::sendSocket(int connectId, const void *data, size_t dataSize)'],['../classBg770a.html#a5b16a53a0b5fbd2816a869785e5f3185',1,'Bg770a::sendSocket(int connectId, const std::string &amp;data)']]],
-  ['setedrx_247',['setEdrx',['../classBg770a.html#aad67bc86046f93007608e854f7d23488',1,'Bg770a']]],
-  ['setepsnetworkregistrationstatusurc_248',['setEpsNetworkRegistrationStatusUrc',['../classBg770a.html#a672d2f2f2002803e2c8045e6a0772233',1,'Bg770a']]],
-  ['setpdpcontext_249',['setPdpContext',['../classBg770a.html#ac923f120739cbd3d11684dc8b9d05b51',1,'Bg770a']]],
-  ['setphonefunctionality_250',['setPhoneFunctionality',['../classBg770a.html#a39f8b4c1f91fd3d3b0fa39218fdf3458',1,'Bg770a']]],
-  ['setpsm_251',['setPsm',['../classBg770a.html#aace899496fc479cfff32560cc454bed4',1,'Bg770a']]],
-  ['setpsmenteringindicationurc_252',['setPsmEnteringIndicationUrc',['../classBg770a.html#a417610ea86360dafd2dd9af22541c740',1,'Bg770a']]],
-  ['setsearchaccesstechnology_253',['setSearchAccessTechnology',['../classBg770a.html#ac9a431efe43bee1ee2d1364046a47d40',1,'Bg770a']]],
-  ['setsearchaccesstechnologysequence_254',['setSearchAccessTechnologySequence',['../classBg770a.html#ac3f3ac2486363f13509cd99bc0960c0b',1,'Bg770a']]],
-  ['setsearchfrequencyband_255',['setSearchFrequencyBand',['../classBg770a.html#aad8eb0a51caf895cc065a0ab0e970403',1,'Bg770a']]],
-  ['size_256',['size',['../classAtParameterParser.html#a71739dec8d44c9aad0ec90766d3c18f1',1,'AtParameterParser']]],
-  ['sleep_257',['sleep',['../classBg770aInterface.html#ab83c4d73adc8dd125ba8b1e6e45d5421',1,'Bg770aInterface']]],
-  ['stop_258',['stop',['../classWioCellularTcpClient.html#ae202a55f40f130f9e8632205f51b0dc7',1,'WioCellularTcpClient']]]
+  ['sendcommand_282',['sendCommand',['../classBg770a.html#a43133ce297ba8fe8d41c28fe8a6134e5',1,'Bg770a']]],
+  ['sendsocket_283',['sendSocket',['../classBg770aTcpipCommands.html#a5d932fa6fd355607960a9d51512050f0',1,'Bg770aTcpipCommands::sendSocket(int connectId, const void *data, size_t dataSize)'],['../classBg770aTcpipCommands.html#a77d0ae37fd1c2484e4ec384f475ace7f',1,'Bg770aTcpipCommands::sendSocket(int connectId, const std::string &amp;data)']]],
+  ['setedrx_284',['setEdrx',['../classBg770aNetworkServiceCommands.html#aae429e4a5896878d030a3b06ed701166',1,'Bg770aNetworkServiceCommands']]],
+  ['setepsnetworkregistrationstatusurc_285',['setEpsNetworkRegistrationStatusUrc',['../classBg770aPacketDomainCommands.html#afbd9e1266d3ffecae2affd8203731cde',1,'Bg770aPacketDomainCommands']]],
+  ['setpdpcontext_286',['setPdpContext',['../classBg770aPacketDomainCommands.html#a3053866be23646d181b563e670437048',1,'Bg770aPacketDomainCommands']]],
+  ['setphonefunctionality_287',['setPhoneFunctionality',['../classBg770aGeneralCommands.html#ae960e841e6a0bfdb64c18a99c7dd842e',1,'Bg770aGeneralCommands']]],
+  ['setpsm_288',['setPsm',['../classBg770aExtendedConfigurationCommands.html#a2f61b74d4e41fc0fec8d6afa73f2a0f3',1,'Bg770aExtendedConfigurationCommands']]],
+  ['setpsmenteringindicationurc_289',['setPsmEnteringIndicationUrc',['../classBg770aExtendedConfigurationCommands.html#a0d8bfc93e2fd5a0f6939c4bb186c8d58',1,'Bg770aExtendedConfigurationCommands']]],
+  ['setsearchaccesstechnology_290',['setSearchAccessTechnology',['../classBg770aExtendedConfigurationCommands.html#aeb5b426511419f13dc01350ba9344c4f',1,'Bg770aExtendedConfigurationCommands']]],
+  ['setsearchaccesstechnologysequence_291',['setSearchAccessTechnologySequence',['../classBg770aExtendedConfigurationCommands.html#a271edee15cc310d9fbb97ace3b774992',1,'Bg770aExtendedConfigurationCommands']]],
+  ['setsearchfrequencyband_292',['setSearchFrequencyBand',['../classBg770aExtendedConfigurationCommands.html#aa725a49722b8a71ec4693c76bd5f45a6',1,'Bg770aExtendedConfigurationCommands']]],
+  ['size_293',['size',['../classAtParameterParser.html#a71739dec8d44c9aad0ec90766d3c18f1',1,'AtParameterParser']]],
+  ['sleep_294',['sleep',['../classBg770aInterface.html#ab83c4d73adc8dd125ba8b1e6e45d5421',1,'Bg770aInterface']]],
+  ['stop_295',['stop',['../classWioCellularTcpClient.html#ae202a55f40f130f9e8632205f51b0dc7',1,'WioCellularTcpClient']]]
 ];

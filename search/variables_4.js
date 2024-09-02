@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ipaddress_279',['ipAddress',['../structBg770a_1_1SocketStatus.html#a495d39e3e3d7ac21eee8f30622c88cf9',1,'Bg770a::SocketStatus']]],
-  ['ipv4addralloc_280',['ipV4AddrAlloc',['../structBg770a_1_1PdpContext.html#ab2eecdee50f95c17c9079e57a4797937',1,'Bg770a::PdpContext']]]
+  ['ipaddress_316',['ipAddress',['../structBg770aTcpipCommands_1_1SocketStatus.html#aa1997c588fa5f02d5dc2a763a642f0cf',1,'Bg770aTcpipCommands::SocketStatus']]],
+  ['ipv4addralloc_317',['ipV4AddrAlloc',['../structBg770aPacketDomainCommands_1_1PdpContext.html#abf3c0f4e391c8511570ee481f5d543ac',1,'Bg770aPacketDomainCommands::PdpContext']]]
 ];

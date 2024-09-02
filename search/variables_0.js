@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['accessmode_270',['accessMode',['../structBg770a_1_1SocketStatus.html#afbcc2663bf891c7821a22f8c7f5b5b5a',1,'Bg770a::SocketStatus']]],
-  ['apn_271',['apn',['../structBg770a_1_1PdpContext.html#a289d3c9f5450af90b8aed3de5fca15e6',1,'Bg770a::PdpContext']]],
-  ['atport_272',['atPort',['../structBg770a_1_1SocketStatus.html#a982bcbe1d83f1e9e6cc8a07889285780',1,'Bg770a::SocketStatus']]]
+  ['accessmode_307',['accessMode',['../structBg770aTcpipCommands_1_1SocketStatus.html#a4d26a5c4b30d3fbce917456e20cf1dbe',1,'Bg770aTcpipCommands::SocketStatus']]],
+  ['apn_308',['apn',['../structBg770aPacketDomainCommands_1_1PdpContext.html#ac5bf9f2e2fd40a9f67c43e9e1f47d3fc',1,'Bg770aPacketDomainCommands::PdpContext']]],
+  ['atport_309',['atPort',['../structBg770aTcpipCommands_1_1SocketStatus.html#ab7a7c4f598535f54cc14127e38d1e39c',1,'Bg770aTcpipCommands::SocketStatus']]]
 ];

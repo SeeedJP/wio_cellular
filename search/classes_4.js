@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['socketstatus_166',['SocketStatus',['../structBg770a_1_1SocketStatus.html',1,'Bg770a']]]
+  ['socketstatus_196',['SocketStatus',['../structBg770aTcpipCommands_1_1SocketStatus.html',1,'Bg770aTcpipCommands']]]
 ];

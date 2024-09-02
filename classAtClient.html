@@ -255,7 +255,7 @@ template&lt;typename MODULE &gt; </div>
 <p>URC処理を実行 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。</td></tr>
   </table>
   </dd>
 </dl>
@@ -308,9 +308,9 @@ template&lt;typename MODULE &gt; </div>
 <p>バイナリ読み込み </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>受信データ </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>受信データ。nullを指定すると読み捨てます。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -364,8 +364,8 @@ template&lt;typename MODULE &gt; </div>
 <p>バイナリ読み込み（読み捨て） </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>受信データのサイズ。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -419,8 +419,8 @@ template&lt;typename MODULE &gt; </div>
 <p>レスポンス読み込み </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pred</td><td>S4無しレスポンスのマッチング判定 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pred</td><td>S4無しレスポンスのマッチング判定。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -464,11 +464,11 @@ template&lt;typename MODULE &gt; </div>
 <p>URC処理ハンドラを登録 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">handler</td><td>URC処理ハンドラ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">handler</td><td>URC処理ハンドラ。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>戻り値</dt><dd>URC処理ハンドラのイテレータ</dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>URC処理ハンドラのイテレータ。</dd></dl>
 <p>URC(unsolicited result code)を処理するハンドラを登録します。 戻り値のイテレータを使って、後でハンドラを解除することができます。 </p>
 
 </div>
@@ -502,7 +502,7 @@ template&lt;typename MODULE &gt; </div>
 <p>URC処理ハンドラを解除 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">it</td><td>URC処理ハンドラのイテレータ</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">it</td><td>URC処理ハンドラのイテレータ。</td></tr>
   </table>
   </dd>
 </dl>
@@ -549,8 +549,8 @@ template&lt;typename MODULE &gt; </div>
 <p>コマンド書き込みと待機 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>送信コマンド </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>送信コマンド。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。</td></tr>
   </table>
   </dd>
 </dl>
@@ -597,8 +597,8 @@ template&lt;typename MODULE &gt; </div>
 <p>バイナリ書き込み </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>送信データ </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>送信データのサイズ</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>送信データ。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataSize</td><td>送信データのサイズ。</td></tr>
   </table>
   </dd>
 </dl>

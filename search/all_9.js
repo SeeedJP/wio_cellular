@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['localport_70',['localPort',['../structBg770a_1_1SocketStatus.html#a30173c73f34c5bcd23a5627a009505a5',1,'Bg770a::SocketStatus']]]
+  ['localport_88',['localPort',['../structBg770aTcpipCommands_1_1SocketStatus.html#adc3ca92958d3fb804d92760f70160543',1,'Bg770aTcpipCommands::SocketStatus']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pdpcontext_164',['PdpContext',['../structBg770a_1_1PdpContext.html',1,'Bg770a']]],
-  ['pdpcontextstatus_165',['PdpContextStatus',['../structBg770a_1_1PdpContextStatus.html',1,'Bg770a']]]
+  ['pdpcontext_194',['PdpContext',['../structBg770aPacketDomainCommands_1_1PdpContext.html',1,'Bg770aPacketDomainCommands']]],
+  ['pdpcontextstatus_195',['PdpContextStatus',['../structBg770aPacketDomainCommands_1_1PdpContextStatus.html',1,'Bg770aPacketDomainCommands']]]
 ];
