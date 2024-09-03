@@ -27,23 +27,26 @@ namespace wiocellular
              *
              * Quectel BG770Aとやりとりするインターフェースのクラスです。
              */
-            template <typename UART>
+            template <typename CONSTANT, typename UART>
             class Bg770aInterface
             {
             private:
-                suli3::arduino::DigitalInputPin<BG770AINTERFACE_VDD_EXT> VddExt_;
-                suli3::arduino::DigitalOutputPin<BG770AINTERFACE_PWRKEY> Pwrkey_;
-#ifdef BG770AINTERFACE_RESET_N
-                suli3::arduino::DigitalOutputPin<BG770AINTERFACE_RESET_N> ResetN_;
-#endif // BG770AINTERFACE_RESET_N
+                suli3::arduino::DigitalInputPin<CONSTANT::VDD_EXT_PIN> VddExt_;
+                suli3::arduino::DigitalOutputPin<CONSTANT::PWRKEY_PIN> Pwrkey_;
+#if defined(BOARD_VERSION_ES2)
+#elif defined(BOARD_VERSION_1_0)
+                suli3::arduino::DigitalOutputPin<CONSTANT::RESET_N_PIN> ResetN_;
+#else
+#error "Unknown board version"
+#endif
 
                 SemaphoreHandle_t MainUartReceived_;  // FreeRTOS
                 SemaphoreHandle_t MainUartReceived2_; // FreeRTOS
                 UART RealMainUart_;
                 suli3::arduino::Uart<decltype(RealMainUart_)> MainUart_;
-                suli3::arduino::DigitalOutputPin<BG770AINTERFACE_MAIN_DTR> MainDtr_;
-                suli3::arduino::DigitalInputPin<BG770AINTERFACE_MAIN_DCD> MainDcd_;
-                suli3::arduino::DigitalInputPin<BG770AINTERFACE_MAIN_RI> MainRi_;
+                suli3::arduino::DigitalOutputPin<CONSTANT::MAIN_DTR_PIN> MainDtr_;
+                suli3::arduino::DigitalInputPin<CONSTANT::MAIN_DCD_PIN> MainDcd_;
+                suli3::arduino::DigitalInputPin<CONSTANT::MAIN_RI_PIN> MainRi_;
 
             public:
                 /**
@@ -55,7 +58,7 @@ namespace wiocellular
                 Bg770aInterface(void)
                     : MainUartReceived_{nullptr},
                       MainUartReceived2_{nullptr},
-                      RealMainUart_{BG770AINTERFACE_MAIN_UARTE, BG770AINTERFACE_MAIN_UARTE_IRQn, BG770AINTERFACE_MAIN_TXD, BG770AINTERFACE_MAIN_RXD, BG770AINTERFACE_MAIN_CTS, BG770AINTERFACE_MAIN_RTS},
+                      RealMainUart_{BG770AINTERFACE_MAIN_UARTE, BG770AINTERFACE_MAIN_UARTE_IRQn, CONSTANT::MAIN_TXD_PIN, CONSTANT::MAIN_RXD_PIN, CONSTANT::MAIN_CTS_PIN, CONSTANT::MAIN_RTS_PIN},
                       MainUart_{RealMainUart_}
                 {
                     MainUartReceived_ = xSemaphoreCreateBinary();  // FreeRTOS
@@ -136,12 +139,10 @@ namespace wiocellular
                     Pwrkey_.begin(OUTPUT, 0);
 #elif defined(BOARD_VERSION_1_0)
                     Pwrkey_.begin(OUTPUT_S0D1, 1);
+                    ResetN_.begin(OUTPUT_S0D1, 1);
 #else
 #error "Unknown board version"
 #endif
-#ifdef BG770AINTERFACE_RESET_N
-                    ResetN_.begin(OUTPUT_S0D1, 1);
-#endif // BG770AINTERFACE_RESET_N
                     MainDtr_.begin(OUTPUT, 0);
 
                     if (isActive())
@@ -163,7 +164,7 @@ namespace wiocellular
                         }
                     }
 
-                    attachInterrupt(BG770AINTERFACE_VDD_EXT, BG770AINTERFACE_VDD_EXT_IRQHANDLER, CHANGE);
+                    attachInterrupt(CONSTANT::VDD_EXT_PIN, BG770AINTERFACE_VDD_EXT_IRQHANDLER, CHANGE);
                 }
 
                 /**
@@ -216,11 +217,14 @@ namespace wiocellular
                  */
                 void reset(void)
                 {
-#ifdef BG770AINTERFACE_RESET_N
+#if defined(BOARD_VERSION_ES2)
+#elif defined(BOARD_VERSION_1_0)
                     ResetN_.write(0);
                     delay(100 + 2);
                     ResetN_.write(1);
-#endif // BG770AINTERFACE_RESET_N
+#else
+#error "Unknown board version"
+#endif
                 }
 
                 /**
