@@ -1,7 +1,7 @@
 <map id="WioBg770a.hpp" name="WioBg770a.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,129,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="192,244,276,271"/>
-<area shape="rect" id="node3" href="$Suli3_8hpp.html" title=" " alt="" coords="185,80,280,107"/>
+<area shape="rect" id="node3" href="$Suli3_8hpp.html" title=" " alt="" coords="191,80,274,107"/>
 <area shape="rect" id="node4" href="$DigitalInputPin_8hpp.html" title=" " alt="" coords="39,155,226,196"/>
 <area shape="rect" id="node5" href="$DigitalOutputPin_8hpp.html" title=" " alt="" coords="442,155,639,196"/>
 <area shape="rect" id="node7" href="$Uart_8hpp.html" title=" " alt="" coords="251,162,417,189"/>

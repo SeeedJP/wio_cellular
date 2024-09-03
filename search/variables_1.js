@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['cid_310',['cid',['../structBg770aPacketDomainCommands_1_1PdpContext.html#aa4747015f49ed47c43b913cc3a0935f3',1,'Bg770aPacketDomainCommands::PdpContext::cid()'],['../structBg770aPacketDomainCommands_1_1PdpContextStatus.html#aa643bc5663ea20017c3810d48983d561',1,'Bg770aPacketDomainCommands::PdpContextStatus::cid()'],['../structBg770aTcpipCommands_1_1SocketStatus.html#aa9b9c0ec455acec4a14e681129ebaaa7',1,'Bg770aTcpipCommands::SocketStatus::cid()']]],
-  ['connected_5f_311',['Connected_',['../classWioCellularTcpClient.html#a2013f19a40a2141f587958ab8e818d0e',1,'WioCellularTcpClient']]],
-  ['connectid_312',['connectId',['../structBg770aTcpipCommands_1_1SocketStatus.html#ad20fb76c1909b3fa221d4ff1bb5f6ffc',1,'Bg770aTcpipCommands::SocketStatus']]],
-  ['connectid_5f_313',['ConnectId_',['../classWioCellularTcpClient.html#a18bdd7a21722ee81f37907c621d7344d',1,'WioCellularTcpClient']]]
+  ['cid_322',['cid',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContext.html#a62657537f27a5af79159c7757f95ab9e',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands::PdpContext::cid()'],['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContextStatus.html#af4cc1ab1724cb761a8f16a61150c543a',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands::PdpContextStatus::cid()'],['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#a231a6f0d113a09d36efe48f3d4898ed3',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus::cid()']]],
+  ['connected_5f_323',['Connected_',['../classWioCellularTcpClient.html#a2013f19a40a2141f587958ab8e818d0e',1,'WioCellularTcpClient']]],
+  ['connectid_324',['connectId',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#a4ea1de6730a683a9321a6f34b8f5b6f8',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus']]],
+  ['connectid_5f_325',['ConnectId_',['../classWioCellularTcpClient.html#a18bdd7a21722ee81f37907c621d7344d',1,'WioCellularTcpClient']]]
 ];

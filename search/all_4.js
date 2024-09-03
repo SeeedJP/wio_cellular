@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['enablecellularpower_56',['enableCellularPower',['../classWioBg770a.html#a7aa48cbb054680c9e5b7f82a30e68be9',1,'WioBg770a']]],
-  ['enablegrovepower_57',['enableGrovePower',['../classWioBg770a.html#af1303a9e854e88b5abac480e9b34bb3e',1,'WioBg770a']]],
+  ['enablecellularpower_56',['enableCellularPower',['../classwiocellular_1_1board_1_1WioBg770a.html#a297c3dbaee3bbd9fbb3a2e5394443a3b',1,'wiocellular::board::WioBg770a']]],
+  ['enablegrovepower_57',['enableGrovePower',['../classwiocellular_1_1board_1_1WioBg770a.html#a6a932b1be91ecd835d9a26965871da12',1,'wiocellular::board::WioBg770a']]],
   ['end_58',['end',['../classsuli3_1_1arduino_1_1DigitalInputPin.html#a139ff6c27f9c10982f5a4cfe4b4774aa',1,'suli3::arduino::DigitalInputPin::end()'],['../classsuli3_1_1arduino_1_1DigitalOutputPin.html#a3d632cd46c1dec4848924efe023d42be',1,'suli3::arduino::DigitalOutputPin::end()'],['../classsuli3_1_1arduino_1_1Uart.html#a637e5b793ef9a62a556a2662a6886063',1,'suli3::arduino::Uart::end()']]],
-  ['executecommand_59',['executeCommand',['../classBg770a.html#adec93a6b263069ce65f38527a7c15ea1',1,'Bg770a']]]
+  ['executecommand_59',['executeCommand',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770a.html#a41b13621cd301d6a73a6a7ed21e25966',1,'wiocellular::module::bg770a::Bg770a']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['accessmode_307',['accessMode',['../structBg770aTcpipCommands_1_1SocketStatus.html#a4d26a5c4b30d3fbce917456e20cf1dbe',1,'Bg770aTcpipCommands::SocketStatus']]],
-  ['apn_308',['apn',['../structBg770aPacketDomainCommands_1_1PdpContext.html#ac5bf9f2e2fd40a9f67c43e9e1f47d3fc',1,'Bg770aPacketDomainCommands::PdpContext']]],
-  ['atport_309',['atPort',['../structBg770aTcpipCommands_1_1SocketStatus.html#ab7a7c4f598535f54cc14127e38d1e39c',1,'Bg770aTcpipCommands::SocketStatus']]]
+  ['accessmode_319',['accessMode',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#ad703bed58abad5c67e5954319fdcb827',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus']]],
+  ['apn_320',['apn',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContext.html#a96479f1a49a20c5bb4fd67c971fb13ef',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands::PdpContext']]],
+  ['atport_321',['atPort',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#a480970a76b05531bd790c2e0b78bde11',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus']]]
 ];

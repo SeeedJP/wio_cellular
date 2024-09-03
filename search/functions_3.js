@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['disablecellularpower_236',['disableCellularPower',['../classWioBg770a.html#aafff1794e37ca6ea70314614194a3820',1,'WioBg770a']]],
-  ['disablegrovepower_237',['disableGrovePower',['../classWioBg770a.html#a405bc619ea6457a0c5a12d3c1a43d35d',1,'WioBg770a']]],
-  ['dowork_238',['doWork',['../classAtClient.html#a5f6d0c9f80b808ccef0d2062f9cef0a7',1,'AtClient']]]
+  ['disablecellularpower_248',['disableCellularPower',['../classwiocellular_1_1board_1_1WioBg770a.html#acbb9b61bff182b20eacc6dd8bb2d69f7',1,'wiocellular::board::WioBg770a']]],
+  ['disablegrovepower_249',['disableGrovePower',['../classwiocellular_1_1board_1_1WioBg770a.html#a11509ab8aa9a37cf48bfe8924ed30a81',1,'wiocellular::board::WioBg770a']]],
+  ['dowork_250',['doWork',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aed294dea60a4e7b6829053c396e1ede6',1,'wiocellular::module::at_client::AtClient']]]
 ];

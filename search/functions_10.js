@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['waitreadavailable_299',['waitReadAvailable',['../classBg770aInterface.html#ae7d55ef46b4c066338ee5416f82a790c',1,'Bg770aInterface']]],
-  ['wakeup_300',['wakeup',['../classBg770aInterface.html#aa5ebf0e9d1e7a1688739b65e2adaac97',1,'Bg770aInterface']]],
-  ['wiobg770a_301',['WioBg770a',['../classWioBg770a.html#a4ce0677e2a3601dcd96ffff9b6acbd89',1,'WioBg770a']]],
-  ['wiocellulartcpclient_302',['WioCellularTcpClient',['../classWioCellularTcpClient.html#aea29958903506f27fada81f35c6dfc42',1,'WioCellularTcpClient']]],
-  ['write_303',['write',['../classWioCellularTcpClient.html#aa0adde331577547cfc22fc5405aa1832',1,'WioCellularTcpClient::write(uint8_t data)'],['../classWioCellularTcpClient.html#a9e4a52461b23f9698891378c8f56f86c',1,'WioCellularTcpClient::write(const uint8_t *buf, size_t size)'],['../classBg770aInterface.html#a86414f95b073512e562b3ba302c40988',1,'Bg770aInterface::write()'],['../classsuli3_1_1arduino_1_1DigitalOutputPin.html#ae6a11c6756db56b98fef67fd75336810',1,'suli3::arduino::DigitalOutputPin::write()'],['../classsuli3_1_1arduino_1_1Uart.html#a74b46bf5dae1181e01ff131e365e329e',1,'suli3::arduino::Uart::write()']]],
-  ['writeandwaitcommand_304',['writeAndWaitCommand',['../classAtClient.html#a11a7679c9e1805b2dfd125556ca99f13',1,'AtClient']]],
-  ['writebinary_305',['writeBinary',['../classAtClient.html#a4dc62e3cf5c159dfa90db0caf1e2d2b5',1,'AtClient']]]
+  ['waitreadavailable_311',['waitReadAvailable',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#a9c65d17d73ee9f7590936792a1b9ed20',1,'wiocellular::module::bg770a::Bg770aInterface']]],
+  ['wakeup_312',['wakeup',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ac980a146398d5115f8d1814737ec44ea',1,'wiocellular::module::bg770a::Bg770aInterface']]],
+  ['wiobg770a_313',['WioBg770a',['../classwiocellular_1_1board_1_1WioBg770a.html#ae9e73f1edde3548762985cc68b33be96',1,'wiocellular::board::WioBg770a']]],
+  ['wiocellulartcpclient_314',['WioCellularTcpClient',['../classWioCellularTcpClient.html#aea29958903506f27fada81f35c6dfc42',1,'WioCellularTcpClient']]],
+  ['write_315',['write',['../classWioCellularTcpClient.html#aa0adde331577547cfc22fc5405aa1832',1,'WioCellularTcpClient::write(uint8_t data)'],['../classWioCellularTcpClient.html#a9e4a52461b23f9698891378c8f56f86c',1,'WioCellularTcpClient::write(const uint8_t *buf, size_t size)'],['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ac4031cac9c4c6c184cf46b4a19b0f2dc',1,'wiocellular::module::bg770a::Bg770aInterface::write()'],['../classsuli3_1_1arduino_1_1DigitalOutputPin.html#ae6a11c6756db56b98fef67fd75336810',1,'suli3::arduino::DigitalOutputPin::write()'],['../classsuli3_1_1arduino_1_1Uart.html#a74b46bf5dae1181e01ff131e365e329e',1,'suli3::arduino::Uart::write()']]],
+  ['writeandwaitcommand_316',['writeAndWaitCommand',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aba5416351e227e039ce5aac1ab0a75c8',1,'wiocellular::module::at_client::AtClient']]],
+  ['writebinary_317',['writeBinary',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#a5dbbce6a0c85e72f6f5b3b3f4ce479c4',1,'wiocellular::module::at_client::AtClient']]]
 ];

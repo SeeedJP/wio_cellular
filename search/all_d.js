@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['pdpaddr_99',['pdpAddr',['../structBg770aPacketDomainCommands_1_1PdpContext.html#a55b5586f0ab241bc3e0a602a8737f753',1,'Bg770aPacketDomainCommands::PdpContext']]],
-  ['pdpcontext_100',['PdpContext',['../structBg770aPacketDomainCommands_1_1PdpContext.html',1,'Bg770aPacketDomainCommands']]],
-  ['pdpcontextid_5f_101',['PdpContextId_',['../classWioCellularTcpClient.html#a404602f6cde95330f14e3f8496627e0e',1,'WioCellularTcpClient']]],
-  ['pdpcontextstatus_102',['PdpContextStatus',['../structBg770aPacketDomainCommands_1_1PdpContextStatus.html',1,'Bg770aPacketDomainCommands']]],
-  ['pdptype_103',['pdpType',['../structBg770aPacketDomainCommands_1_1PdpContext.html#a4a3ccaf4fa34efd1f39a240e16aaa480',1,'Bg770aPacketDomainCommands::PdpContext']]],
-  ['peek_104',['peek',['../classWioCellularTcpClient.html#a48acf2e8f7a53981bcb4e52f2d066b3e',1,'WioCellularTcpClient']]],
-  ['poweroff_105',['powerOff',['../classBg770a.html#a8e75f59e9aeb8ca785dc5ed2c4509fd1',1,'Bg770a::powerOff()'],['../classBg770aInterface.html#a7ae44919c0f4c60d3eafdc61cc976833',1,'Bg770aInterface::powerOff()']]],
-  ['poweron_106',['powerOn',['../classBg770a.html#a2b6eae904da4c4a61b4ec215b1f7d75c',1,'Bg770a::powerOn()'],['../classBg770aInterface.html#acaec5fe18ccd89747c69b540f10933b9',1,'Bg770aInterface::powerOn()']]],
-  ['predfunctiontype_107',['PredFunctionType',['../classAtClient.html#a921a815308b39d48e466349558ca8158',1,'AtClient']]],
-  ['predicatetype_108',['PredicateType',['../classAtClient.html#a51e1bb1bb0b68e15f6b110ece758d4fc',1,'AtClient']]]
+  ['pdpaddr_98',['pdpAddr',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContext.html#ab5761a36ff6f632ddaa07590f1123454',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands::PdpContext']]],
+  ['pdpcontext_99',['PdpContext',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContext.html',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands']]],
+  ['pdpcontextid_5f_100',['PdpContextId_',['../classWioCellularTcpClient.html#a404602f6cde95330f14e3f8496627e0e',1,'WioCellularTcpClient']]],
+  ['pdpcontextstatus_101',['PdpContextStatus',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContextStatus.html',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands']]],
+  ['pdptype_102',['pdpType',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aPacketDomainCommands_1_1PdpContext.html#ab38b3144be428d9b52ddc0e6a60194d8',1,'wiocellular::module::bg770a::commands::Bg770aPacketDomainCommands::PdpContext']]],
+  ['peek_103',['peek',['../classWioCellularTcpClient.html#a48acf2e8f7a53981bcb4e52f2d066b3e',1,'WioCellularTcpClient']]],
+  ['poweroff_104',['powerOff',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770a.html#a73c94e9822c9941d5f80c6bdb7ce34be',1,'wiocellular::module::bg770a::Bg770a::powerOff()'],['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ae719221d2526ed757d1692e09e9b1575',1,'wiocellular::module::bg770a::Bg770aInterface::powerOff()']]],
+  ['poweron_105',['powerOn',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770a.html#aab084570cfe139091eb513f3377662cd',1,'wiocellular::module::bg770a::Bg770a::powerOn()'],['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ab4cd4899ac98451b06490055d1a7361f',1,'wiocellular::module::bg770a::Bg770aInterface::powerOn()']]],
+  ['predfunctiontype_106',['PredFunctionType',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#ae22c725b73ca2ddd68514d634dfa150e',1,'wiocellular::module::at_client::AtClient']]],
+  ['predicatetype_107',['PredicateType',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#a9b6ae43a4884bfc8d22c5d307fbe7c11',1,'wiocellular::module::at_client::AtClient']]]
 ];

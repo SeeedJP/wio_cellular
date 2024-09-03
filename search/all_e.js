@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['querycommand_109',['queryCommand',['../classBg770a.html#a042e9c0ce392d3acd5b43cba60d6f742',1,'Bg770a']]]
+  ['querycommand_108',['queryCommand',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770a.html#a6468b0588490d6ba523fbc6a1a9f0611',1,'wiocellular::module::bg770a::Bg770a']]]
 ];

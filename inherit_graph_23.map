@@ -1,4 +1,3 @@
 <map id="クラス階層図" name="クラス階層図">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,84,39"/>
-<area shape="rect" id="node2" href="$classWioBg770a.html" title="Seeed Studio Wio BG770Aボード" alt="" coords="132,5,304,47"/>
+<area shape="rect" id="node1" href="$structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html" title="ソケットサービスステータス" alt="" coords="5,5,196,76"/>
 </map>
