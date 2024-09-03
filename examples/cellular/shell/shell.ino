@@ -189,21 +189,21 @@ static int CommandInfo(int argc, char **argv) {
 
   Serial.printf("IMEI:                 %s\n", imei.c_str());
   Serial.printf("Revision:             %s\n", revision.c_str());
-  Serial.printf("SIM Inserted:         %s\n", simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
-                                                                                         : "Unknown");
-  Serial.printf("SIM Init:             %s\n", simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
-                                                                             : simInitStatus == 2 ? "SMS Done"
-                                                                             : simInitStatus == 3 ? "CPIN Ready & SMS Done"
-                                                                                                  : "Unknown");
+  Serial.printf("SIM Inserted:         %d(%s)\n", simInserted, simInserted == 0 ? "No" : simInserted == 1 ? "Yes"
+                                                                                                          : "Unknown");
+  Serial.printf("SIM Init:             %d(%s)\n", simInitStatus, simInitStatus == 0 ? "Initial" : simInitStatus == 1 ? "CPIN Ready"
+                                                                                                : simInitStatus == 2 ? "SMS Done"
+                                                                                                : simInitStatus == 3 ? "CPIN Ready & SMS Done"
+                                                                                                                     : "Unknown");
   Serial.printf("SIM State:            %s\n", simState.c_str());
   Serial.printf("IMSI:                 %s\n", imsi.c_str());
   Serial.printf("ICCID:                %s\n", iccid.c_str());
   Serial.printf("Phone Number:         %s\n", phoneNumber.c_str());
-  Serial.printf("Search ACT:           %s\n", searchAct == 0 ? "eMTC" : searchAct == 1 ? "NB-IoT"
-                                                                      : searchAct == 2 ? "eMTC and NB-IoT"
-                                                                                       : "Unknown");
-  Serial.printf("Search ACT Sequence:  %s\n", searchActSeq == "0203" ? "eMTC -> NB-IoT" : searchActSeq == "0302" ? "NB-IoT -> eMTC"
-                                                                                                                 : "Unknown");
+  Serial.printf("Search ACT:           %d(%s)\n", searchAct, searchAct == 0 ? "eMTC" : searchAct == 1 ? "NB-IoT"
+                                                                                     : searchAct == 2 ? "eMTC and NB-IoT"
+                                                                                                      : "Unknown");
+  Serial.printf("Search ACT Sequence:  %s(%s)\n", searchActSeq.c_str(), searchActSeq == "0203" ? "eMTC -> NB-IoT" : searchActSeq == "0302" ? "NB-IoT -> eMTC"
+                                                                                                                                           : "Unknown");
   Serial.printf("Search Band - eMTC:   %s\n", emtcBand.c_str());
   Serial.printf("Search Band - NB-IoT: %s\n", nbiotBand.c_str());
 
@@ -224,11 +224,20 @@ static int CommandStatus(int argc, char **argv) {
   int psState;
   WioCellular.getPacketDomainState(&psState);
 
-  Serial.printf("RSSI:                %d\n", rssi);
-  Serial.printf("BER:                 %d\n", ber);
-  Serial.printf("Registration State:  %d\n", state);
-  Serial.printf("Operator:            %s, %d\n", oper.c_str(), act);
-  Serial.printf("Packet Domain State: %d\n", psState);
+  Serial.printf("RSSI:                %d(%s)\n", rssi, RssiCodeToStr(rssi));
+  Serial.printf("BER:                 %d(%s)\n", ber, BerCodeToStr(ber));
+  Serial.printf("Registration State:  %d(%s)\n", state,
+                state == 0   ? "Not Registered"
+                : state == 1 ? "Registered, Home Network"
+                : state == 2 ? "Searching"
+                : state == 3 ? "Denied"
+                : state == 4 ? "Unknown"
+                : state == 5 ? "Registered, Roaming"
+                             : "Unknown");
+  Serial.printf("Operator:            %s, %d(%s)\n", oper.c_str(), act, act == 7 ? "eMTC" : act == 9 ? "NB-IoT"
+                                                                                                     : "Unknown");
+  Serial.printf("Packet Domain State: %d(%s)\n", psState, psState == 0 ? "Detached" : psState == 1 ? "Attached"
+                                                                                                   : "Unknown");
 
   return 0;
 }
@@ -404,4 +413,42 @@ static int CommandHelp(int argc, char **argv) {
   }
 
   return 0;
+}
+
+static const char *RssiCodeToStr(int rssi) {
+  if (rssi == 0) {
+    return "~-113dBm";
+  } else if (rssi == 1) {
+    return "-111dBm";
+  } else if (rssi <= 30) {
+    const auto value = map(rssi, 2, 30, -109, -53);
+    return (String(value) + "dBm").c_str();
+  } else if (rssi == 31) {
+    return "-51~dBm";
+  } else {
+    return "Unknown";
+  }
+}
+
+static const char *BerCodeToStr(int ber) {
+  switch (ber) {
+    case 0:
+      return "0~0.2%";
+    case 1:
+      return "0.2~0.4%";
+    case 2:
+      return "0.4~0.8%";
+    case 3:
+      return "0.8~1.6%";
+    case 4:
+      return "1.6~3.2%";
+    case 5:
+      return "3.2~6.4%";
+    case 6:
+      return "6.4~12.8%";
+    case 7:
+      return "12.8~%";
+    default:
+      return "Unknown";
+  }
 }
