@@ -10,38 +10,41 @@
 #include <cstdio>
 #include <string>
 
-namespace internal
+namespace wiocellular
 {
-
-    template <class... Args>
-    static std::string stringFormat(const std::string &format, Args... args)
+    namespace internal
     {
-        const size_t len = snprintf(nullptr, 0, format.c_str(), args...);
 
-        char buf[len + 1];
-        snprintf(buf, len + 1, format.c_str(), args...);
-        return {buf, len};
-    }
-
-    template <typename T>
-    static bool stringStartsWith(const std::string &str, const T &prefix, std::string *rest = nullptr)
-    {
-        const auto prefixLen = sizeof(prefix) - 1;
-
-        if (str.compare(0, prefixLen, prefix) == 0)
+        template <class... Args>
+        static std::string stringFormat(const std::string &format, Args... args)
         {
-            if (rest)
+            const size_t len = snprintf(nullptr, 0, format.c_str(), args...);
+
+            char buf[len + 1];
+            snprintf(buf, len + 1, format.c_str(), args...);
+            return {buf, len};
+        }
+
+        template <typename T>
+        static bool stringStartsWith(const std::string &str, const T &prefix, std::string *rest = nullptr)
+        {
+            const auto prefixLen = sizeof(prefix) - 1;
+
+            if (str.compare(0, prefixLen, prefix) == 0)
             {
-                *rest = str.substr(prefixLen);
+                if (rest)
+                {
+                    *rest = str.substr(prefixLen);
+                }
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
-        else
-        {
-            return false;
-        }
-    }
 
-} // namespace internal
+    }
+}
 
 #endif // MISC_HPP

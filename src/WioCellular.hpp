@@ -28,13 +28,13 @@
 #define BG770AINTERFACE_MAIN_UARTE_IRQHANDLER (MAIN_UARTE_IRQHANDLER)
 
 #include <Arduino.h>
-#include "module/Bg770aInterface.hpp"
-#include "module/Bg770a.hpp"
+#include "module/bg770a/Bg770aInterface.hpp"
+#include "module/bg770a/Bg770a.hpp"
 #include "board/WioBg770a.hpp"
 
-using WioCellularModuleInterface = Bg770aInterface<Uart>;
-using WioCellularModule = Bg770a<WioCellularModuleInterface>;
-using WioCellularBoard = WioBg770a<WioCellularModule, WioCellularModuleInterface>;
+using WioCellularModuleInterface = wiocellular::module::bg770a::Bg770aInterface<Uart>;
+using WioCellularModule = wiocellular::module::bg770a::Bg770a<WioCellularModuleInterface>;
+using WioCellularBoard = wiocellular::board::WioBg770a<WioCellularModule, WioCellularModuleInterface>;
 
 extern WioCellularBoard WioCellular;
 
