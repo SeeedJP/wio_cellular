@@ -6,7 +6,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Libraries:
-//   http://librarymanager#Adafruit%20SleepyDog%20Library 1.6.5
+//   https://github.com/matsujirushi/Adafruit_SleepyDog master
 
 #include <Adafruit_TinyUSB.h>
 #include <Adafruit_SleepyDog.h>

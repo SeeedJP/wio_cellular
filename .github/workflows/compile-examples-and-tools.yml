@@ -40,8 +40,7 @@ jobs:
               version: 4.3.4
             - name: SdFat - Adafruit Fork
               version: 2.2.3
-            - name: Adafruit SleepyDog Library
-              version: 1.6.5
+            - source-url: https://github.com/matsujirushi/Adafruit_SleepyDog.git
             - source-url: https://github.com/matsujirushi/ntshell.git
             - name: Grove Ultrasonic Ranger
               version: 1.0.1
