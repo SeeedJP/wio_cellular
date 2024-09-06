@@ -12,6 +12,6 @@ var searchData=
   ['setsearchaccesstechnologysequence_303',['setSearchAccessTechnologySequence',['../classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aExtendedConfigurationCommands.html#a5f5a3c548bdf7092e47183ebd256e284',1,'wiocellular::module::bg770a::commands::Bg770aExtendedConfigurationCommands']]],
   ['setsearchfrequencyband_304',['setSearchFrequencyBand',['../classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aExtendedConfigurationCommands.html#ac97a8ee17edaf52a0200fb4c7b7e9fd1',1,'wiocellular::module::bg770a::commands::Bg770aExtendedConfigurationCommands']]],
   ['size_305',['size',['../classwiocellular_1_1module_1_1at__client_1_1AtParameterParser.html#a767cf58c747565c121d1a98b23d3fa39',1,'wiocellular::module::at_client::AtParameterParser']]],
-  ['sleep_306',['sleep',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#aa5d5843009789d985b02e69fb8099ab7',1,'wiocellular::module::bg770a::Bg770aInterface']]],
+  ['sleep_306',['sleep',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ae4b85ba28c9d7c7b925a4032ad0a69ef',1,'wiocellular::module::bg770a::Bg770aInterface']]],
   ['stop_307',['stop',['../classWioCellularTcpClient.html#ae202a55f40f130f9e8632205f51b0dc7',1,'WioCellularTcpClient']]]
 ];
