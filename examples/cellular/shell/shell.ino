@@ -224,8 +224,8 @@ static int CommandStatus(int argc, char **argv) {
   int psState;
   WioCellular.getPacketDomainState(&psState);
 
-  Serial.printf("RSSI:                %d(%s)\n", rssi, RssiCodeToStr(rssi));
-  Serial.printf("BER:                 %d(%s)\n", ber, BerCodeToStr(ber));
+  Serial.printf("RSSI:                %d(%s)\n", rssi, RssiCodeToStr(rssi).c_str());
+  Serial.printf("BER:                 %d(%s)\n", ber, BerCodeToStr(ber).c_str());
   Serial.printf("Registration State:  %d(%s)\n", state,
                 state == 0   ? "Not Registered"
                 : state == 1 ? "Registered, Home Network"
@@ -415,14 +415,14 @@ static int CommandHelp(int argc, char **argv) {
   return 0;
 }
 
-static const char *RssiCodeToStr(int rssi) {
+std::string RssiCodeToStr(int rssi) {
   if (rssi == 0) {
     return "~-113dBm";
   } else if (rssi == 1) {
     return "-111dBm";
   } else if (rssi <= 30) {
     const auto value = map(rssi, 2, 30, -109, -53);
-    return (String(value) + "dBm").c_str();
+    return std::to_string(value) + "dBm";
   } else if (rssi == 31) {
     return "-51~dBm";
   } else {
@@ -430,7 +430,7 @@ static const char *RssiCodeToStr(int rssi) {
   }
 }
 
-static const char *BerCodeToStr(int ber) {
+std::string BerCodeToStr(int ber) {
   switch (ber) {
     case 0:
       return "0~0.2%";
