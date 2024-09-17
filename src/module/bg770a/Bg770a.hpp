@@ -63,7 +63,7 @@ namespace wiocellular
                 explicit Bg770a(INTERFACE &interface) : at_client::AtClient<Bg770a<INTERFACE>>{},
                                                         Interface_{interface}
                 {
-                    at_client::AtClient<Bg770a<INTERFACE>>::registerUrcHandler([this](const std::string &response) -> bool
+                    at_client::AtClient<Bg770a<INTERFACE>>::registerUrcHandler([](const std::string &response) -> bool
                                                                                {
                                                                                     printf("URC> %s\n", response.c_str());
                                                                                     return false; });
