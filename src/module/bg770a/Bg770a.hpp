@@ -65,8 +65,8 @@ namespace wiocellular
                 {
                     at_client::AtClient<Bg770a<INTERFACE>>::registerUrcHandler([this](const std::string &response) -> bool
                                                                                {
-            printf("URC> %s\n", response.c_str());
-            return false; });
+                                                                                    printf("URC> %s\n", response.c_str());
+                                                                                    return false; });
                 }
 
                 /**
@@ -260,12 +260,12 @@ namespace wiocellular
                     bool appRdy = false;
                     const auto handler = at_client::AtClient<Bg770a<INTERFACE>>::registerUrcHandler([&appRdy](const std::string &response) -> bool
                                                                                                     {
-            if (response == "APP RDY")
-            {
-                appRdy = true;
-                return true;
-            }
-            return false; });
+                                                                                                        if (response == "APP RDY")
+                                                                                                        {
+                                                                                                            appRdy = true;
+                                                                                                            return true;
+                                                                                                        }
+                                                                                                        return false; });
 
                     if (!getInterface().isActive())
                     {

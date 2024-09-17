@@ -54,8 +54,8 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CIMI", [imsi](const std::string &response) -> bool
                             {
-                if (imsi) *imsi = response;
-                return true; },
+                                if (imsi) *imsi = response;
+                                return true; },
                             300);
                     }
 
@@ -86,15 +86,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CPIN?", [state](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CPIN: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (state) *state = parser[0];
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CPIN: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (state) *state = parser[0];
+                                    return true;
+                                }
+                                return false; },
                             5000);
                     }
 
@@ -120,15 +120,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QCCID", [iccid](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QCCID: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (iccid) *iccid = parser[0];
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QCCID: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (iccid) *iccid = parser[0];
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -156,15 +156,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QINISTAT", [status](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QINISTAT: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (status) *status = std::stoi(parser[0]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QINISTAT: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (status) *status = std::stoi(parser[0]);
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -196,16 +196,16 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QSIMSTAT?", [enable, status](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QSIMSTAT: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2) return false;
-                    if (enable) *enable = std::stoi(parser[0]);
-                    if (status) *status = std::stoi(parser[1]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QSIMSTAT: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 2) return false;
+                                    if (enable) *enable = std::stoi(parser[0]);
+                                    if (status) *status = std::stoi(parser[1]);
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
                 };

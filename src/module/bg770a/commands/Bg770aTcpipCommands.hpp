@@ -164,19 +164,19 @@ namespace wiocellular
                         {
                             static_cast<MODULE &>(*this).registerUrcHandler([this](const std::string &response) -> bool
                                                                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QIURC: \"recv\",", &responseParameter))
-                {
-                    const auto connectId = std::stoi(responseParameter);
-                    printf("---> Socket received (connectId=%d)\n", connectId);
-                    auto nofity = UrcSocketReceiveNofity_.find(connectId);
-                    if (nofity != UrcSocketReceiveNofity_.end())
-                    {
-                        nofity->second = true;
-                    }
-                    return true;
-                }
-                return false; });
+                                                                                std::string responseParameter;
+                                                                                if (internal::stringStartsWith(response, "+QIURC: \"recv\",", &responseParameter))
+                                                                                {
+                                                                                    const auto connectId = std::stoi(responseParameter);
+                                                                                    printf("---> Socket received (connectId=%d)\n", connectId);
+                                                                                    auto nofity = UrcSocketReceiveNofity_.find(connectId);
+                                                                                    if (nofity != UrcSocketReceiveNofity_.end())
+                                                                                    {
+                                                                                        nofity->second = true;
+                                                                                    }
+                                                                                    return true;
+                                                                                }
+                                                                                return false; });
 
                             UrcSocketReceiveAttached_ = true;
                         }
@@ -186,14 +186,14 @@ namespace wiocellular
                         int internalResult;
                         const auto handler = static_cast<MODULE &>(*this).registerUrcHandler([connectId, &opened, &internalResult](const std::string &response) -> bool
                                                                                              {
-            const std::string prefix = internal::stringFormat("+QIOPEN: %d,", connectId);
-            if (response.starts_with(prefix))
-            {
-                opened = true;
-                internalResult = std::stoi(response.substr(prefix.size()));
-                return true;
-            }
-            return false; });
+                                                                                                const std::string prefix = internal::stringFormat("+QIOPEN: %d,", connectId);
+                                                                                                if (response.starts_with(prefix))
+                                                                                                {
+                                                                                                    opened = true;
+                                                                                                    internalResult = std::stoi(response.substr(prefix.size()));
+                                                                                                    return true;
+                                                                                                }
+                                                                                                return false; });
 
                         if ((result = static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QIOPEN=%d,%d,\"%s\",\"%s\",%d,%d", cid, connectId, serviceType.c_str(), ipAddress.c_str(), remotePort, localPort), 300)) == WioCellularResult::Ok)
                         {
@@ -271,15 +271,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             internal::stringFormat("AT+QISTATE=0,%d", cid), [statuses](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QISTATE: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 10) return false;
-                    if (statuses) statuses->push_back({std::stoi(parser[0]), parser[1], parser[2], std::stoi(parser[3]), std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6]), std::stoi(parser[7]), std::stoi(parser[8]), parser[9]});
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QISTATE: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 10) return false;
+                                    if (statuses) statuses->push_back({std::stoi(parser[0]), parser[1], parser[2], std::stoi(parser[3]), std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6]), std::stoi(parser[7]), std::stoi(parser[8]), parser[9]});
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -309,13 +309,13 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).sendCommand(
                             internal::stringFormat("AT+QISEND=%d,%d", connectId, dataSize), [this, data, dataSize](const std::string &response) -> bool
                             {
-                if (response == "> ")
-                {
-                    static_cast<MODULE &>(*this).writeBinary(data, dataSize);
-                    static_cast<MODULE &>(*this).readBinaryDiscard(dataSize, COMMAND_ECHO_TIMEOUT);
-                    return true;
-                }
-                return false; },
+                                if (response == "> ")
+                                {
+                                    static_cast<MODULE &>(*this).writeBinary(data, dataSize);
+                                    static_cast<MODULE &>(*this).readBinaryDiscard(dataSize, COMMAND_ECHO_TIMEOUT);
+                                    return true;
+                                }
+                                return false; },
                             120000);
                     }
 
@@ -357,15 +357,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             internal::stringFormat("AT+QIRD=%d,0", connectId), [availableSize](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() < 3) return false;
-                    if (availableSize) *availableSize = std::stoi(parser[2]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() < 3) return false;
+                                    if (availableSize) *availableSize = std::stoi(parser[2]);
+                                    return true;
+                                }
+                                return false; },
                             120000);
                     }
 
@@ -402,24 +402,24 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             internal::stringFormat("AT+QIRD=%d,%d", connectId, dataSize), [this, data, dataSize, readDataSize](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() < 1) return false;
-                    const size_t actualDataSize = std::stoi(parser[0]);
-                    assert(actualDataSize <= dataSize);
-                    if (actualDataSize >= 1)
-                    {
-                        if (!static_cast<MODULE &>(*this).readBinary(data, actualDataSize, 120000))
-                        {
-                            return false;
-                        }
-                    }
-                    if (readDataSize) *readDataSize = actualDataSize;
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QIRD: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() < 1) return false;
+                                    const size_t actualDataSize = std::stoi(parser[0]);
+                                    assert(actualDataSize <= dataSize);
+                                    if (actualDataSize >= 1)
+                                    {
+                                        if (!static_cast<MODULE &>(*this).readBinary(data, actualDataSize, 120000))
+                                        {
+                                            return false;
+                                        }
+                                    }
+                                    if (readDataSize) *readDataSize = actualDataSize;
+                                    return true;
+                                }
+                                return false; },
                             120000);
                     }
 

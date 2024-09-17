@@ -53,8 +53,8 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+GSN", [imei](const std::string &response) -> bool
                             {
-                if (imei) *imei = response;
-                return true; },
+                                if (imei) *imei = response;
+                                return true; },
                             300);
                     }
 
@@ -78,12 +78,12 @@ namespace wiocellular
                         bool appRdy = false;
                         const auto handler = static_cast<MODULE &>(*this).registerUrcHandler([&appRdy](const std::string &response) -> bool
                                                                                              {
-            if (response == "APP RDY")
-            {
-                appRdy = true;
-                return true;
-            }
-            return false; });
+                                                                                                if (response == "APP RDY")
+                                                                                                {
+                                                                                                    appRdy = true;
+                                                                                                    return true;
+                                                                                                }
+                                                                                                return false; });
 
                         if ((result = static_cast<MODULE &>(*this).executeCommand("AT&F1", 300)) == WioCellularResult::Ok)
                         {
@@ -193,8 +193,8 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QGMR", [revision](const std::string &response) -> bool
                             {
-                if (revision) *revision = response;
-                return true; },
+                                if (revision) *revision = response;
+                                return true; },
                             300);
                     }
                 };

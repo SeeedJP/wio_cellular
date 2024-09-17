@@ -135,15 +135,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CGATT?", [state](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CGATT: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (state) *state = std::stoi(parser[0]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CGATT: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (state) *state = std::stoi(parser[0]);
+                                    return true;
+                                }
+                                return false; },
                             140000);
                     }
 
@@ -184,15 +184,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CGDCONT?", [contexts](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CGDCONT: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 7) return false;
-                    if (contexts) contexts->push_back({std::stoi(parser[0]), parser[1], parser[2], parser[3], std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6])});
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CGDCONT: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 7) return false;
+                                    if (contexts) contexts->push_back({std::stoi(parser[0]), parser[1], parser[2], parser[3], std::stoi(parser[4]), std::stoi(parser[5]), std::stoi(parser[6])});
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -216,15 +216,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CGACT?", [statuses](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CGACT: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2) return false;
-                    if (statuses) statuses->push_back({std::stoi(parser[0]), std::stoi(parser[1])});
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CGACT: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 2) return false;
+                                    if (statuses) statuses->push_back({std::stoi(parser[0]), std::stoi(parser[1])});
+                                    return true;
+                                }
+                                return false; },
                             150000);
                     }
 
@@ -278,15 +278,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CEREG?", [state](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CEREG: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() < 2) return false;
-                    if (state) *state = std::stoi(parser[1]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CEREG: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() < 2) return false;
+                                    if (state) *state = std::stoi(parser[1]);
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
                 };

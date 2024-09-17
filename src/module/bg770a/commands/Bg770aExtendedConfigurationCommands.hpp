@@ -54,15 +54,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QCFG=\"nwscanseq\"", [scanseq](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QCFG: \"nwscanseq\",", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (scanseq) *scanseq = parser[0];
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QCFG: \"nwscanseq\",", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (scanseq) *scanseq = parser[0];
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -150,17 +150,17 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QCFG=\"band\"", [gsmBandValStr, emtcBandValStr, nbiotBandValStr](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QCFG: \"band\",", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 3) return false;
-                    if (gsmBandValStr) *gsmBandValStr = parser[0];
-                    if (emtcBandValStr) *emtcBandValStr = parser[1];
-                    if (nbiotBandValStr) *nbiotBandValStr = parser[2];
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QCFG: \"band\",", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 3) return false;
+                                    if (gsmBandValStr) *gsmBandValStr = parser[0];
+                                    if (emtcBandValStr) *emtcBandValStr = parser[1];
+                                    if (nbiotBandValStr) *nbiotBandValStr = parser[2];
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -244,15 +244,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+QCFG=\"iotopmode\"", [mode](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+QCFG: \"iotopmode\",", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 1) return false;
-                    if (mode) *mode = std::stoi(parser[0]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+QCFG: \"iotopmode\",", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (mode) *mode = std::stoi(parser[0]);
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 

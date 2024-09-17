@@ -73,22 +73,22 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+COPS?", [mode, format, oper, act](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+COPS: ", &responseParameter))
-                {
-                    if (mode) *mode = -1;
-                    if (format) *format = -1;
-                    if (oper) oper->clear();
-                    if (act) *act = -1;
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+COPS: ", &responseParameter))
+                                {
+                                    if (mode) *mode = -1;
+                                    if (format) *format = -1;
+                                    if (oper) oper->clear();
+                                    if (act) *act = -1;
 
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() >= 1 && mode) *mode = std::stoi(parser[0]);
-                    if (parser.size() >= 2 && format) *format = std::stoi(parser[1]);
-                    if (parser.size() >= 3 && oper) *oper = parser[2];
-                    if (parser.size() >= 4 && act) *act = std::stoi(parser[3]);
-                    return true;
-                }
-                return false; },
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() >= 1 && mode) *mode = std::stoi(parser[0]);
+                                    if (parser.size() >= 2 && format) *format = std::stoi(parser[1]);
+                                    if (parser.size() >= 3 && oper) *oper = parser[2];
+                                    if (parser.size() >= 4 && act) *act = std::stoi(parser[3]);
+                                    return true;
+                                }
+                                return false; },
                             180000);
                     }
 
@@ -129,16 +129,16 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CSQ", [rssi, ber](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CSQ: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 2) return false;
-                    if (rssi) *rssi = std::stoi(parser[0]);
-                    if (ber) *ber = std::stoi(parser[1]);
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CSQ: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 2) return false;
+                                    if (rssi) *rssi = std::stoi(parser[0]);
+                                    if (ber) *ber = std::stoi(parser[1]);
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
 
@@ -213,15 +213,15 @@ namespace wiocellular
                         return static_cast<MODULE &>(*this).queryCommand(
                             "AT+CNUM", [phoneNumber](const std::string &response) -> bool
                             {
-                std::string responseParameter;
-                if (internal::stringStartsWith(response, "+CNUM: ", &responseParameter))
-                {
-                    at_client::AtParameterParser parser{responseParameter};
-                    if (parser.size() != 3) return false;
-                    if (phoneNumber) *phoneNumber = parser[1];
-                    return true;
-                }
-                return false; },
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CNUM: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 3) return false;
+                                    if (phoneNumber) *phoneNumber = parser[1];
+                                    return true;
+                                }
+                                return false; },
                             300);
                     }
                 };
