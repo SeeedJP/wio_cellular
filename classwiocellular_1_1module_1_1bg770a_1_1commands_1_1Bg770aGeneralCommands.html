@@ -86,6 +86,9 @@ $(function() {
 <tr class="memitem:a8be8d2f189b2b318cddf4d23d8b1c967"><td class="memItemLeft" align="right" valign="top"><a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a8be8d2f189b2b318cddf4d23d8b1c967">factoryDefault</a> (int timeout)</td></tr>
 <tr class="memdesc:a8be8d2f189b2b318cddf4d23d8b1c967"><td class="mdescLeft">&#160;</td><td class="mdescRight">全ての設定をリセット  <a href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a8be8d2f189b2b318cddf4d23d8b1c967">[詳解]</a><br /></td></tr>
 <tr class="separator:a8be8d2f189b2b318cddf4d23d8b1c967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b42fd51c7dbf973bc4fce0b4670159f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a6b42fd51c7dbf973bc4fce0b4670159f">getPhoneFunctionality</a> (int *fun)</td></tr>
+<tr class="memdesc:a6b42fd51c7dbf973bc4fce0b4670159f"><td class="mdescLeft">&#160;</td><td class="mdescRight">電話の機能レベルを取得  <a href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a6b42fd51c7dbf973bc4fce0b4670159f">[詳解]</a><br /></td></tr>
+<tr class="separator:a6b42fd51c7dbf973bc4fce0b4670159f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88bf9eb20c5d45962699a9c0034cdaec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a88bf9eb20c5d45962699a9c0034cdaec">setPhoneFunctionality</a> (int fun)</td></tr>
 <tr class="memdesc:a88bf9eb20c5d45962699a9c0034cdaec"><td class="mdescLeft">&#160;</td><td class="mdescRight">電話の機能レベルを設定  <a href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html#a88bf9eb20c5d45962699a9c0034cdaec">[詳解]</a><br /></td></tr>
 <tr class="separator:a88bf9eb20c5d45962699a9c0034cdaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,6 +233,54 @@ template&lt;typename MODULE &gt; </div>
 <blockquote class="doxtable">
 <p>BG96 AT Commands Manual <br  />
 2.26. AT+QGMR Request Modem and Application Firmware Versions </p>
+</blockquote>
+
+</div>
+</div>
+<a id="a6b42fd51c7dbf973bc4fce0b4670159f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b42fd51c7dbf973bc4fce0b4670159f">&#9670;&nbsp;</a></span>getPhoneFunctionality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4">WioCellularResult</a> <a class="el" href="classwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aGeneralCommands.html">wiocellular::module::bg770a::commands::Bg770aGeneralCommands</a>&lt; MODULE &gt;::getPhoneFunctionality </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>fun</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>電話の機能レベルを取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">fun</td><td>機能レベル。nullptrを指定すると値を代入しません。 <ul>
+<li>-1: 無し </li>
+<li>1: 全機能（RFフロントエンドとSIMカードを有効） </li>
+<li>4: SIMカードのみ有効（RFフロントエンドは無効） </li>
+<li>0: 最小機能 </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>実行結果。</dd></dl>
+<p>電話の機能レベルを取得します。</p>
+<blockquote class="doxtable">
+<p>BG77xA-GL&amp;BG95xA-GL AT Commands Manual <br  />
+2.21. AT+CFUN Set UE Functionality </p>
 </blockquote>
 
 </div>
