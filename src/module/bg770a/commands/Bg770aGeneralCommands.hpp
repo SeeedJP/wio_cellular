@@ -115,6 +115,42 @@ namespace wiocellular
 
                     /**
                      * @~Japanese
+                     * @brief 電話の機能レベルを取得
+                     *
+                     * @param [out] fun 機能レベル。nullptrを指定すると値を代入しません。
+                     *   @arg -1: 無し
+                     *   @arg 1: 全機能（RFフロントエンドとSIMカードを有効）
+                     *   @arg 4: SIMカードのみ有効（RFフロントエンドは無効）
+                     *   @arg 0: 最小機能
+                     * @return 実行結果。
+                     *
+                     * 電話の機能レベルを取得します。
+                     *
+                     * > BG77xA-GL&BG95xA-GL AT Commands Manual @n
+                     * > 2.21. AT+CFUN Set UE Functionality
+                     */
+                    WioCellularResult getPhoneFunctionality(int *fun)
+                    {
+                        if (fun)
+                            *fun = -1;
+
+                        return static_cast<MODULE &>(*this).queryCommand(
+                            "AT+CFUN?", [fun](const std::string &response) -> bool
+                            {
+                                std::string responseParameter;
+                                if (internal::stringStartsWith(response, "+CFUN: ", &responseParameter))
+                                {
+                                    at_client::AtParameterParser parser{responseParameter};
+                                    if (parser.size() != 1) return false;
+                                    if (fun) *fun = std::stoi(parser[0]);
+                                    return true;
+                                }
+                                return false; },
+                            300);
+                    }
+
+                    /**
+                     * @~Japanese
                      * @brief 電話の機能レベルを設定
                      *
                      * @param [in] fun 機能レベル。
