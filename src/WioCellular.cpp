@@ -28,4 +28,9 @@ void BG770AINTERFACE_VDD_EXT_IRQHANDLER(void)
 
 WioCellularBoard WioCellular{WioCellularModuleInterfaceInstance};
 
+////////////////////////////////////////////////////////////////////////////////
+// WioNetwork
+
+WioCellularNetwork WioNetwork;
+
 #endif // ARDUINO_WIO_BG770A

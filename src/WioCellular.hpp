@@ -43,6 +43,12 @@ using WioCellularBoard = wiocellular::board::WioBg770a<WioCellularModule, WioCel
 
 extern WioCellularBoard WioCellular;
 
+#include "network/Bg770aNetwork.hpp"
+
+using WioCellularNetwork = wiocellular::network::Bg770aNetwork;
+
+extern WioCellularNetwork WioNetwork;
+
 #endif
 
 #include "client/WioCellularTcpClient.hpp"
