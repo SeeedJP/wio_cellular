@@ -45,7 +45,7 @@ namespace wiocellular
                 friend class at_client::AtClient<Bg770a<INTERFACE>>;
 
             private:
-                static constexpr int COMMAND_ECHO_TIMEOUT = 10000;
+                static constexpr int COMMAND_ECHO_TIMEOUT = 60000;
 
             private:
                 INTERFACE &Interface_;

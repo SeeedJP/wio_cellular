@@ -218,7 +218,7 @@ namespace wiocellular
                         assert(!emtcBandValStr.empty());
                         assert(!nbiotBandValStr.empty());
 
-                        return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QCFG=\"band\",%s,%s,%s", gsmBandValStr.c_str(), emtcBandValStr.c_str(), nbiotBandValStr.c_str()), 4500);
+                        return static_cast<MODULE &>(*this).executeCommand(internal::stringFormat("AT+QCFG=\"band\",%s,%s,%s", gsmBandValStr.c_str(), emtcBandValStr.c_str(), nbiotBandValStr.c_str()), 20000);
                     }
 
                     /**
