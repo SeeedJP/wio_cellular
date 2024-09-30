@@ -7,6 +7,7 @@
 #ifndef BG770ATCPIPCOMMANDS_HPP
 #define BG770ATCPIPCOMMANDS_HPP
 
+#include <bitset>
 #include <map>
 #include <vector>
 #include "module/at_client/AtParameterParser.hpp"
@@ -265,6 +266,8 @@ namespace wiocellular
                      */
                     WioCellularResult getSocketStatus(int cid, std::vector<SocketStatus> *statuses)
                     {
+                        assert(1 <= cid && cid <= 5);
+
                         if (statuses)
                             statuses->clear();
 
@@ -281,6 +284,58 @@ namespace wiocellular
                                 }
                                 return false; },
                             300);
+                    }
+
+                    /**
+                     * @~Japanese
+                     * @brief 未使用の接続IDを取得
+                     *
+                     * @param [in] cid PDPコンテキストID。
+                     * @param [out] unusedConnectId 未使用の接続ID。未使用が無い場合は-1を返します。
+                     * @return 実行結果。
+                     *
+                     * 未使用の接続IDを取得します。
+                     *
+                     * > BG770A-GL&BG95xA-GL TCP/IP Application Note @n
+                     * > 2.3.7. AT+QISTATE Query Socket Service Status
+                     */
+                    WioCellularResult getSocketUnusedConnectId(int cid, int *unusedConnectId)
+                    {
+                        assert(1 <= cid && cid <= 5);
+                        assert(unusedConnectId);
+
+                        *unusedConnectId = -1;
+
+                        WioCellularResult result;
+
+                        std::bitset<12> usedConnectIds;
+                        if ((result = static_cast<MODULE &>(*this).queryCommand(
+                                 internal::stringFormat("AT+QISTATE=0,%d", cid), [&usedConnectIds](const std::string &response) -> bool
+                                 {
+                                    std::string responseParameter;
+                                    if (internal::stringStartsWith(response, "+QISTATE: ", &responseParameter))
+                                    {
+                                        at_client::AtParameterParser parser{responseParameter};
+                                        if (parser.size() != 10) return false;
+                                        usedConnectIds[std::stoi(parser[0])] = true;
+                                        return true;
+                                    }
+                                    return false; },
+                                 300)) != WioCellularResult::Ok)
+                        {
+                            return result;
+                        }
+
+                        for (size_t i = 0; i < usedConnectIds.size(); ++i)
+                        {
+                            if (!usedConnectIds.test(i))
+                            {
+                                *unusedConnectId = i;
+                                break;
+                            }
+                        }
+
+                        return WioCellularResult::Ok;
                     }
 
                     /**
@@ -428,7 +483,7 @@ namespace wiocellular
                      * @brief ソケットから受信
                      *
                      * @param [in] connectId 接続ID。
-                     * @param [in,out] data データ。nullptrを指定すると読み捨てます
+                     * @param [in,out] data データ。nullptrを指定すると読み捨てます。
                      * @param [in] dataSize データサイズ。0を指定すると受信しません。
                      * @param [out] readDataSize 受信したデータサイズ。nullptrを指定すると値を代入しません。
                      * @param [in] timeout タイムアウト時間[ミリ秒]。
