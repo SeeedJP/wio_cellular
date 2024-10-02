@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['receive_5fmax_5flength_337',['RECEIVE_MAX_LENGTH',['../classWioCellularTcpClient.html#ae6650ca701c4e0724e200653449d8ef4',1,'WioCellularTcpClient']]],
-  ['receivebuffer_5f_338',['ReceiveBuffer_',['../classWioCellularTcpClient.html#a4df6af619e3d81e73d9fa4f9903f650c',1,'WioCellularTcpClient']]],
-  ['receivequeue_5f_339',['ReceiveQueue_',['../classWioCellularTcpClient.html#a85214278d5fe08b230d05a4dfc3a46da',1,'WioCellularTcpClient']]],
-  ['remoteport_340',['remotePort',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#a30f1ff096e4fdd861c388b20116734d4',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus']]]
+  ['nbiotband_375',['nbiotBand',['../classwiocellular_1_1network_1_1Bg770aNetwork.html#afab898ff42c65fc93ac50f37861a0fa8',1,'wiocellular::network::Bg770aNetwork']]],
+  ['nttdocomo_5fltem_5fband_376',['NTTDOCOMO_LTEM_BAND',['../classwiocellular_1_1network_1_1Bg770aNetwork.html#a037161df1d04403d7170a7d0d3ebcd11',1,'wiocellular::network::Bg770aNetwork']]]
 ];

@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wio Cellular: wiocellular::network::Bg770aNetwork クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Wio Cellular
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacewiocellular.html">wiocellular</a></li><li class="navelem"><a class="el" href="namespacewiocellular_1_1network.html">network</a></li><li class="navelem"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html">Bg770aNetwork</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="#pub-static-attribs">静的公開変数類</a> &#124;
+<a href="classwiocellular_1_1network_1_1Bg770aNetwork-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">wiocellular::network::Bg770aNetwork クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>[Experimental] ネットワーク支援クラス  
+ <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;Bg770aNetwork.hpp&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a96d9ff055576415f1b70cf59725cc493"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493">SearchAccessTechnology</a> { <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493a1b095adeb708a4c686d2992307efaefa">LTEM</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493a9ce13d0c0fd3b1dd0bf831687f613128">NBIOT</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493a911c31c20f4a149af4646aadda00cb97">LTEM_NBIOT</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493a79a4c4b68f100ef567e6842c230a5f91">NBIOT_LTEM</a>
+ }</td></tr>
+<tr class="memdesc:a96d9ff055576415f1b70cf59725cc493"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワーク探索のアクセステクノロジーと順序  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493">[詳解]</a><br /></td></tr>
+<tr class="separator:a96d9ff055576415f1b70cf59725cc493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409c7326f808aa0d5a675fff75e77cf2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">NetworkState</a> { <br />
+&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2ab71a1d0ef10522cee233ea8b5f78901f">NotSearching</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2a843627586c62e389041a4d8800143974">Searching</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2a2ec0d16e4ca169baedb9b2d50ec5c6d7">Connected</a>
+, <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2a58d036b9b7f0e7eb38cfb90f1cc70a73">Denied</a>
+, <br />
+&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2a88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a409c7326f808aa0d5a675fff75e77cf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワーク状態  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">[詳解]</a><br /></td></tr>
+<tr class="separator:a409c7326f808aa0d5a675fff75e77cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:aa50b472fe536673ec620d0aebd87bcfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#aa50b472fe536673ec620d0aebd87bcfc">Bg770aNetwork</a> (void)</td></tr>
+<tr class="memdesc:aa50b472fe536673ec620d0aebd87bcfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#aa50b472fe536673ec620d0aebd87bcfc">[詳解]</a><br /></td></tr>
+<tr class="separator:aa50b472fe536673ec620d0aebd87bcfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50642e8dca6c28aef28844dade9e97ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a50642e8dca6c28aef28844dade9e97ae">begin</a> (void)</td></tr>
+<tr class="memdesc:a50642e8dca6c28aef28844dade9e97ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワークを開始  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a50642e8dca6c28aef28844dade9e97ae">[詳解]</a><br /></td></tr>
+<tr class="separator:a50642e8dca6c28aef28844dade9e97ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae5e9b936a9807bd0421d37a39e58e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">NetworkState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a1ae5e9b936a9807bd0421d37a39e58e6">getNetworkState</a> (void)</td></tr>
+<tr class="memdesc:a1ae5e9b936a9807bd0421d37a39e58e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワーク状態を取得  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a1ae5e9b936a9807bd0421d37a39e58e6">[詳解]</a><br /></td></tr>
+<tr class="separator:a1ae5e9b936a9807bd0421d37a39e58e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c15514148b3f94db8f9f4f986df46f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a81c15514148b3f94db8f9f4f986df46f">canCommunicate</a> (void)</td></tr>
+<tr class="memdesc:a81c15514148b3f94db8f9f4f986df46f"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信可否を取得  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a81c15514148b3f94db8f9f4f986df46f">[詳解]</a><br /></td></tr>
+<tr class="separator:a81c15514148b3f94db8f9f4f986df46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:aa96ef148a04a495dec06789b49d5366b"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#aa96ef148a04a495dec06789b49d5366b">networkStateToString</a> (<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">NetworkState</a> state)</td></tr>
+<tr class="memdesc:aa96ef148a04a495dec06789b49d5366b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワーク状態を文字列に変換  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#aa96ef148a04a495dec06789b49d5366b">[詳解]</a><br /></td></tr>
+<tr class="separator:aa96ef148a04a495dec06789b49d5366b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a6189b62133bbd2ca9730ef20a7da1a50"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const char *file, int line)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a6189b62133bbd2ca9730ef20a7da1a50">abortHandler</a></td></tr>
+<tr class="memdesc:a6189b62133bbd2ca9730ef20a7da1a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">異常終了ハンドラ  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a6189b62133bbd2ca9730ef20a7da1a50">[詳解]</a><br /></td></tr>
+<tr class="separator:a6189b62133bbd2ca9730ef20a7da1a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a71c819386d4d42452fe24749c96d6"><td class="memItemLeft" >struct {</td></tr>
+<tr class="memitem:a22a045ab4aa2e0b108b40e3734feef43"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493">SearchAccessTechnology</a>&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a1f29aaa3fc9cc5d652ca83ad047187ca">searchAccessTechnology</a></td></tr>
+<tr class="memdesc:a22a045ab4aa2e0b108b40e3734feef43"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワーク探索のアクセステクノロジーと順序  <a href="structwiocellular_1_1network_1_1Bg770aNetwork_1_1_0d0.html#a22a045ab4aa2e0b108b40e3734feef43">[詳解]</a><br /></td></tr>
+<tr class="separator:a22a045ab4aa2e0b108b40e3734feef43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1733506c0a334d05413068e2da55eb9a"><td class="memItemLeft" >&#160;&#160;&#160;std::string&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a9a91b63de723f656abd5633d233e49ce">ltemBand</a></td></tr>
+<tr class="memdesc:a1733506c0a334d05413068e2da55eb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">LTE-M周波数バンド  <a href="structwiocellular_1_1network_1_1Bg770aNetwork_1_1_0d0.html#a1733506c0a334d05413068e2da55eb9a">[詳解]</a><br /></td></tr>
+<tr class="separator:a1733506c0a334d05413068e2da55eb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15b629abcbfa1443d90971531447ed5"><td class="memItemLeft" >&#160;&#160;&#160;std::string&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#afab898ff42c65fc93ac50f37861a0fa8">nbiotBand</a></td></tr>
+<tr class="memdesc:ac15b629abcbfa1443d90971531447ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">NB-IoT周波数バンド  <a href="structwiocellular_1_1network_1_1Bg770aNetwork_1_1_0d0.html#ac15b629abcbfa1443d90971531447ed5">[詳解]</a><br /></td></tr>
+<tr class="separator:ac15b629abcbfa1443d90971531447ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e697ddf8ffd71fdb83172e0b5b3a014"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#acefbaff726a1f7e669fb64e3a0796a91">pdpContextId</a></td></tr>
+<tr class="memdesc:a8e697ddf8ffd71fdb83172e0b5b3a014"><td class="mdescLeft">&#160;</td><td class="mdescRight">PDPコンテキストID  <a href="structwiocellular_1_1network_1_1Bg770aNetwork_1_1_0d0.html#a8e697ddf8ffd71fdb83172e0b5b3a014">[詳解]</a><br /></td></tr>
+<tr class="separator:a8e697ddf8ffd71fdb83172e0b5b3a014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a685930698c59fa5314015a73ac2042f5"><td class="memItemLeft" >&#160;&#160;&#160;std::string&#160;&#160;&#160;<a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#ad47761014b3e49d8b7d2f68aeff20c90">apn</a></td></tr>
+<tr class="memdesc:a685930698c59fa5314015a73ac2042f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">APN(access point name)  <a href="structwiocellular_1_1network_1_1Bg770aNetwork_1_1_0d0.html#a685930698c59fa5314015a73ac2042f5">[詳解]</a><br /></td></tr>
+<tr class="separator:a685930698c59fa5314015a73ac2042f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a71c819386d4d42452fe24749c96d6"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a10a71c819386d4d42452fe24749c96d6">config</a></td></tr>
+<tr class="memdesc:a10a71c819386d4d42452fe24749c96d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ネットワークの設定  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a10a71c819386d4d42452fe24749c96d6">[詳解]</a><br /></td></tr>
+<tr class="separator:a10a71c819386d4d42452fe24749c96d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静的公開変数類</h2></td></tr>
+<tr class="memitem:a037161df1d04403d7170a7d0d3ebcd11"><td class="memItemLeft" align="right" valign="top">static constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a037161df1d04403d7170a7d0d3ebcd11">NTTDOCOMO_LTEM_BAND</a> [] = &quot;0xa040005&quot;</td></tr>
+<tr class="memdesc:a037161df1d04403d7170a7d0d3ebcd11"><td class="mdescLeft">&#160;</td><td class="mdescRight">NTTドコモのLTE-M周波数バンド  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a037161df1d04403d7170a7d0d3ebcd11">[詳解]</a><br /></td></tr>
+<tr class="separator:a037161df1d04403d7170a7d0d3ebcd11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f26e081f8f99aa02d2f85423216dc71"><td class="memItemLeft" align="right" valign="top">static constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a6f26e081f8f99aa02d2f85423216dc71">KDDI_LTEM_BAND</a> [] = &quot;0xa020005&quot;</td></tr>
+<tr class="memdesc:a6f26e081f8f99aa02d2f85423216dc71"><td class="mdescLeft">&#160;</td><td class="mdescRight">KDDIのLTE-M周波数バンド  <a href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a6f26e081f8f99aa02d2f85423216dc71">[詳解]</a><br /></td></tr>
+<tr class="separator:a6f26e081f8f99aa02d2f85423216dc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>[Experimental] ネットワーク支援クラス </p>
+<p>ネットワークの操作を支援するクラスです。 </p>
+</div><h2 class="groupheader">列挙型メンバ詳解</h2>
+<a id="a409c7326f808aa0d5a675fff75e77cf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409c7326f808aa0d5a675fff75e77cf2">&#9670;&nbsp;</a></span>NetworkState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">wiocellular::network::Bg770aNetwork::NetworkState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ネットワーク状態 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a409c7326f808aa0d5a675fff75e77cf2ab71a1d0ef10522cee233ea8b5f78901f"></a>NotSearching&#160;</td><td class="fielddoc"><p>未検索 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a409c7326f808aa0d5a675fff75e77cf2a843627586c62e389041a4d8800143974"></a>Searching&#160;</td><td class="fielddoc"><p>検索中 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a409c7326f808aa0d5a675fff75e77cf2a2ec0d16e4ca169baedb9b2d50ec5c6d7"></a>Connected&#160;</td><td class="fielddoc"><p>接続済み </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a409c7326f808aa0d5a675fff75e77cf2a58d036b9b7f0e7eb38cfb90f1cc70a73"></a>Denied&#160;</td><td class="fielddoc"><p>拒否 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a409c7326f808aa0d5a675fff75e77cf2a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>不明 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a96d9ff055576415f1b70cf59725cc493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d9ff055576415f1b70cf59725cc493">&#9670;&nbsp;</a></span>SearchAccessTechnology</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493">wiocellular::network::Bg770aNetwork::SearchAccessTechnology</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ネットワーク探索のアクセステクノロジーと順序 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a96d9ff055576415f1b70cf59725cc493a1b095adeb708a4c686d2992307efaefa"></a>LTEM&#160;</td><td class="fielddoc"><p>LTE-M </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a96d9ff055576415f1b70cf59725cc493a9ce13d0c0fd3b1dd0bf831687f613128"></a>NBIOT&#160;</td><td class="fielddoc"><p>NB-IoT </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a96d9ff055576415f1b70cf59725cc493a911c31c20f4a149af4646aadda00cb97"></a>LTEM_NBIOT&#160;</td><td class="fielddoc"><p>LTE-M-&gt;NB-IoT </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a96d9ff055576415f1b70cf59725cc493a79a4c4b68f100ef567e6842c230a5f91"></a>NBIOT_LTEM&#160;</td><td class="fielddoc"><p>NB-IoT-&gt;LTE-M </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="aa50b472fe536673ec620d0aebd87bcfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa50b472fe536673ec620d0aebd87bcfc">&#9670;&nbsp;</a></span>Bg770aNetwork()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">wiocellular::network::Bg770aNetwork::Bg770aNetwork </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<p>コンストラクタ。 </p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a50642e8dca6c28aef28844dade9e97ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50642e8dca6c28aef28844dade9e97ae">&#9670;&nbsp;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wiocellular::network::Bg770aNetwork::begin </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ネットワークを開始 </p>
+<p>ネットワークを初期化します。 </p>
+
+</div>
+</div>
+<a id="a81c15514148b3f94db8f9f4f986df46f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c15514148b3f94db8f9f4f986df46f">&#9670;&nbsp;</a></span>canCommunicate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool wiocellular::network::Bg770aNetwork::canCommunicate </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>通信可否を取得 </p>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>通信可能 </td></tr>
+    <tr><td class="paramname">false</td><td>通信不可能</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>通信可否を取得します。 </p>
+
+</div>
+</div>
+<a id="a1ae5e9b936a9807bd0421d37a39e58e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae5e9b936a9807bd0421d37a39e58e6">&#9670;&nbsp;</a></span>getNetworkState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">NetworkState</a> wiocellular::network::Bg770aNetwork::getNetworkState </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ネットワーク状態を取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>ネットワーク状態。</dd></dl>
+<p>ネットワーク状態を取得します。 </p>
+
+</div>
+</div>
+<a id="aa96ef148a04a495dec06789b49d5366b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa96ef148a04a495dec06789b49d5366b">&#9670;&nbsp;</a></span>networkStateToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr const char* wiocellular::network::Bg770aNetwork::networkStateToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a409c7326f808aa0d5a675fff75e77cf2">NetworkState</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ネットワーク状態を文字列に変換 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>ネットワーク状態。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ネットワーク状態の文字列。</dd></dl>
+<p>ネットワーク状態を文字列に変換します。 </p>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a6189b62133bbd2ca9730ef20a7da1a50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6189b62133bbd2ca9730ef20a7da1a50">&#9670;&nbsp;</a></span>abortHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(const char *file, int line)&gt; wiocellular::network::Bg770aNetwork::abortHandler</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>異常終了ハンドラ </p>
+
+</div>
+</div>
+<a id="ad47761014b3e49d8b7d2f68aeff20c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad47761014b3e49d8b7d2f68aeff20c90">&#9670;&nbsp;</a></span>apn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string wiocellular::network::Bg770aNetwork::apn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>APN(access point name) </p>
+
+</div>
+</div>
+<a id="a10a71c819386d4d42452fe24749c96d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a71c819386d4d42452fe24749c96d6">&#9670;&nbsp;</a></span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct { ... }  wiocellular::network::Bg770aNetwork::config</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ネットワークの設定 </p>
+
+</div>
+</div>
+<a id="a6f26e081f8f99aa02d2f85423216dc71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f26e081f8f99aa02d2f85423216dc71">&#9670;&nbsp;</a></span>KDDI_LTEM_BAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr char wiocellular::network::Bg770aNetwork::KDDI_LTEM_BAND[] = &quot;0xa020005&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>KDDIのLTE-M周波数バンド </p>
+
+</div>
+</div>
+<a id="a9a91b63de723f656abd5633d233e49ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a91b63de723f656abd5633d233e49ce">&#9670;&nbsp;</a></span>ltemBand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string wiocellular::network::Bg770aNetwork::ltemBand</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>LTE-M周波数バンド </p>
+<ul>
+<li>"": なし</li>
+<li>"0x1": LTE B1</li>
+<li>"0x2": LTE B2</li>
+<li>"0x4": LTE B3</li>
+<li>"0x8": LTE B4</li>
+<li>"0x10": LTE B5</li>
+<li>"0x80": LTE B8</li>
+<li>"0x800": LTE B12</li>
+<li>"0x1000": LTE B13</li>
+<li>"0x20000": LTE B18</li>
+<li>"0x40000": LTE B19</li>
+<li>"0x80000": LTE B20</li>
+<li>"0x1000000": LTE B25</li>
+<li>"0x2000000": LTE B26</li>
+<li>"0x4000000": LTE B27</li>
+<li>"0x8000000": LTE B28</li>
+<li>"0x20000000000000000": LTE B66 </li>
+</ul>
+
+</div>
+</div>
+<a id="afab898ff42c65fc93ac50f37861a0fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afab898ff42c65fc93ac50f37861a0fa8">&#9670;&nbsp;</a></span>nbiotBand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string wiocellular::network::Bg770aNetwork::nbiotBand</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>NB-IoT周波数バンド </p>
+<ul>
+<li>"": なし</li>
+<li>"0x1": LTE B1</li>
+<li>"0x2": LTE B2</li>
+<li>"0x4": LTE B3</li>
+<li>"0x8": LTE B4</li>
+<li>"0x10": LTE B5</li>
+<li>"0x80": LTE B8</li>
+<li>"0x800": LTE B12</li>
+<li>"0x1000": LTE B13</li>
+<li>"0x10000": LTE B17</li>
+<li>"0x20000": LTE B18</li>
+<li>"0x40000": LTE B19</li>
+<li>"0x80000": LTE B20</li>
+<li>"0x1000000": LTE B25</li>
+<li>"0x8000000": LTE B28</li>
+<li>"0x20000000000000000": LTE B66 </li>
+</ul>
+
+</div>
+</div>
+<a id="a037161df1d04403d7170a7d0d3ebcd11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a037161df1d04403d7170a7d0d3ebcd11">&#9670;&nbsp;</a></span>NTTDOCOMO_LTEM_BAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr char wiocellular::network::Bg770aNetwork::NTTDOCOMO_LTEM_BAND[] = &quot;0xa040005&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>NTTドコモのLTE-M周波数バンド </p>
+
+</div>
+</div>
+<a id="acefbaff726a1f7e669fb64e3a0796a91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acefbaff726a1f7e669fb64e3a0796a91">&#9670;&nbsp;</a></span>pdpContextId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wiocellular::network::Bg770aNetwork::pdpContextId</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>PDPコンテキストID </p>
+
+</div>
+</div>
+<a id="a1f29aaa3fc9cc5d652ca83ad047187ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f29aaa3fc9cc5d652ca83ad047187ca">&#9670;&nbsp;</a></span>searchAccessTechnology</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classwiocellular_1_1network_1_1Bg770aNetwork.html#a96d9ff055576415f1b70cf59725cc493">SearchAccessTechnology</a> wiocellular::network::Bg770aNetwork::searchAccessTechnology</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ネットワーク探索のアクセステクノロジーと順序 </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li><a class="el" href="Bg770aNetwork_8hpp.html">Bg770aNetwork.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,25 +1,4 @@
 var searchData=
 [
-  ['at_5fclient_153',['at_client',['../namespacewiocellular_1_1module_1_1at__client.html',1,'wiocellular::module']]],
-  ['bg770a_154',['bg770a',['../namespacewiocellular_1_1module_1_1bg770a.html',1,'wiocellular::module']]],
-  ['board_155',['board',['../namespacewiocellular_1_1board.html',1,'wiocellular']]],
-  ['commands_156',['commands',['../namespacewiocellular_1_1module_1_1bg770a_1_1commands.html',1,'wiocellular::module::bg770a']]],
-  ['internal_157',['internal',['../namespacewiocellular_1_1internal.html',1,'wiocellular']]],
-  ['module_158',['module',['../namespacewiocellular_1_1module.html',1,'wiocellular']]],
-  ['waitcommandtimeout_159',['WaitCommandTimeout',['../WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4a787fe4a43afef478d23de4b257230b54',1,'WioCellularResult.hpp']]],
-  ['waitreadavailable_160',['waitReadAvailable',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#ac6fa3207d7d67eb6809ea91f4e06b334',1,'wiocellular::module::bg770a::Bg770aInterface']]],
-  ['wakeup_161',['wakeup',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#acb21cbedc2a337b18acbf1ebe00e4371',1,'wiocellular::module::bg770a::Bg770aInterface']]],
-  ['wiobg770a_162',['WioBg770a',['../classwiocellular_1_1board_1_1WioBg770a.html#ae9e73f1edde3548762985cc68b33be96',1,'wiocellular::board::WioBg770a::WioBg770a()'],['../classwiocellular_1_1board_1_1WioBg770a.html',1,'wiocellular::board::WioBg770a&lt; MODULE, INTERFACE &gt;']]],
-  ['wiobg770a_2ehpp_163',['WioBg770a.hpp',['../WioBg770a_8hpp.html',1,'']]],
-  ['wiocellular_164',['wiocellular',['../namespacewiocellular.html',1,'']]],
-  ['wiocellular_2ecpp_165',['WioCellular.cpp',['../WioCellular_8cpp.html',1,'']]],
-  ['wiocellular_2eh_166',['WioCellular.h',['../WioCellular_8h.html',1,'']]],
-  ['wiocellular_2ehpp_167',['WioCellular.hpp',['../WioCellular_8hpp.html',1,'']]],
-  ['wiocellularresult_168',['WioCellularResult',['../WioCellularResult_8hpp.html#ab15d5953bed9055c90c0f06f30e1daf4',1,'WioCellularResult.hpp']]],
-  ['wiocellularresult_2ehpp_169',['WioCellularResult.hpp',['../WioCellularResult_8hpp.html',1,'']]],
-  ['wiocellulartcpclient_170',['WioCellularTcpClient',['../classWioCellularTcpClient.html',1,'WioCellularTcpClient&lt; MODULE &gt;'],['../classWioCellularTcpClient.html#aea29958903506f27fada81f35c6dfc42',1,'WioCellularTcpClient::WioCellularTcpClient()']]],
-  ['wiocellulartcpclient_2ehpp_171',['WioCellularTcpClient.hpp',['../WioCellularTcpClient_8hpp.html',1,'']]],
-  ['write_172',['write',['../classWioCellularTcpClient.html#aa0adde331577547cfc22fc5405aa1832',1,'WioCellularTcpClient::write(uint8_t data)'],['../classWioCellularTcpClient.html#a9e4a52461b23f9698891378c8f56f86c',1,'WioCellularTcpClient::write(const uint8_t *buf, size_t size)'],['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#a450a5a07422a4b277ddeed50f7f186bc',1,'wiocellular::module::bg770a::Bg770aInterface::write()'],['../classsuli3_1_1arduino_1_1DigitalOutputPin.html#ae6a11c6756db56b98fef67fd75336810',1,'suli3::arduino::DigitalOutputPin::write()'],['../classsuli3_1_1arduino_1_1Uart.html#a74b46bf5dae1181e01ff131e365e329e',1,'suli3::arduino::Uart::write()']]],
-  ['writeandwaitcommand_173',['writeAndWaitCommand',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aba5416351e227e039ce5aac1ab0a75c8',1,'wiocellular::module::at_client::AtClient']]],
-  ['writebinary_174',['writeBinary',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#a5dbbce6a0c85e72f6f5b3b3f4ce479c4',1,'wiocellular::module::at_client::AtClient']]]
+  ['vddexthandler_179',['vddExtHandler',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#a54b79e00fad2b5d1b079c2ebc54993e0',1,'wiocellular::module::bg770a::Bg770aInterface']]]
 ];

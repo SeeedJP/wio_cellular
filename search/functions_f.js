@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vddexthandler_312',['vddExtHandler',['../classwiocellular_1_1module_1_1bg770a_1_1Bg770aInterface.html#a54b79e00fad2b5d1b079c2ebc54993e0',1,'wiocellular::module::bg770a::Bg770aInterface']]]
+  ['uart_347',['Uart',['../classsuli3_1_1arduino_1_1Uart.html#a8165f4bc86ce724dd1b0c734c703dd1a',1,'suli3::arduino::Uart']]],
+  ['unregisterurchandler_348',['unregisterUrcHandler',['../classwiocellular_1_1module_1_1at__client_1_1AtClient.html#a40585a9004ea1d6b71fbbf9acd9d0fae',1,'wiocellular::module::at_client::AtClient']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['module_5f_333',['Module_',['../classWioCellularTcpClient.html#ad13120ed99239b9c31b281c9f7f5915b',1,'WioCellularTcpClient']]]
+  ['localport_372',['localPort',['../structwiocellular_1_1module_1_1bg770a_1_1commands_1_1Bg770aTcpipCommands_1_1SocketStatus.html#a27a83f6f5416bfef94e526cd186d3ca0',1,'wiocellular::module::bg770a::commands::Bg770aTcpipCommands::SocketStatus']]],
+  ['ltemband_373',['ltemBand',['../classwiocellular_1_1network_1_1Bg770aNetwork.html#a9a91b63de723f656abd5633d233e49ce',1,'wiocellular::network::Bg770aNetwork']]]
 ];

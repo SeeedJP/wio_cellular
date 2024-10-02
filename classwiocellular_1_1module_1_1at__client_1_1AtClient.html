@@ -104,6 +104,9 @@ $(function() {
 <tr class="memitem:aed294dea60a4e7b6829053c396e1ede6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aed294dea60a4e7b6829053c396e1ede6">doWork</a> (int timeout)</td></tr>
 <tr class="memdesc:aed294dea60a4e7b6829053c396e1ede6"><td class="mdescLeft">&#160;</td><td class="mdescRight">URC処理を実行  <a href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aed294dea60a4e7b6829053c396e1ede6">[詳解]</a><br /></td></tr>
 <tr class="separator:aed294dea60a4e7b6829053c396e1ede6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbf6b5ea52f9a4e8a638bf91993402c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#acbf6b5ea52f9a4e8a638bf91993402c2">doWorkUntil</a> (int timeout)</td></tr>
+<tr class="memdesc:acbf6b5ea52f9a4e8a638bf91993402c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">URC処理を実行（タイムアウトまで）  <a href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#acbf6b5ea52f9a4e8a638bf91993402c2">[詳解]</a><br /></td></tr>
+<tr class="separator:acbf6b5ea52f9a4e8a638bf91993402c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba5416351e227e039ce5aac1ab0a75c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aba5416351e227e039ce5aac1ab0a75c8">writeAndWaitCommand</a> (const std::string &amp;command, int timeout)</td></tr>
 <tr class="memdesc:aba5416351e227e039ce5aac1ab0a75c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">コマンド書き込みと待機  <a href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html#aba5416351e227e039ce5aac1ab0a75c8">[詳解]</a><br /></td></tr>
 <tr class="separator:aba5416351e227e039ce5aac1ab0a75c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,6 +267,43 @@ template&lt;typename MODULE &gt; </div>
   </dd>
 </dl>
 <p>レスポンスを確認して、URC(unsolicited result code)の処理を実行します。 永久にURC待ちしたいときはtimeoutに-1を指定します。 URCを受信したときは、タイムアウト時間を待つことなく関数から返ります。 </p>
+
+</div>
+</div>
+<a id="acbf6b5ea52f9a4e8a638bf91993402c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbf6b5ea52f9a4e8a638bf91993402c2">&#9670;&nbsp;</a></span>doWorkUntil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MODULE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classwiocellular_1_1module_1_1at__client_1_1AtClient.html">wiocellular::module::at_client::AtClient</a>&lt; MODULE &gt;::doWorkUntil </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>URC処理を実行（タイムアウトまで） </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>タイムアウト時間[ミリ秒]。</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>レスポンスを確認して、URC(unsolicited result code)の処理を実行します。 永久にURC待ちしたいときはtimeoutに-1を指定します。 URCを受信しても、タイムアウト時間まで関数から返りません。 </p>
 
 </div>
 </div>
