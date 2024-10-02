@@ -14,7 +14,7 @@
 
 using namespace ace_button;
 
-static constexpr int POWER_ON_TIMEOUT = 20000;  // [ms]
+static constexpr int POWER_ON_TIMEOUT = 1000 * 20;  // [ms]
 
 static const char* CELLULAR_REVISION = "BG770AGLAAR02A05_JP_01.200.01.200";
 

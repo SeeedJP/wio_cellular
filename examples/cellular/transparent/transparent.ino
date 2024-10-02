@@ -7,7 +7,7 @@
 #include <Adafruit_TinyUSB.h>
 #include <WioCellular.h>
 
-static constexpr int POWER_ON_TIMEOUT = 20000;   // [ms]
+static constexpr int POWER_ON_TIMEOUT = 1000 * 20;  // [ms]
 
 void setup(void) {
   Serial.begin(115200);

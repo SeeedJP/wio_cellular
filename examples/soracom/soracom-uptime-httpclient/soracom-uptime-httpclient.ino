@@ -10,21 +10,22 @@
 //   http://librarymanager#ArduinoHttpClient 0.6.1
 
 #include <Adafruit_TinyUSB.h>
-#include <algorithm>
 #include <map>
-#include <vector>
 #include <WioCellular.h>
 #include <ArduinoJson.h>
 #include <ArduinoHttpClient.h>
 
+#define SEARCH_ACCESS_TECHNOLOGY (WioCellularNetwork::SearchAccessTechnology::LTEM)
+#define LTEM_BAND (WioCellularNetwork::NTTDOCOMO_LTEM_BAND)
 static const char APN[] = "soracom.io";
+
 static const char HOST[] = "metadata.soracom.io";
 static const char PATH[] = "/v1/subscriber/tags";
 static constexpr int PORT = 80;
 
-static constexpr int INTERVAL = 1000 * 60 * 15;  // [ms]
-static constexpr int POWER_ON_TIMEOUT = 20000;   // [ms]
-static constexpr int RECEIVE_TIMEOUT = 10000;    // [ms]
+static constexpr int INTERVAL = 1000 * 60 * 5;      // [ms]
+static constexpr int POWER_ON_TIMEOUT = 1000 * 20;  // [ms]
+static constexpr int RECEIVE_TIMEOUT = 1000 * 10;   // [ms]
 
 #define ABORT_IF_FAILED(result) \
   do { \
@@ -60,63 +61,52 @@ void setup(void) {
   WioCellular.begin();
   ABORT_IF_FAILED(WioCellular.powerOn(POWER_ON_TIMEOUT));
 
-  setupCellular();
+  WioNetwork.config.searchAccessTechnology = SEARCH_ACCESS_TECHNOLOGY;
+  WioNetwork.config.ltemBand = LTEM_BAND;
+  WioNetwork.config.apn = APN;
+  WioNetwork.begin();
 
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop(void) {
-  digitalWrite(LED_BUILTIN, HIGH);
+  if (WioNetwork.canCommunicate()) {
+    digitalWrite(LED_BUILTIN, HIGH);
 
-  JsonDoc.clear();
-  if (generateRequestBody(JsonDoc)) {
-    std::string jsonStr;
-    serializeJson(JsonDoc, jsonStr);
-    Serial.println(jsonStr.c_str());
+    JsonDoc.clear();
+    if (generateRequestBody(JsonDoc)) {
+      std::string jsonStr;
+      serializeJson(JsonDoc, jsonStr);
+      Serial.println(jsonStr.c_str());
 
-    HttpResponse response = httpRequest(TcpClient, HOST, PORT, PATH, "PUT", "application/json", jsonStr.c_str());
+      HttpResponse response = httpRequest(TcpClient, HOST, PORT, PATH, "PUT", "application/json", jsonStr.c_str());
 
-    Serial.println("Header(s):");
-    for (auto header : response.headers) {
-      Serial.print("  ");
-      Serial.print(header.first.c_str());
-      Serial.print(" : ");
-      Serial.print(header.second.c_str());
-      Serial.println();
+      Serial.println("Header(s):");
+      for (auto header : response.headers) {
+        Serial.print("  ");
+        Serial.print(header.first.c_str());
+        Serial.print(" : ");
+        Serial.print(header.second.c_str());
+        Serial.println();
+      }
+      Serial.print("Body: ");
+      Serial.println(response.body.c_str());
+
+      if (response.statusCode == 200) {
+        JsonDoc.clear();
+        deserializeJson(JsonDoc, response.body.c_str());
+        // Output the IMSI field as an example of how to use the response
+        Serial.print("Response imsi> ");
+        Serial.print(JsonDoc["imsi"].as<String>());
+        Serial.println();
+      }
     }
-    Serial.print("Body: ");
-    Serial.println(response.body.c_str());
 
-    if (response.statusCode == 200) {
-      JsonDoc.clear();
-      deserializeJson(JsonDoc, response.body.c_str());
-      // Output the IMSI field as an example of how to use the response
-      Serial.print("Response imsi> ");
-      Serial.print(JsonDoc["imsi"].as<String>());
-      Serial.println();
-    }
+    digitalWrite(LED_BUILTIN, LOW);
   }
 
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(INTERVAL);
-}
-
-static void setupCellular(void) {
-  Serial.println("### Setup cellular");
-
-  std::vector<WioCellularModule::PdpContext> pdpContexts;
-  ABORT_IF_FAILED(WioCellular.getPdpContext(&pdpContexts));
-
-  if (std::find_if(pdpContexts.begin(), pdpContexts.end(), [](const WioCellularModule::PdpContext& pdpContext) {
-        return pdpContext.apn == APN;
-      })
-      == pdpContexts.end()) {
-    ABORT_IF_FAILED(WioCellular.setPhoneFunctionality(0));
-    ABORT_IF_FAILED(WioCellular.setPdpContext({ PDP_CONTEXT_ID, "IP", APN, "0.0.0.0", 0, 0, 0 }));
-    ABORT_IF_FAILED(WioCellular.setPhoneFunctionality(1));
-  }
-
-  Serial.println("### Completed");
+  Serial.flush();
+  WioCellular.doWorkUntil(INTERVAL);
 }
 
 /**

@@ -9,17 +9,18 @@
 //   https://github.com/matsujirushi/ntshell 0.3.1
 
 #include <Adafruit_TinyUSB.h>
-#include <algorithm>
 #include <nrfx_power.h>
 #include <ntshell.h>     // Natural Tiny Shell
 #include <util/ntopt.h>  // Natural Tiny Shell
 #include <WioCellular.h>
 
+#define SEARCH_ACCESS_TECHNOLOGY (WioCellularNetwork::SearchAccessTechnology::LTEM)
+#define LTEM_BAND (WioCellularNetwork::NTTDOCOMO_LTEM_BAND)
 static const char APN[] = "soracom.io";
 
-static constexpr int POWER_ON_TIMEOUT = 20000;  // [ms]
+static constexpr int POWER_ON_TIMEOUT = 1000 * 20;  // [ms]
+static constexpr int RECEIVE_TIMEOUT = 1000 * 10;   // [ms]
 
-static constexpr int PDP_CONTEXT_ID = 1;
 static constexpr int SOCKET_ID = 0;
 
 static ntshell_t Shell;
@@ -96,32 +97,14 @@ void setup(void) {
     Serial.printf("... %lu[ms]\n", millis() - start);
   }
 
-  Serial.printf("Set URC settings\n");
-  WioCellular.setEpsNetworkRegistrationStatusUrc(2);
-
-  Serial.printf("Check PDP context\n");
-  std::vector<WioCellularModule::PdpContext> pdpContexts;
-  WioCellularResult result;
-  if ((result = WioCellular.getPdpContext(&pdpContexts)) != WioCellularResult::Ok) {
-    Serial.printf("ERROR: %d\n", static_cast<int>(result));
-    abort();
-  }
-
-  if (std::find_if(pdpContexts.begin(), pdpContexts.end(), [](const WioCellularModule::PdpContext &pdpContext) {
-        return pdpContext.apn == APN;
-      })
-      == pdpContexts.end()) {
-    Serial.printf("Set PDP context\n");
-    WioCellular.setPhoneFunctionality(0);
-    if ((result = WioCellular.setPdpContext({ PDP_CONTEXT_ID, "IP", APN, "0.0.0.0", 0, 0, 0 })) != WioCellularResult::Ok) {
-      Serial.printf("ERROR: %d\n", static_cast<int>(result));
-      abort();
-    }
-    WioCellular.setPhoneFunctionality(1);
-  }
+  WioNetwork.config.searchAccessTechnology = SEARCH_ACCESS_TECHNOLOGY;
+  WioNetwork.config.ltemBand = LTEM_BAND;
+  WioNetwork.config.apn = APN;
+  WioNetwork.begin();
 }
 
 void loop(void) {
+  Serial.flush();
   WioCellular.doWork(10);  // Spin
   ntshell_execute_nb(&Shell);
 }
@@ -262,7 +245,7 @@ static int CommandPdpContext(int argc, char **argv) {
 
 static int CommandSocket(int argc, char **argv) {
   std::vector<WioCellularModule::SocketStatus> statuses;
-  WioCellular.getSocketStatus(PDP_CONTEXT_ID, &statuses);
+  WioCellular.getSocketStatus(WioNetwork.config.pdpContextId, &statuses);
 
   Serial.printf("Socket Statuses:\n");
   for (const auto &status : statuses) {
@@ -283,7 +266,7 @@ static int CommandSocketOpen(int argc, char **argv) {
     return 1;
   }
 
-  WioCellular.openSocket(PDP_CONTEXT_ID, SOCKET_ID, argv[1], argv[2], atoi(argv[3]), 0);
+  WioCellular.openSocket(WioNetwork.config.pdpContextId, SOCKET_ID, argv[1], argv[2], atoi(argv[3]), 0);
 
   return 0;
 }
@@ -326,7 +309,7 @@ static int CommandSocketSendReceive(int argc, char **argv) {
 
   static char data[1500];
   size_t dataSize;
-  if (WioCellular.receiveSocket(SOCKET_ID, data, sizeof(data), &dataSize, 5000) != WioCellularResult::Ok) {
+  if (WioCellular.receiveSocket(SOCKET_ID, data, sizeof(data), &dataSize, RECEIVE_TIMEOUT) != WioCellularResult::Ok) {
     Serial.printf("RECEIVE ERROR\n");
     return 0;
   }

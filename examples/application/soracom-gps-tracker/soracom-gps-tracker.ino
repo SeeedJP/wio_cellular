@@ -9,17 +9,19 @@
 //   http://librarymanager#ArduinoJson 7.0.4
 
 #include <Adafruit_TinyUSB.h>
-#include <algorithm>
 #include <WioCellular.h>
 #include <ArduinoJson.h>
 
+#define SEARCH_ACCESS_TECHNOLOGY (WioCellularNetwork::SearchAccessTechnology::LTEM)
+#define LTEM_BAND (WioCellularNetwork::NTTDOCOMO_LTEM_BAND)
 static const char APN[] = "soracom.io";
+
 static const char HOST[] = "uni.soracom.io";
 static constexpr int PORT = 23080;
 
-static constexpr int INTERVAL = 1000 * 60 * 5;  // [ms]
-static constexpr int POWER_ON_TIMEOUT = 20000;  // [ms]
-static constexpr int RECEIVE_TIMEOUT = 10000;   // [ms]
+static constexpr int INTERVAL = 1000 * 60 * 5;      // [ms]
+static constexpr int POWER_ON_TIMEOUT = 1000 * 20;  // [ms]
+static constexpr int RECEIVE_TIMEOUT = 1000 * 10;   // [ms]
 
 #define ABORT_IF_FAILED(result) \
   do { \
@@ -28,9 +30,7 @@ static constexpr int RECEIVE_TIMEOUT = 10000;   // [ms]
 
 static uint32_t MeasureTime = -INTERVAL;
 static String LatestGpsData;
-static String LatestRegStatus;
 
-static constexpr int PDP_CONTEXT_ID = 1;
 static constexpr int SOCKET_ID = 0;
 
 static JsonDocument JsonDoc;
@@ -52,7 +52,10 @@ void setup(void) {
   WioCellular.begin();
   ABORT_IF_FAILED(WioCellular.powerOn(POWER_ON_TIMEOUT));
 
-  setupCellular();
+  WioNetwork.config.searchAccessTechnology = SEARCH_ACCESS_TECHNOLOGY;
+  WioNetwork.config.ltemBand = LTEM_BAND;
+  WioNetwork.config.apn = APN;
+  WioNetwork.begin();
 
   WioCellular.enableGrovePower();
   GpsBegin();
@@ -67,57 +70,28 @@ void loop(void) {
   }
 
   if (millis() - MeasureTime >= INTERVAL) {
-    digitalWrite(LED_BUILTIN, HIGH);
+    if (WioNetwork.canCommunicate()) {
+      digitalWrite(LED_BUILTIN, HIGH);
 
-    JsonDoc.clear();
-    if (measure(JsonDoc)) {
-      std::string jsonStr;
-      serializeJson(JsonDoc, jsonStr);
+      JsonDoc.clear();
+      if (measure(JsonDoc)) {
+        send(JsonDoc);
+      }
 
-      send(reinterpret_cast<const uint8_t*>(jsonStr.data()), jsonStr.size());
+      digitalWrite(LED_BUILTIN, LOW);
     }
-
-    digitalWrite(LED_BUILTIN, LOW);
 
     MeasureTime = millis();
   }
 
-  WioCellular.doWork(10);
-}
-
-static void setupCellular(void) {
-  Serial.println("### Setup cellular");
-
-  WioCellular.registerUrcHandler([](const std::string& response) -> bool {
-    if (response.compare(0, 8, "+CEREG: ") == 0) {
-      LatestRegStatus = response.substr(8).c_str();
-      return true;
-    }
-    return false;
-  });
-  ABORT_IF_FAILED(WioCellular.setEpsNetworkRegistrationStatusUrc(2));
-
-  std::vector<WioCellularModule::PdpContext> pdpContexts;
-  ABORT_IF_FAILED(WioCellular.getPdpContext(&pdpContexts));
-
-  if (std::find_if(pdpContexts.begin(), pdpContexts.end(), [](const WioCellularModule::PdpContext& pdpContext) {
-        return pdpContext.apn == APN;
-      })
-      == pdpContexts.end()) {
-    ABORT_IF_FAILED(WioCellular.setPhoneFunctionality(0));
-    ABORT_IF_FAILED(WioCellular.setPdpContext({ PDP_CONTEXT_ID, "IP", APN, "0.0.0.0", 0, 0, 0 }));
-    ABORT_IF_FAILED(WioCellular.setPhoneFunctionality(1));
-  }
-
-  Serial.println("### Completed");
+  Serial.flush();
+  WioCellular.doWork(10);  // Spin
 }
 
 static bool measure(JsonDocument& doc) {
   Serial.println("### Measuring");
 
   doc["uptime"] = millis() / 1000;
-
-  doc["regStatus"] = LatestRegStatus.c_str();
 
   int index[5];
   index[0] = LatestGpsData.indexOf(',');
@@ -147,37 +121,43 @@ static bool measure(JsonDocument& doc) {
   return true;
 }
 
-static bool send(const void* data, size_t size) {
-  bool result = true;
-
+static bool send(const JsonDocument& doc) {
   Serial.println("### Sending");
 
-  if (result) {
-    Serial.print("Connecting ");
-    Serial.print(HOST);
-    Serial.print(":");
-    Serial.println(PORT);
-    if (WioCellular.openSocket(PDP_CONTEXT_ID, SOCKET_ID, "TCP", HOST, PORT, 0) != WioCellularResult::Ok) {
-      Serial.println("ERROR: Failed to open socket");
-      result = false;
-    }
+  int socketId;
+  if (WioCellular.getSocketUnusedConnectId(WioNetwork.config.pdpContextId, &socketId) != WioCellularResult::Ok) {
+    Serial.println("ERROR: Failed to get unused connect id");
+    return false;
   }
+
+  Serial.print("Connecting ");
+  Serial.print(HOST);
+  Serial.print(":");
+  Serial.println(PORT);
+  if (WioCellular.openSocket(WioNetwork.config.pdpContextId, socketId, "TCP", HOST, PORT, 0) != WioCellularResult::Ok) {
+    Serial.println("ERROR: Failed to open socket");
+    return false;
+  }
+
+  bool result = true;
 
   if (result) {
     Serial.print("Sending ");
-    printData(Serial, data, size);
+    std::string str;
+    serializeJson(doc, str);
+    printData(Serial, str.data(), str.size());
     Serial.println();
-    if (WioCellular.sendSocket(SOCKET_ID, data, size) != WioCellularResult::Ok) {
+    if (WioCellular.sendSocket(socketId, str.data(), str.size()) != WioCellularResult::Ok) {
       Serial.println("ERROR: Failed to send socket");
       result = false;
     }
   }
 
-  static uint8_t recvData[1500];
+  static uint8_t recvData[WioCellular.RECEIVE_SOCKET_SIZE_MAX];
   size_t recvSize;
   if (result) {
     Serial.println("Receiving");
-    if (WioCellular.receiveSocket(SOCKET_ID, recvData, sizeof(recvData), &recvSize, RECEIVE_TIMEOUT) != WioCellularResult::Ok) {
+    if (WioCellular.receiveSocket(socketId, recvData, sizeof(recvData), &recvSize, RECEIVE_TIMEOUT) != WioCellularResult::Ok) {
       Serial.println("ERROR: Failed to receive socket");
       result = false;
     } else {
@@ -186,7 +166,7 @@ static bool send(const void* data, size_t size) {
     }
   }
 
-  if (WioCellular.closeSocket(SOCKET_ID) != WioCellularResult::Ok) {
+  if (WioCellular.closeSocket(socketId) != WioCellularResult::Ok) {
     Serial.println("ERROR: Failed to close socket");
     result = false;
   }
