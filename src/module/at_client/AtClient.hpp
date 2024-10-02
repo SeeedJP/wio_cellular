@@ -127,6 +127,30 @@ namespace wiocellular
 
                 /**
                  * @~Japanese
+                 * @brief URC処理を実行（タイムアウトまで）
+                 *
+                 * @param [in] timeout タイムアウト時間[ミリ秒]。
+                 *
+                 * レスポンスを確認して、URC(unsolicited result code)の処理を実行します。
+                 * 永久にURC待ちしたいときはtimeoutに-1を指定します。
+                 * URCを受信しても、タイムアウト時間まで関数から返りません。
+                 */
+                void doWorkUntil(int timeout)
+                {
+                    const auto start = millis();
+                    while (true)
+                    {
+                        const auto elapsed = millis() - start;
+                        if (elapsed >= static_cast<uint32_t>(timeout))
+                        {
+                            break;
+                        }
+                        doWork(timeout - elapsed);
+                    }
+                }
+
+                /**
+                 * @~Japanese
                  * @brief コマンド書き込みと待機
                  *
                  * @param [in] command 送信コマンド。
