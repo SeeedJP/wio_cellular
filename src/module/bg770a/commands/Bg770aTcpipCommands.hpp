@@ -37,6 +37,13 @@ namespace wiocellular
                 private:
                     static constexpr int COMMAND_ECHO_TIMEOUT = 10000;
 
+                public:
+                    /**
+                     * @~Japanese
+                     * @brief ソケットから受信する最大バイト数
+                     */
+                    static constexpr size_t RECEIVE_SOCKET_SIZE_MAX = 1500;
+
                 private:
                     bool UrcSocketReceiveAttached_;
                     std::map<int, bool> UrcSocketReceiveNofity_;
