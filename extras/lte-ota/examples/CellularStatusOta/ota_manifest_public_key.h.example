@@ -1,0 +1,14 @@
+#pragma once
+
+// Generate this file. Do not type or commit a production key by hand:
+// Run from examples/CellularStatusOta with the public PEM file available there:
+// python3 ../../tools/export_manifest_public_key.py manifest-public.pem \
+//   --key-id production-2026 \
+//   --output ota_manifest_public_key.h
+
+#include <stdint.h>
+
+namespace wio_ota_keys {
+constexpr char kManifestKeyId[] = "replace-me";
+constexpr uint8_t kManifestPublicKey[32] = {};
+}  // namespace wio_ota_keys

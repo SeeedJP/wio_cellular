@@ -1,0 +1,17 @@
+.pio/
+.venv/
+__pycache__/
+artifacts/
+dist/
+*.pem
+*.ino.cpp
+**/ota_manifest_public_key.h
+**/platformio.local.ini
+examples/CellularStatusOta/build/
+# Keep pre-migration local settings ignored as well.
+include/ota_config.local.h
+examples/cellular-status-ota/src/ota_manifest_public_key.h
+examples/cellular-status-ota/CellularStatusOta/ota_manifest_public_key.h
+examples/cellular-status-ota/CellularStatusOta/build/
+*.pyc
+examples/cellular-status-ota/platformio.local.ini

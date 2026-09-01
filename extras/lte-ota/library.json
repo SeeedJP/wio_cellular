@@ -1,0 +1,16 @@
+{
+  "name": "WioOtaAgent",
+  "version": "0.2.1",
+  "description": "Reusable Wio BG770A LTE OTA sample with application-controlled update policy",
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "nordicnrf52",
+  "dependencies": {
+    "seeedjp/WioCellular": "0.3.15",
+    "bblanchon/ArduinoJson": "7.0.4"
+  },
+  "build": {
+    "includeDir": "src",
+    "extraScript": "scripts/platformio_nrfcrypto.py"
+  }
+}
