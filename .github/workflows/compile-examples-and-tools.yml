@@ -45,6 +45,8 @@ jobs:
             - source-url: https://github.com/matsujirushi/ntshell.git
             - name: Grove Ultrasonic Ranger
               version: 1.0.1
+            - name: GroveDriverPack
+              version: 1.13.0
             - name: AceButton
               version: 1.10.1
             - name: ArduinoHttpClient
