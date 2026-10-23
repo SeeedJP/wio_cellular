@@ -1,3 +1,13 @@
+# 0.3.16 (2026/10/23)
+
+* SeeedJP nRF52 Boards is 1.5.1
+
+## What's Changed
+
+* examples
+  * Add Grove magnetic switch example
+  * Add Grove DHT11 temperature and humidity example
+
 # 0.3.15 (2026/5/1)
 
 * SeeedJP nRF52 Boards is 1.5.0
